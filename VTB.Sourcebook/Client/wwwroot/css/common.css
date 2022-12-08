@@ -1,0 +1,21 @@
+﻿.align-left { text-align: left }
+.align-right { text-align: right }
+.align-center { text-align: center }
+
+.bool1 { color: green; }
+.bool1:before { content: '\e038' }
+.bool0 { color: red; }
+.bool0:before { content: '\e039' }
+
+div.sb-table { display: table; }
+div.sb-row { display: table-row; }
+div.sb-cell { display: table-cell; }
+
+.sb-grid .sb-gridcell {
+    border-collapse: collapse;
+    border: solid 1px darkgray;
+}
+
+th.sb-gridcell {
+    background-color: #E8E9EB;
+}

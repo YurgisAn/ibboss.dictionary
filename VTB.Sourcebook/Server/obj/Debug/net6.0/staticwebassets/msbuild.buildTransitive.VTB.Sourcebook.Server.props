@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\VTB.Sourcebook.Server.props" />
+</Project>

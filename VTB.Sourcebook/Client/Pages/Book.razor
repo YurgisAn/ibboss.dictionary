@@ -9,24 +9,6 @@
 @inject CurrentBookService CurrentBook
 @inject NavigationManager NavManager
 
-<style>
-    .align-left { text-align: left }
-    .align-right { text-align: right }
-    .align-center { text-align: center }
-    .bool1 {
-        color: green;
-    }
-    .bool1:before {
-        content: '\e038'
-    }
-    .bool0 {
-        color: red;
-    }
-    .bool0:before {
-        content: '\e039'
-    }
-</style>
-
 @if (meta is null)
 {
     <p>Loading...</p>
@@ -37,13 +19,13 @@ else
 
     var counter = 0;
     <p>
-        <div style="display: table">
-            <div style="display: table-row">
+        <div class="sb-table">
+            <div class="sb-row">
                 @foreach (var filter in meta.Filters)
                 {
                     var id = "input" + ++counter;
                     var af = filterData.First(f => f.Filter.Field == filter.Field);
-                    <div style="display: table-cell">
+                    <div class="sb-cell">
                         @switch (filter.Editor)
                         {
                             case FieldEditor.Text:
@@ -94,12 +76,12 @@ else
         </div>
     </p>
 
-    <QuickGrid ItemsProvider="@itemsProvider" Pagination="@pagination" @ref="grid">
+    <QuickGrid ItemsProvider="@itemsProvider" Pagination="@pagination" @ref="grid" Class="sb-grid">
         @foreach (var ci in meta.Columns)
         {
             @if ((ci.Hints & Hints.Hidden) != Hints.Hidden)
             {
-                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)">
+                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="sb-gridcell" >
                     <div class="@GetAlignmentStyle(ci.Hints)">
                         @(new MarkupString(context[ci.Title]))
                     </div>
