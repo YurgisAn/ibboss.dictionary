@@ -1,0 +1,275 @@
+﻿@page "/book/{name}"
+@using Microsoft.AspNetCore.Components.QuickGrid
+@using VTB.Sourcebook;
+@using VTB.Sourcebook.Configuration
+@using VTB.Sourcebook.QueryModel
+@using System.Text.Json
+@using Microsoft.AspNetCore.WebUtilities
+@inject HttpClient Http
+@inject CurrentBookService CurrentBook
+@inject NavigationManager NavManager
+
+<style>
+    .align-left { text-align: left }
+    .align-right { text-align: right }
+    .align-center { text-align: center }
+    .bool1 {
+        color: green;
+    }
+    .bool1:before {
+        content: '\e038'
+    }
+    .bool0 {
+        color: red;
+    }
+    .bool0:before {
+        content: '\e039'
+    }
+</style>
+
+@if (meta is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <PageTitle>@meta.Title</PageTitle>
+
+    var counter = 0;
+    <p>
+        <div style="display: table">
+            <div style="display: table-row">
+                @foreach (var filter in meta.Filters)
+                {
+                    var id = "input" + ++counter;
+                    var af = filterData.First(f => f.Filter.Field == filter.Field);
+                    <div style="display: table-cell">
+                        @switch (filter.Editor)
+                        {
+                            case FieldEditor.Text:
+                                <input id="@id" name="@id" type="text" placeholder="@filter.Title" @bind="@af.TextValue">
+                                break;
+                            case FieldEditor.Number:
+                                <input type="number" id="@id" name="@id" placeholder="@filter.Title" @bind="@af.NumberValue">
+                                break;
+                            case FieldEditor.Boolean:
+                                <label for="@id">@filter.Title</label>
+                                <select id="@id" name="@id" @bind="@af.NumberValue">
+                                    <option value="-1">всё</option>
+                                    <option value="1">да</option>
+                                    <option value="0">нет</option>
+                                </select>
+                                break;
+                            case FieldEditor.List:
+                                if (lists!.TryGetValue(filter.List!, out var items))
+                                {
+                                    <label for="@id">@filter.Title</label>
+                                    var xs = meta.Lists.First(x => x.Name == filter.List);
+                                    if (xs.ValueType == ListValueType.Integer)
+                                    {
+                                        <select id="@id" name="@id" @bind="@af.NumberValue">
+                                            <option value="">Все</option>
+                                            @foreach (var (c, v) in items)
+                                            {
+                                                <option value="@v">@c</option>
+                                            }
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select id="@id" name="@id" @bind="@af.TextValue">
+                                            <option value="">Все</option>
+                                            @foreach (var (c, v) in items)
+                                            {
+                                                <option value="@v">@c</option>
+                                            }
+                                        </select>
+                                    }
+                                }
+                                break;
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+    </p>
+
+    <QuickGrid ItemsProvider="@itemsProvider" Pagination="@pagination" @ref="grid">
+        @foreach (var ci in meta.Columns)
+        {
+            @if ((ci.Hints & Hints.Hidden) != Hints.Hidden)
+            {
+                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)">
+                    <div class="@GetAlignmentStyle(ci.Hints)">
+                        @(new MarkupString(context[ci.Title]))
+                    </div>
+                </TemplateColumn>
+            }
+        }
+    </QuickGrid>
+    <Paginator Value="@pagination" />
+}
+
+@functions {
+    private Align GetAlignment(Hints? hints)
+    {
+        if ((hints & Hints.AlignRight) == Hints.AlignRight)
+            return Align.Right;
+        else if ((hints & Hints.AlignCenter) == Hints.AlignCenter)
+            return Align.Center;
+        else
+            return Align.Left;
+    }
+
+    private string GetAlignmentStyle(Hints? hints)
+    {
+        if ((hints & Hints.AlignRight) == Hints.AlignRight)
+            return "align-right";
+        else if ((hints & Hints.AlignCenter) == Hints.AlignCenter)
+            return "align-center";
+        else
+            return "align-left";
+    }
+
+    private void PopulateFilterData()
+    {
+        var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
+        var dict = QueryHelpers.ParseQuery(uri.Query);
+
+        foreach (var f in filterData)
+        {
+            if (dict.TryGetValue(f.Filter.Field, out var value))
+            {
+                switch (f.Filter.Editor)
+                {
+                    case FieldEditor.Boolean:
+                    case FieldEditor.Number:
+                        f.NumberValue = int.Parse(value);
+                        break;
+                    default:
+                        f.TextValue = value;
+                        break;
+                }
+            }
+        }
+
+        RefreshQuery();
+    }
+
+    private void RefreshQuery()
+    {
+        var nodes = new List<QueryNode>();
+
+        foreach (var fv in filterData.Where(f => f.HasValue()))
+        {
+            var value = fv.GetLiteral();
+
+            if (fv.Filter.Editor == FieldEditor.Text)
+                nodes.Add(Query.Like(fv.Filter.Field, value));
+            else
+                nodes.Add(Query.Equals(fv.Filter.Field, value));
+        }
+
+        if (nodes.Count == 0)
+            query = Query.Empty();
+        else
+            query = nodes.Count > 1 ? Query.And(nodes.ToArray()) : nodes[0];
+    }
+
+    private void RefreshGrid()
+    {
+        if (grid is null)
+            return;
+
+        RefreshQuery();
+        InitItemsProvider();
+        grid.RefreshDataAsync();
+    }
+
+    private void InitItemsProvider()
+    {
+        itemsProvider = async req =>
+        {
+            var result = await Http.PutAsJsonAsync<QueryNode?>($"sourcebooks/count/{Name}", query ?? Query.Empty());
+            var totalCount = int.Parse(await result.Content.ReadAsStringAsync());
+
+            var sortCol = "null";
+
+            if (req.SortByColumn is not null)
+                sortCol = meta!.Columns.First(f => f.Title == req.SortByColumn.Title).SortBy;
+
+            var url = $"sourcebooks/data/{Name}/{req.Count}/{req.StartIndex}/{sortCol}/{req.SortByAscending.ToString().ToLower()}";
+            result = await Http.PutAsJsonAsync<QueryNode?>(url, query ?? Query.Empty());
+            var data = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(await result.Content.ReadAsStringAsync());
+            return GridItemsProviderResult.From<Dictionary<string, string>>(items: data!, totalItemCount: totalCount);
+        };
+    }
+}
+
+@code {
+    [Parameter]
+    public string? Name { get; set; }
+
+    private List<FilterValue> filterData = new();
+    private QuickGrid<Dictionary<string, string>>? grid;
+    private GridItemsProvider<Dictionary<string, string>>? itemsProvider;
+    private Dictionary<string, List<ListEntry>>? lists;
+    private PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
+    private BookInfo? meta;
+    private QueryNode? query;
+
+
+    private async void LoadLists(BookInfo meta)
+    {
+        var dict = new Dictionary<string, List<ListEntry>>();
+
+        foreach (var xs in meta.Lists)
+        {
+            var url = $"sourcebooks/list/{Name}/{xs.Name}";
+            var result = await Http.PutAsync(url, null);
+            var src = await result.Content.ReadAsStringAsync();
+            var data = JsonSerializer.Deserialize<List<ListEntry>>(src);
+            dict.Add(xs.Name, data!);
+        }
+
+        lists = dict;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var bookInfo = await Http.GetFromJsonAsync<BookInfo>($"sourcebooks/{Name}");
+        var dict = new Dictionary<string, List<ListEntry>>();
+
+        foreach (var xs in bookInfo!.Lists)
+        {
+            List<ListEntry> data;
+
+            if (xs.Values is not null)
+                data = xs.Values.Select(v => new ListEntry(v.Text, v.Value)).ToList();
+            else
+            {
+                var url = $"sourcebooks/list/{Name}/{xs.Name}";
+                var result = await Http.PutAsync(url, null);
+                var src = await result.Content.ReadAsStringAsync();
+                data = JsonSerializer.Deserialize<List<ListEntry>>(src)!;
+            }
+
+            dict.Add(xs.Name, data!);
+        }
+
+        lists = dict;
+        meta = bookInfo;
+
+        CurrentBook.SetCurrentBook(bookInfo);
+
+        foreach (var f in bookInfo!.Filters)
+        {
+            var fv = new FilterValue(f);
+            fv.OnChange += RefreshGrid;
+            filterData.Add(fv);
+        }
+
+        PopulateFilterData();
+        InitItemsProvider();
+    }
+}

@@ -1,0 +1,4 @@
+﻿[
+    { "name": "bic", "title": "Справочник БИК", "disabled": false },
+    { "title": "Справочник, которого нет", "disabled": false, "page": "book404" }
+]

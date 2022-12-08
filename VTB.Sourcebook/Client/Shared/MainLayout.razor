@@ -1,0 +1,33 @@
+﻿@inherits LayoutComponentBase
+@inject CurrentBookService CurrentBook
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4" style="font-weight: bold">
+            @if (CurrentBook.Info is null)
+            {
+                <span>Индекс справочников</span>
+            }
+            else
+            {
+                <span>@CurrentBook.Info.Title</span>
+            }
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        CurrentBook.OnChange += () => StateHasChanged();
+        base.OnInitialized();
+    }
+}

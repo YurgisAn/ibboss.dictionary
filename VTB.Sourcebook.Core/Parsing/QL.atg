@@ -1,0 +1,141 @@
+﻿COMPILER QL
+
+CHARACTERS
+    cr = '\r'.
+    lf = '\n'.
+    newLine = cr + lf.
+    tab = '\t'.
+    letter = 'A' .. 'Z' + 'a' .. 'z' + '_'.
+    digit = "0123456789".
+    notDigit = ANY - digit.
+    hexDigit = digit + "ABCDEFabcdef".
+    stringChar = ANY - '"' - '\\' - newLine.
+    stringChar2 = ANY - '\'' - newLine.
+
+TOKENS
+    ident = letter { letter | digit } 
+        | "_" letter { letter | digit }
+        | "\"" letter { letter | digit } "\""
+        | "\"" "_" letter { letter | digit } "\"".
+    intTok = digit { digit } | digit { digit } CONTEXT ("." notDigit).
+    realTok = "." digit { digit } [ ( "e" | "E") [ "+" | "-" ] digit { digit } ]
+            | digit { digit }
+            (
+                "." digit { digit }
+                [ ( "e" | "E" ) ["+" | "-" ] digit { digit } ]
+                | ( "e" | "E") ["+" | "-" ] digit { digit }
+            ).
+    stringTok = "'" { stringChar2 | "''" } "'".
+
+    parenLeftToken  = "(".
+    parenRightToken = ")".
+    curlyLeftToken  = "{".
+    curlyRightToken = "}".
+    commaToken      = ",".
+    arrow           = "=>".
+    semicolon       = ";".
+    else            = "else".
+    if              = "if".
+    while           = "while".
+    continue        = "continue".
+    break           = "break".
+    return          = "return".
+    function        = "function".
+    length          = "length".
+
+IGNORE tab + cr + lf
+
+PRODUCTIONS
+
+    OrExpr<out QueryNode exp> =
+        AndExpr<out exp>
+        {
+            "||" AndExpr<out var cnode>
+            (. exp = new OrNode(exp, cnode); .)
+        }.
+
+    AndExpr<out QueryNode exp> =
+        EqExpr<out exp>
+        {
+            "&&" EqExpr<out var cnode>
+            (. exp = new AndNode(exp, cnode); .)
+        }.
+
+    EqExpr<out QueryNode exp> =
+        NotExpr<out exp>
+        {
+            (. var op = BinaryOperator.None; .)
+            (
+                  ">"  (. op = BinaryOperator.Greater; .)
+                | "<"  (. op = BinaryOperator.Lesser; .)
+                | ">=" (. op = BinaryOperator.GreaterOrEquals; .)
+                | "<=" (. op = BinaryOperator.LesserOrEquals; .)
+                | "==" (. op = BinaryOperator.Equals; .)
+                | "!=" (. op = BinaryOperator.NotEquals; .)
+                | "like" (. op = BinaryOperator.Like; .)
+            )
+            NotExpr<out var cnode>
+            (. exp = new BinaryNode(op, exp, cnode); .)
+        }.
+
+    NotExpr<out QueryNode exp> =
+        (. exp = null; .)
+        (
+            BetweenExpr<out exp>
+            | "!" BetweenExpr<out exp> (. exp = new NotNode(exp); .)
+        ).
+
+    BetweenExpr<out QueryNode exp> =
+        LiteralExpr<out exp>
+        [
+            "between" LiteralExpr<out var lower> "and" LiteralExpr<out var upper>
+            (. exp = new BetweenNode(exp, lower, upper); .)
+        ].
+
+    LiteralExpr<out QueryNode exp> =
+        (. exp = null; .)
+        (
+              StringExpr<out exp>
+            | NumberExpr<out exp>
+            | BoolExpr<out exp>
+            | NullExpr<out exp>
+            | NameExpr<out exp>
+            | GroupExpr<out exp>
+        ).
+
+    StringExpr<out QueryNode exp> =
+        stringTok
+        (. exp = new LiteralNode(LiteralType.String, t.val.Trim('\'')); .).
+
+    BoolExpr<out QueryNode exp> =
+        (
+            ( "true" | "false" )
+            (. exp = new LiteralNode(LiteralType.Number, t.val == "true" ? 1 : 0); .)
+        ).
+
+    NullExpr<out QueryNode exp> =
+        "null" (. exp = new LiteralNode(LiteralType.Null, DBNull.Value); .).
+
+    NumberExpr<out QueryNode exp> =
+        (. exp = null; .)
+        (
+            (intTok | realTok)
+            (. exp = new LiteralNode(LiteralType.Number, TryParseNumber()); .)
+        ).
+
+    NameExpr<out QueryNode exp> =
+        (. var sb = new StringBuilder(); .)
+        (
+            ident (. sb.Append(t.val); .)
+            { "." ident (. sb.Append('.'); sb.Append(t.val); .) }
+            (. exp = new NameNode(sb.ToString()); .)
+        ).
+
+    GroupExpr<out QueryNode exp> =
+        "("
+            OrExpr<out exp>
+        ")".
+
+    QL = OrExpr<out var exp> (. Expression = exp; .).
+
+END QL.

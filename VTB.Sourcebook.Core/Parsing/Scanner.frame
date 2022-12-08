@@ -1,0 +1,89 @@
+-->begin
+using System;
+using Buffer = VTB.Sourcebook.Parsing.SourceBuffer;
+
+-->namespace
+namespace VTB.Sourcebook.Parsing;
+
+internal sealed partial class Scanner
+{
+-->declarations
+    static Scanner() 
+    {
+        start = new Map(128);
+-->initialization
+    }
+
+//-->casing1
+
+    private void AddCh() 
+    {
+        if (tlen >= tval.Length)
+        {
+            char[] newBuf = new char[2 * tval.Length];
+            Array.Copy(tval, 0, newBuf, 0, tval.Length);
+            tval = newBuf;
+        }
+
+        if (ch != Buffer.EOF)
+        {
+-->casing2
+            NextCh();
+        }
+    }
+
+-->comments
+
+    private void CheckLiteral() 
+    {
+-->literals
+    }
+
+    private Token NextToken()
+    {
+        bool eol = false;
+        while (ch == ' ' ||
+-->scan1
+        ) {
+            if (ch == '\r' || ch == '\n') {
+                eol = true;
+            }
+            NextCh();
+        }
+-->scan2
+        int recKind = noSym;
+        int recEnd = pos;
+        t = new Token();
+        t.pos = pos; t.col = col; t.line = line; t.charPos = charPos;
+        t.AfterEol = eol;
+        int state;
+
+        if (start.ContainsKey(ch))
+            state = (int)start[ch];
+        else
+            state = 0;
+
+        tlen = 0; 
+        AddCh();
+
+        switch (state) 
+        {
+            case -1: 
+                t.kind = eofSym; 
+                break;
+            case 0:
+                if (recKind != noSym) 
+                {
+                    tlen = recEnd - t.pos;
+                    SetScannerBehindT();
+                }
+                t.kind = recKind; 
+                break;
+-->scan3
+        }
+        t.val = new string(tval, 0, tlen);
+        return t;
+    }
+}
+
+$$$

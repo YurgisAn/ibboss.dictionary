@@ -1,0 +1,35 @@
+-->begin
+using VTB.Sourcebook.QueryModel;
+using System.Text;
+
+-->namespace
+namespace VTB.Sourcebook.Parsing;
+
+internal sealed partial class Parser 
+{
+-->constants
+
+-->declarations
+//-->pragmas
+
+-->productions
+//-->parseRoot
+
+    private static readonly bool[,] set = {
+-->initialization
+    };
+
+    private void SynErr (int line, int col, int n)
+    {
+        string s;
+        switch (n) 
+        {
+-->errors
+            default: s = "error " + n; break;
+        }
+        
+        throw Error(s, line, col);
+    }
+}
+
+$$$

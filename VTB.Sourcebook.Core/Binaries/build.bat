@@ -1,0 +1,1 @@
+Coco.exe -N "..\Parsing\QL.atg"

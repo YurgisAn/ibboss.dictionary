@@ -1,0 +1,15 @@
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\bin\Debug\net6.0\VTB.Sourcebook.Core.deps.json
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\bin\Debug\net6.0\VTB.Sourcebook.Core.dll
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\bin\Debug\net6.0\VTB.Sourcebook.Core.pdb
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\bin\Debug\net6.0\VTB.Sourcebook.Shared.dll
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\bin\Debug\net6.0\VTB.Sourcebook.Shared.pdb
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\obj\Debug\net6.0\VTB.Sourcebook.Core.csproj.AssemblyReference.cache
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\obj\Debug\net6.0\VTB.Sourcebook.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\obj\Debug\net6.0\VTB.Sourcebook.Core.AssemblyInfoInputs.cache
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\obj\Debug\net6.0\VTB.Sourcebook.Core.AssemblyInfo.cs
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\obj\Debug\net6.0\VTB.Sourcebook.Core.csproj.CoreCompileInputs.cache
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\obj\Debug\net6.0\VTB.Sourcebook.Core.csproj.CopyComplete
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\obj\Debug\net6.0\VTB.Sourcebook.Core.dll
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\obj\Debug\net6.0\refint\VTB.Sourcebook.Core.dll
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\obj\Debug\net6.0\VTB.Sourcebook.Core.pdb
+C:\repos\source\tfs4alm01v\ASP.NET\VTB.Sourcebook\VTB.Sourcebook.Core\obj\Debug\net6.0\ref\VTB.Sourcebook.Core.dll

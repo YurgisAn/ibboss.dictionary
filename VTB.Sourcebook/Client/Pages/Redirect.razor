@@ -1,0 +1,13 @@
+﻿@page "/Redirect/{book}"
+@inject NavigationManager Nav
+
+@code {
+    [Parameter]
+    public string? Book { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Nav.NavigateTo($"book/{Book}/" + new Uri(Nav.Uri).Query);
+        base.OnInitialized();
+    }
+}

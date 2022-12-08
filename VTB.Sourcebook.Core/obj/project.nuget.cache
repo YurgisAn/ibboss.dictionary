@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "d6pa621UAPR48zzszt/LcjziTXaZ1bfgMuH1xRn+es6ktIIGC4xDhULUV3L9oDUCrmdNOGA+exbmY/l4T5bxiQ==",
+  "success": true,
+  "projectFilePath": "C:\\repos\\source\\tfs4alm01v\\ASP.NET\\VTB.SourceBook\\VTB.Sourcebook.Core\\VTB.Sourcebook.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\nic-v\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\nic-v\\.nuget\\packages\\npgsql\\7.0.0\\npgsql.7.0.0.nupkg.sha512",
+    "C:\\Users\\nic-v\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

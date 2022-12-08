@@ -1,0 +1,39 @@
+﻿@page "/"
+@using VTB.Sourcebook.Configuration
+@inject HttpClient Http
+@inject CurrentBookService CurrentBook
+
+<PageTitle>Index</PageTitle>
+
+@if (meta is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    @foreach (var b in meta)
+    {
+        @if (!b.Disabled)
+        {
+            <div><a href="@(b.Page is null ? $"book/{b.Name}" : b.Page)">@b.Title</a></div>
+        }
+    }
+} 
+@code {
+    private int someNumber;
+    private BookEntry[]? meta;
+    private bool visible;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        CurrentBook.SetCurrentBook(null);
+        meta = await Http.GetFromJsonAsync<BookEntry[]>($"sourcebooks/directory");
+    }
+
+    private void ShowPopup()
+    {
+        visible = !visible;
+        StateHasChanged();
+    }
+}
