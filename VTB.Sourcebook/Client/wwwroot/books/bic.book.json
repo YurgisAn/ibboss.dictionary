@@ -6,7 +6,8 @@
         { "field": "participant_name", "editor": "Text", "title": "Участник" },
         { "field": "is_active", "editor": "Boolean", "title": "Активен" },
         { "field": "country_code", "editor": "List", "list": "countries", "title": "Страна" },
-        { "field": "country_code", "editor": "List", "list": "countries2", "title": "Страна 2" }
+        { "field": "country_code", "editor": "List", "list": "countries2", "title": "Страна 2" },
+        { "field": "business_day", "editor": "DateRange", "title": "Диапазон дат" }
     ],
     "columns": [
         { "title": "БИК", "value": "{bic}", "sortBy": "bic" },

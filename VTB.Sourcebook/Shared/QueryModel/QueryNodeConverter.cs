@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Globalization;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using VTB.Sourcebook.Configuration;
 
@@ -45,8 +46,8 @@ public sealed class QueryNodeConverter : JsonConverter<QueryNode>
             case "BetweenNode":
                 return new BetweenNode(
                     ReadObject(elem.GetProperty("node")),
-                    ReadObject(elem.GetProperty("upper")),
-                    ReadObject(elem.GetProperty("lower")));
+                    ReadObject(elem.GetProperty("lower")),
+                    ReadObject(elem.GetProperty("upper")));
             case "EmptyNode":
                 return Query.Empty();
             default:
@@ -65,7 +66,7 @@ public sealed class QueryNodeConverter : JsonConverter<QueryNode>
                 var d = decimal.Parse(str);
                 return d % 1 == 0 ? (int)d : d;
             case LiteralType.Date:
-                return DateTime.Parse(str);
+                return DateTime.ParseExact(str,"MM/dd/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
             default:
                 throw new SourcebookException($"Invalid literal type: {type}.");
         };

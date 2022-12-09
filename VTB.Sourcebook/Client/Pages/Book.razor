@@ -69,6 +69,13 @@ else
                                     }
                                 }
                                 break;
+                            case FieldEditor.DateRange:
+                                <label for="@id">@filter.Title</label>
+                                <label>с</label>
+                                <input type="date" id="start" name="trip-start" @bind-value="af.DateLowerBound" min="2000-01-01">
+                                <label>по</label>
+                                <input type="date" id="start" name="trip-start" @bind-value="af.DateUpperBound" min="2000-01-01">
+                            break;
                         }
                     </div>
                 }
@@ -146,10 +153,22 @@ else
         {
             var value = fv.GetLiteral();
 
-            if (fv.Filter.Editor == FieldEditor.Text)
-                nodes.Add(Query.Like(fv.Filter.Field, value));
-            else
-                nodes.Add(Query.Equals(fv.Filter.Field, value));
+
+            switch (fv.Filter.Editor)
+            {
+                case FieldEditor.Text:
+                    nodes.Add(Query.Like(fv.Filter.Field, value));
+                    break;
+                case FieldEditor.DateRange:
+                    var dates = value.Value as DateTime?[];
+                    if (dates?.Count(s=>s != null)==2)
+                        nodes.Add(Query.Between(fv.Filter.Field, dates[0].Value, dates[1].Value));
+                    break;
+                default:
+                    nodes.Add(Query.Equals(fv.Filter.Field, value));
+                    break;
+            }
+
         }
 
         if (nodes.Count == 0)

@@ -37,6 +37,37 @@ public sealed class FilterValue
             }
         }
     }
+
+
+    private DateTime? dateLowerBound;
+    public DateTime? DateLowerBound
+    {
+        get => dateLowerBound;
+        set
+        {
+            if (this.dateLowerBound != value)
+            {
+                this.dateLowerBound = value;
+                NotifyStateChanged();
+            }
+        }
+    }
+
+    private DateTime? dateUpperBound;
+    public DateTime? DateUpperBound
+    {
+        get => dateUpperBound;
+        set
+        {
+            if (this.dateUpperBound != value)
+            {
+                    this.dateUpperBound = value;
+                NotifyStateChanged();
+            }
+        }
+    }
+
+
     #endregion
 
     public bool HasValue() =>
@@ -46,6 +77,7 @@ public sealed class FilterValue
             FieldEditor.Text => !string.IsNullOrWhiteSpace(textValue),
             FieldEditor.Boolean => numberValue is not null && numberValue >= 0,
             FieldEditor.List => numberValue is not null || !string.IsNullOrWhiteSpace(textValue),
+            FieldEditor.DateRange => DateLowerBound is not null && DateUpperBound is not null,
             _ => false
         };
 
@@ -53,6 +85,8 @@ public sealed class FilterValue
     {
         if (Filter.Editor is FieldEditor.Boolean or FieldEditor.Number)
             return new(LiteralType.Number, numberValue!);
+        else if (Filter.Editor is FieldEditor.DateRange)
+            return new(LiteralType.Date, new []{ DateLowerBound, DateUpperBound });
         else if (Filter.Editor is FieldEditor.Text)
             return new(LiteralType.String, "%" + textValue + "%");
         else if (Filter.Editor is FieldEditor.List)
