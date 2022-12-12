@@ -26,60 +26,13 @@ else
                 @foreach (var filter in meta.Filters)
                 {
                     var id = "input" + ++counter;
-                    var af = filterData.First(f => f.Filter.Field == filter.Field);
-                    <div class="sb-cell">
-                        @switch (filter.Editor)
-                        {
-                            case FieldEditor.Text:
-                                <input id="@id" name="@id" type="text" placeholder="@filter.Title" @bind="@af.TextValue">
-                                break;
-                            case FieldEditor.Number:
-                                <input type="number" id="@id" name="@id" placeholder="@filter.Title" @bind="@af.NumberValue">
-                                break;
-                            case FieldEditor.Boolean:
-                                <label for="@id">@filter.Title</label>
-                                <select id="@id" name="@id" @bind="@af.NumberValue">
-                                    <option value="-1">всё</option>
-                                    <option value="1">да</option>
-                                    <option value="0">нет</option>
-                                </select>
-                                break;
-                            case FieldEditor.List:
-                                if (lists!.TryGetValue(filter.List!, out var items))
-                                {
-                                    <label for="@id">@filter.Title</label>
-                                    var xs = meta.Lists.First(x => x.Name == filter.List);
-                                    if (xs.ValueType == ListValueType.Integer)
-                                    {
-                                        <select id="@id" name="@id" @bind="@af.NumberValue">
-                                            <option value="">Все</option>
-                                            @foreach (var (c, v) in items)
-                                            {
-                                                <option value="@v">@c</option>
-                                            }
-                                        </select>
-                                    }
-                                    else
-                                    {
-                                        <select id="@id" name="@id" @bind="@af.TextValue">
-                                            <option value="">Все</option>
-                                            @foreach (var (c, v) in items)
-                                            {
-                                                <option value="@v">@c</option>
-                                            }
-                                        </select>
-                                    }
-                                }
-                                break;
-                            case FieldEditor.DateRange:
-                                <label for="@id">@filter.Title</label>
-                                <label>с</label>
-                                <input type="date" id="start" name="trip-start" @bind-value="af.DateLowerBound" min="2000-01-01">
-                                <label>по</label>
-                                <input type="date" id="start" name="trip-start" @bind-value="af.DateUpperBound" min="2000-01-01">
-                            break;
-                        }
-                    </div>
+                    if (!meta.Columns.Any(c => c.Filter == filter.Field))
+                    {
+                        var af = filterData.First(f => f.Filter.Field == filter.Field);
+                        <div class="sb-cell">
+                            @RenderFilter(id, filter, af)
+                        </div>
+                    }
                 }
             </div>
         </div>
@@ -88,12 +41,33 @@ else
     <QuickGrid ItemsProvider="@itemsProvider" Pagination="@pagination" @ref="grid" Class="sb-grid">
         @foreach (var ci in meta.Columns)
         {
-            @if ((ci.Hints & Hints.Hidden) != Hints.Hidden)
+            var id = "filter_input" + ++counter;
+            var show = (ci.Hints & Hints.Hidden) != Hints.Hidden;
+            @if (show && ci.Filter is not null)
             {
-                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="sb-gridcell" >
-                    <div class="@GetAlignmentStyle(ci.Hints)">
-                        @(new MarkupString(context[ci.Title]))
-                    </div>
+                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="sb-gridcell">
+                    <ColumnOptions>
+                    @{
+                        var af = filterData.First(f => f.Filter.Field == ci.Filter);
+                        var filter = meta.Filters.First(f => f.Field == ci.Filter);
+                        @RenderFilter(id, filter, af, FilterHints.NoLabel)
+                    }
+                    </ColumnOptions>
+                    <ChildContent>
+                        <div class="@GetAlignmentStyle(ci.Hints)">
+                            @(new MarkupString(context[ci.Title]))
+                        </div>
+                    </ChildContent>
+                </TemplateColumn>
+            }
+            else if (show)
+            {
+                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="sb-gridcell">
+                    <ChildContent>
+                        <div class="@GetAlignmentStyle(ci.Hints)">
+                            @(new MarkupString(context[ci.Title]))
+                        </div>
+                    </ChildContent>
                 </TemplateColumn>
             }
         }
@@ -102,6 +76,77 @@ else
 }
 
 @functions {
+    private RenderFragment? RenderFilter(string id, FilterInfo filter, FilterValue af, FilterHints? overrideHints = FilterHints.None)
+    {
+        var hints = (filter.Hints ?? FilterHints.None) | (overrideHints ?? FilterHints.None);
+        var label = (hints & FilterHints.NoLabel) != FilterHints.NoLabel;
+
+        switch (filter.Editor)
+        {
+            case FieldEditor.Text:
+                return @<input id="@id" name="@id" type="text" placeholder="@(label ? filter.Title : "")" @bind="@af.TextValue">;
+            case FieldEditor.Number:
+                return @<input type="number" id="@id" name="@id" placeholder="@(label ? filter.Title : "")" @bind="@af.NumberValue">;
+            case FieldEditor.Boolean:
+                return __builder =>
+                {
+                    if (label)
+                    {
+                        <label for="@id">@filter.Title</label>
+                    }
+                    <select id="@id" name="@id" @bind="@af.NumberValue">
+                        <option value="-1">всё</option>
+                        <option value="1">да</option>
+                        <option value="0">нет</option>
+                    </select>
+                };
+            case FieldEditor.List:
+                return __builder =>
+                {
+                    var items = lists![filter.List!];
+                    if (label)
+                    {
+                        <label for="@id">@filter.Title</label>
+                    }
+                    var xs = meta.Lists.First(x => x.Name == filter.List);
+                    if (xs.ValueType == ListValueType.Integer)
+                    {
+                        <select id="@id" name="@id" @bind="@af.NumberValue">
+                            <option value="">Все</option>
+                            @foreach (var (c, v) in items)
+                            {
+                                <option value="@v">@c</option>
+                            }
+                        </select>
+                    }
+                    else
+                    {
+                        <select id="@id" name="@id" @bind="@af.TextValue">
+                            <option value="">Все</option>
+                            @foreach (var (c, v) in items)
+                            {
+                                <option value="@v">@c</option>
+                            }
+                        </select>
+                    }
+                };
+            case FieldEditor.DateRange:
+                return __builder =>
+                {
+                    if (label)
+                    {
+                        <label for="@id">@filter.Title</label>
+                    }
+                    <label>с</label>
+                    <input type="date" id="start" name="trip-start" @bind-value="af.DateLowerBound" min="2000-01-01">
+                    <label>по</label>
+                    <input type="date" id="start" name="trip-start" @bind-value="af.DateUpperBound" min="2000-01-01">
+                };
+            default:
+                return null;
+        }
+    }
+
     private Align GetAlignment(Hints? hints)
     {
         if ((hints & Hints.AlignRight) == Hints.AlignRight)

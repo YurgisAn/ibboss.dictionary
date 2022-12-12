@@ -10,7 +10,7 @@
         { "field": "business_day", "editor": "DateRange", "title": "Диапазон дат" }
     ],
     "columns": [
-        { "title": "БИК", "value": "{bic}", "sortBy": "bic" },
+        { "title": "БИК", "value": "{bic}", "sortBy": "bic", "filter": "bic" },
         { "title": "Активен", "value": "<span class='oi bool{is_active}'></span>", "sortBy": "is_active", "hints": "AlignCenter" },
         { "title": "БИК (2)", "value": "<a href='Redirect/bic/?bic={accbic}'>{bic}</a>", "sortBy": "accbic", "hints": "AlignRight" },
         { "title": "Дата", "value": "{business_day:dd/MM/yyyy}", "sortBy": "business_day" },
