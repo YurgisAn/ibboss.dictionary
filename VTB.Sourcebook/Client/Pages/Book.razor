@@ -16,7 +16,6 @@
 else
 {
     <PageTitle>@meta.Title</PageTitle>
-
     var counter = 0;
     <p>
         <div class="sb-table">
@@ -29,15 +28,15 @@ else
                         @switch (filter.Editor)
                         {
                             case FieldEditor.Text:
-                                <input id="@id" name="@id" type="text" placeholder="@filter.Title" @bind="@af.TextValue">
+                                <input class="inputTextAdmiral" id="@id" name="@id" type="text" placeholder="@filter.Title" @bind="@af.TextValue">
                                 break;
                             case FieldEditor.Number:
                                 <input type="number" id="@id" name="@id" placeholder="@filter.Title" @bind="@af.NumberValue">
                                 break;
                             case FieldEditor.Boolean:
                                 <label for="@id">@filter.Title</label>
-                                <select id="@id" name="@id" @bind="@af.NumberValue">
-                                    <option value="-1">всё</option>
+                                <select class="selectAdmiral" id="@id" name="@id" @bind="@af.NumberValue">
+                                    <option value="-1">Всё</option>
                                     <option value="1">да</option>
                                     <option value="0">нет</option>
                                 </select>
@@ -45,11 +44,11 @@ else
                             case FieldEditor.List:
                                 if (lists!.TryGetValue(filter.List!, out var items))
                                 {
-                                    <label for="@id">@filter.Title</label>
+                                    <label class="asdf" for="@id">@filter.Title</label>
                                     var xs = meta.Lists.First(x => x.Name == filter.List);
                                     if (xs.ValueType == ListValueType.Integer)
                                     {
-                                        <select id="@id" name="@id" @bind="@af.NumberValue">
+                                        <select class="selectAdmiral" id="@id" name="@id" @bind="@af.NumberValue">
                                             <option value="">Все</option>
                                             @foreach (var (c, v) in items)
                                             {
@@ -59,7 +58,7 @@ else
                                     }
                                     else
                                     {
-                                        <select id="@id" name="@id" @bind="@af.TextValue">
+                                        <select class="selectAdmiral" id="@id" name="@id" @bind="@af.TextValue">
                                             <option value="">Все</option>
                                             @foreach (var (c, v) in items)
                                             {
@@ -70,14 +69,15 @@ else
                                 }
                                 break;
                             case FieldEditor.DateRange:
-                                <label for="@id">@filter.Title</label>
-                                <label>с</label>
-                                <input type="date" id="start" name="trip-start" @bind-value="af.DateLowerBound" min="2000-01-01">
-                                <label>по</label>
-                                <input type="date" id="start" name="trip-start" @bind-value="af.DateUpperBound" min="2000-01-01">
+                                <label for="@id">@filter.Title </label>
+                                <label> с </label>
+                                <input type="date" class="dateInputAdmiral" id="start" name="trip-start" @bind-value="af.DateLowerBound" min="2000-01-01">
+                                <label> по </label>
+                                <input type="date" class="dateInputAdmiral" id="finish" name="trip-finish" @bind-value="af.DateUpperBound" min="2000-01-01">
                             break;
                         }
                     </div>
+                    <br>
                 }
             </div>
         </div>

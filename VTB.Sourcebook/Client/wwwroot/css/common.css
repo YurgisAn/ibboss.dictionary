@@ -1,5 +1,4 @@
-﻿.align-left { text-align: left }
-.align-right { text-align: right }
+﻿.align-right { text-align: right }
 .align-center { text-align: center }
 
 .bool1 { color: green; }
@@ -9,7 +8,10 @@
 
 div.sb-table { display: table; }
 div.sb-row { display: table-row; }
-div.sb-cell { display: table-cell; }
+div.sb-cell {
+    /*display: table-cell;*/
+    vertical-align: middle;
+}
 
 .sb-grid .sb-gridcell {
     border-collapse: collapse;

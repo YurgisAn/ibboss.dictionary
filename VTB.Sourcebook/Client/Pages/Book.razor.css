@@ -1,0 +1,82 @@
+﻿
+
+
+
+
+.selectAdmiral {
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    background-color: rgb(0, 98, 255);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 98, 255);
+    height: 48px;
+    padding: 0px 22px;
+    width:100px;
+}
+
+    .selectAdmiral option {
+        margin: 40px;
+        background: #FFF;
+        color: #000;
+    }
+
+    .selectAdmiral:hover {
+        background-color: #0046e2;
+        border: none;
+    }
+
+    .selectAdmiral:focus {
+        outline: none;
+        border: none;
+    }
+
+
+
+label {
+    margin-right: 7px;
+    margin-left: 5px;
+}
+
+
+
+.inputTextAdmiral {
+    border: solid;
+    height: 40px;
+    border-radius: 4px;
+    border-color: #999;
+    border-width: 1px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    width: 300px;
+    outline: none;
+}
+
+    .inputTextAdmiral:hover {
+        border-color: rgb(35, 38, 45);
+    }
+
+    .inputTextAdmiral:focus {
+        outline: none;
+        border: 2px solid rgb(0, 98, 255);
+    }
+
+.dateInputAdmiral {
+    height: 40px;
+    border-radius: 4px;
+    border-color: rgb(35, 38, 45);
+    border-width: 1px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    width: 150px;
+}
+
+    .dateInputAdmiral:focus {
+        outline: none;
+        border: 2px solid rgb(0, 98, 255);
+    }
