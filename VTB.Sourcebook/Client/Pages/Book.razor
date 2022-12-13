@@ -9,7 +9,6 @@
 @inject CurrentBookService CurrentBook
 @inject NavigationManager NavManager
 
-<h1>Заголовок</h1>
 
 @if (meta is null)
 {
@@ -42,11 +41,12 @@ else
     <QuickGrid ItemsProvider="@itemsProvider" Pagination="@pagination" @ref="grid" Class="sb-grid">
         @foreach (var ci in meta.Columns)
         {
+            var stylecell = ci != meta.Columns.Last() ? "sb-gridcell" : "sb-gridcell2";
             var id = "filter_input" + ++counter;
             var show = (ci.Hints & Hints.Hidden) != Hints.Hidden;
             @if (show && ci.Filter is not null)
             {
-                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="sb-gridcell">
+                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="@stylecell">
                     <ColumnOptions>
                     @{
                         var af = filterData.First(f => f.Filter.Field == ci.Filter);
@@ -63,7 +63,7 @@ else
             }
             else if (show)
             {
-                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="sb-gridcell">
+                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="@stylecell">
                     <ChildContent>
                         <div class="@GetAlignmentStyle(ci.Hints)">
                             @(new MarkupString(context[ci.Title]))
@@ -142,6 +142,11 @@ else
                     <input type="date" id="start" class="dateInputAdmiral" name="trip-start" @bind-value="af.DateLowerBound" min="2000-01-01">
                     <label>по</label>
                     <input type="date" id="finish" class="dateInputAdmiral" name="trip-finish" @bind-value="af.DateUpperBound" min="2000-01-01">
+                    <br>
+                    <button class="buttonAdmiral" @onclick="(()=>SetDateRange(af,DateSetMode.today))">За сегодня </button>
+                    <button class="buttonAdmiral" @onclick="(()=>SetDateRange(af,DateSetMode.days30))">За 30 дней </button>
+                    <button class="buttonAdmiral" @onclick="(()=>SetDateRange(af,DateSetMode.days60))">За 60 дней </button>
+                    <button class="buttonAdmiral" @onclick="(()=>{af.DateLowerBound=null; af.DateUpperBound=null;})">Очистить</button>
                 };
             default:
                 return null;
@@ -253,6 +258,34 @@ else
             return GridItemsProviderResult.From<Dictionary<string, string>>(items: data!, totalItemCount: totalCount);
         };
     }
+
+    enum DateSetMode
+    {
+        today,
+        days30,
+        days60
+    }
+
+    private void SetDateRange(FilterValue fv, DateSetMode mode)
+    {
+        DateTime date = DateTime.Now;
+        switch (mode)
+        {
+            case DateSetMode.today:
+                fv.DateLowerBound = date;
+                fv.DateUpperBound = date;
+                break;
+            case DateSetMode.days30:
+                fv.DateLowerBound = date;
+                fv.DateUpperBound = fv.DateLowerBound + TimeSpan.FromDays(30);
+                break;
+            case DateSetMode.days60:
+                fv.DateLowerBound = date;
+                fv.DateUpperBound = fv.DateLowerBound + TimeSpan.FromDays(60);
+                break;
+        }
+        
+    }
 }
 
 @code {
@@ -267,7 +300,7 @@ else
     private BookInfo? meta;
     private QueryNode? query;
 
-
+    
     private async void LoadLists(BookInfo meta)
     {
         var dict = new Dictionary<string, List<ListEntry>>();

@@ -1,8 +1,6 @@
 ﻿
 
 
-
-
 .selectAdmiral {
     box-sizing: border-box;
     border-radius: 4px;
@@ -79,4 +77,27 @@ label {
     .dateInputAdmiral:focus {
         outline: none;
         border: 2px solid rgb(0, 98, 255);
+    }
+
+
+.buttonAdmiral {
+    
+    border-radius: 4px;
+    margin: 8px 16px 0px 0px;
+    background-color: rgb(0, 98, 255);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 98, 255);
+    height: 32px;
+    padding: 0px 20px;
+    font-family: "VTB Group UI", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    font-feature-settings: "tnum", "lnum";
+    width:130px;
+}
+    .buttonAdmiral:hover {
+        background-color: #0046e2;
+        border: none;
     }

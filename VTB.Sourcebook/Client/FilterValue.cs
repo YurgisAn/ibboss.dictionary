@@ -77,7 +77,7 @@ public sealed class FilterValue
             FieldEditor.Text => !string.IsNullOrWhiteSpace(textValue),
             FieldEditor.Boolean => numberValue is not null && numberValue >= 0,
             FieldEditor.List => numberValue is not null || !string.IsNullOrWhiteSpace(textValue),
-            FieldEditor.DateRange => DateLowerBound is not null && DateUpperBound is not null,
+            FieldEditor.DateRange => DateLowerBound is not null,
             _ => false
         };
 
@@ -86,7 +86,7 @@ public sealed class FilterValue
         if (Filter.Editor is FieldEditor.Boolean or FieldEditor.Number)
             return new(LiteralType.Number, numberValue!);
         else if (Filter.Editor is FieldEditor.DateRange)
-            return new(LiteralType.Date, new []{ DateLowerBound, DateUpperBound });
+            return new(LiteralType.Date, new []{ DateLowerBound, DateUpperBound?? DateLowerBound });
         else if (Filter.Editor is FieldEditor.Text)
             return new(LiteralType.String, "%" + textValue + "%");
         else if (Filter.Editor is FieldEditor.List)

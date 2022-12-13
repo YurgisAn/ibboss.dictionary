@@ -66,7 +66,7 @@ public sealed class QueryNodeConverter : JsonConverter<QueryNode>
                 var d = decimal.Parse(str);
                 return d % 1 == 0 ? (int)d : d;
             case LiteralType.Date:
-                return DateTime.ParseExact(str,"MM/dd/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+                return DateTime.ParseExact(str,"MM/dd/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             default:
                 throw new SourcebookException($"Invalid literal type: {type}.");
         };

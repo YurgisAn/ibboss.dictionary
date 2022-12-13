@@ -13,11 +13,34 @@ div.sb-cell {
     vertical-align: middle;
 }
 
-.sb-grid .sb-gridcell {
+
+/*---------------Стили таблицы-----------------*/
+.sb-gridcell {/*стиль колонки таблицы*/
+    border-right: solid 1px #d5d8de;
     border-collapse: collapse;
-    border: solid 1px darkgray;
+    border-bottom: solid 1px #d5d8de;
 }
 
-th.sb-gridcell {
-    background-color: #E8E9EB;
+.sb-gridcell2 {/*стиль последней колонки*/
+    border-collapse: collapse;
+    border-bottom: solid 1px #d5d8de;
 }
+
+.col-options-button {/*иконка фильтра*/
+    background-image: url('icons/icofilter1.png') !important;
+}
+
+    .col-options-button:hover {/*иконка фильтра при наведении*/
+        background-image: url('icons/icofilter2.png') !important;
+        background-color: #ffffff !important;
+    }
+
+.col-title:hover {/*убрать серый подсвет при наведении на заголовок*/
+    background-color: #ffffff !important;
+}
+
+.col-header-content {/*поменять местами иконку фильра и заголовок колонки*/
+    display: flex;
+    flex-direction: row-reverse;
+}
+/*---------------------------------------------*/
