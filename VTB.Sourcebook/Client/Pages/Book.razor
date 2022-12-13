@@ -26,12 +26,13 @@ else
                 @foreach (var filter in meta.Filters)
                 {
                     var id = "input" + ++counter;
-                    if (!meta.Columns.Any(c => c.Filter == filter.Field))
+                    //if (!meta.Columns.Any(c => c.Filter == filter.Field))
                     {
                         var af = filterData.First(f => f.Filter.Field == filter.Field);
                         <div class="sb-cell">
                             @RenderFilter(id, filter, af)
                         </div>
+                        <br>
                     }
                 }
             </div>
@@ -84,9 +85,9 @@ else
         switch (filter.Editor)
         {
             case FieldEditor.Text:
-                return @<input id="@id" name="@id" type="text" placeholder="@(label ? filter.Title : "")" @bind="@af.TextValue">;
+                return @<input class="inputTextAdmiral" id="@id" name="@id" type="text" placeholder="@(label ? filter.Title : "")" @bind="@af.TextValue">;
             case FieldEditor.Number:
-                return @<input type="number" id="@id" name="@id" placeholder="@(label ? filter.Title : "")" @bind="@af.NumberValue">;
+                return @<input class="inputTextAdmiral" type="number" id="@id" name="@id" placeholder="@(label ? filter.Title : "")" @bind="@af.NumberValue">;
             case FieldEditor.Boolean:
                 return __builder =>
                 {
@@ -94,7 +95,7 @@ else
                     {
                         <label for="@id">@filter.Title</label>
                     }
-                    <select id="@id" name="@id" @bind="@af.NumberValue">
+                    <select id="@id" class="selectAdmiral" name="@id" @bind="@af.NumberValue">
                         <option value="-1">всё</option>
                         <option value="1">да</option>
                         <option value="0">нет</option>
@@ -111,7 +112,7 @@ else
                     var xs = meta.Lists.First(x => x.Name == filter.List);
                     if (xs.ValueType == ListValueType.Integer)
                     {
-                        <select id="@id" name="@id" @bind="@af.NumberValue">
+                        <select id="@id" class="selectAdmiral" name="@id" @bind="@af.NumberValue">
                             <option value="">Все</option>
                             @foreach (var (c, v) in items)
                             {
@@ -121,7 +122,7 @@ else
                     }
                     else
                     {
-                        <select id="@id" name="@id" @bind="@af.TextValue">
+                        <select id="@id" class="selectAdmiral" name="@id" @bind="@af.TextValue">
                             <option value="">Все</option>
                             @foreach (var (c, v) in items)
                             {
@@ -138,9 +139,9 @@ else
                         <label for="@id">@filter.Title</label>
                     }
                     <label>с</label>
-                    <input type="date" id="start" name="trip-start" @bind-value="af.DateLowerBound" min="2000-01-01">
+                    <input type="date" id="start" class="dateInputAdmiral" name="trip-start" @bind-value="af.DateLowerBound" min="2000-01-01">
                     <label>по</label>
-                    <input type="date" id="start" name="trip-start" @bind-value="af.DateUpperBound" min="2000-01-01">
+                    <input type="date" id="finish" class="dateInputAdmiral" name="trip-finish" @bind-value="af.DateUpperBound" min="2000-01-01">
                 };
             default:
                 return null;
