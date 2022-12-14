@@ -74,6 +74,14 @@ else
         }
     </QuickGrid>
     <Paginator Value="@pagination" />
+
+    @if (displayWarning)
+    {
+        <div id="blazor-error-ui" style="display:block !important">
+            Возможно, данные изменились. Попробуйте <a href="/redirect/@Name" class="reload">перезагрузить</a> страницу.
+            <a class="dismiss">🗙</a>
+        </div>
+    }
 }
 
 @functions {
@@ -81,7 +89,7 @@ else
     {
         var hints = (filter.Hints ?? FilterHints.None) | (overrideHints ?? FilterHints.None);
         var label = (hints & FilterHints.NoLabel) != FilterHints.NoLabel;
-
+        
         switch (filter.Editor)
         {
             case FieldEditor.Text:
@@ -244,6 +252,7 @@ else
     {
         itemsProvider = async req =>
         {
+            displayWarning = false;
             var result = await Http.PutAsJsonAsync<QueryNode?>($"sourcebooks/count/{Name}", query ?? Query.Empty());
             var totalCount = int.Parse(await result.Content.ReadAsStringAsync());
 
@@ -255,6 +264,15 @@ else
             var url = $"sourcebooks/data/{Name}/{req.Count}/{req.StartIndex}/{sortCol}/{req.SortByAscending.ToString().ToLower()}";
             result = await Http.PutAsJsonAsync<QueryNode?>(url, query ?? Query.Empty());
             var data = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(await result.Content.ReadAsStringAsync());
+            var currentPageIndex = req.StartIndex / req.Count.Value;
+
+            if ((currentPageIndex > 0 && data!.Count == 0) 
+                || (currentPageIndex + 1 == totalCount / pagination.ItemsPerPage && data!.Count == pagination.ItemsPerPage))
+            {
+                displayWarning = true;
+                StateHasChanged();
+            }
+
             return GridItemsProviderResult.From<Dictionary<string, string>>(items: data!, totalItemCount: totalCount);
         };
     }
@@ -292,6 +310,8 @@ else
     [Parameter]
     public string? Name { get; set; }
 
+    private bool displayWarning;
+
     private List<FilterValue> filterData = new();
     private QuickGrid<Dictionary<string, string>>? grid;
     private GridItemsProvider<Dictionary<string, string>>? itemsProvider;
@@ -299,23 +319,6 @@ else
     private PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
     private BookInfo? meta;
     private QueryNode? query;
-
-    
-    private async void LoadLists(BookInfo meta)
-    {
-        var dict = new Dictionary<string, List<ListEntry>>();
-
-        foreach (var xs in meta.Lists)
-        {
-            var url = $"sourcebooks/list/{Name}/{xs.Name}";
-            var result = await Http.PutAsync(url, null);
-            var src = await result.Content.ReadAsStringAsync();
-            var data = JsonSerializer.Deserialize<List<ListEntry>>(src);
-            dict.Add(xs.Name, data!);
-        }
-
-        lists = dict;
-    }
 
     protected override async Task OnInitializedAsync()
     {
