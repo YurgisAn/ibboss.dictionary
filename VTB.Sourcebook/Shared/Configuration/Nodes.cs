@@ -33,6 +33,7 @@ public record class ColumnInfo(
     [property: JsonPropertyName("title")] string Title,
     [property: JsonPropertyName("value")] string Value,
     [property: JsonPropertyName("sortBy")] string? SortBy,
+    [property: JsonPropertyName("filter")] string? Filter,
     [property: JsonPropertyName("hints")][property: JsonConverter(typeof(EnumConverter<Hints>))] Hints? Hints);
 
 public record class ElementInfo(
@@ -58,7 +59,7 @@ public record class FilterInfo(
     [property: JsonPropertyName("title")] string Title,
     [property: JsonPropertyName("editor")][property: JsonConverter(typeof(EnumConverter<FieldEditor>))] FieldEditor? Editor,
     [property: JsonPropertyName("list")] string? List,
-    [property: JsonPropertyName("hints")][property: JsonConverter(typeof(EnumConverter<Hints>))] Hints? Hints);
+    [property: JsonPropertyName("hints")][property: JsonConverter(typeof(EnumConverter<FilterHints>))] FilterHints? Hints);
 
 public record class ListInfo(
     [property: JsonPropertyName("name")] string Name,

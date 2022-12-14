@@ -28,3 +28,10 @@ public enum Hints
     AlignCenter = 0x02,
     Hidden = 0x04
 }
+
+[Flags]
+public enum FilterHints
+{
+    None = 0,
+    NoLabel = 0x01
+}

@@ -10,14 +10,14 @@
         { "field": "business_day", "editor": "DateRange", "title": "Диапазон дат" }
     ],
     "columns": [
-        { "title": "БИК", "value": "{bic}", "sortBy": "bic" },
+        { "title": "БИК", "value": "{bic}", "sortBy": "bic", "filter": "bic" },
         { "title": "Активен", "value": "<span class='oi bool{is_active}'></span>", "sortBy": "is_active", "hints": "AlignCenter" },
         { "title": "БИК (2)", "value": "<a href='Redirect/bic/?bic={accbic}'>{bic}</a>", "sortBy": "accbic", "hints": "AlignRight" },
-        { "title": "Дата", "value": "{business_day:dd/MM/yyyy}", "sortBy": "business_day" },
-        { "title": "Участник", "value": "{participant_name}", "sortBy": "participant_name", "hints_": "Hidden" },
+        { "title": "Дата", "value": "{business_day:dd/MM/yyyy}", "sortBy": "business_day", "filter": "business_day" },
+        { "title": "Участник", "value": "{participant_name}", "sortBy": "participant_name", "hints_": "Hidden","filter": "participant_name" },
         { "title": "Тип участника", "value": "{participant_type}", "sortBy": "participant_type" },
         { "title": "Регул.", "value": "{regulation_type}", "sortBy": "regulation_type" },
-        { "title": "Страна", "value": "{country_code}", "sortBy": "country_code" },
+        { "title": "Страна", "value": "{country_code}", "sortBy": "country_code","filter": "country_code" },
         { "title": "Счёт", "value": "{account}", "sortBy": "account" }
     ],
     "fields": [
