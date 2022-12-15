@@ -19,6 +19,9 @@ else
     <PageTitle>@meta.Title</PageTitle>
 
     var counter = 0;
+
+    <details id="filterPanel">
+        <summary id="filterPanelName">Фильтры</summary>
     <p>
         <div class="sb-table">
             <div class="sb-row">
@@ -37,6 +40,7 @@ else
             </div>
         </div>
     </p>
+    </details>
 
     <QuickGrid ItemsProvider="@itemsProvider" Pagination="@pagination" @ref="grid" Class="sb-grid">
         @foreach (var ci in meta.Columns)

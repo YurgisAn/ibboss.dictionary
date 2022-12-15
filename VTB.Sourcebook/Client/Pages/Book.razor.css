@@ -142,3 +142,27 @@ label {
     }
 
 
+
+
+#filterPanel {
+    border: 1px solid rgb(0, 98, 255);
+    border-radius: 4px;
+    padding: .5em .5em 0;
+    margin: 10px;
+}
+
+#filterPanelName {
+    font-weight: bold;
+    margin: -.5em -.5em 0;
+    padding: .5em;
+}
+
+#filterPanel[open] {
+    padding: .5em;
+    margin: 10px;
+}
+
+    #filterPanel[open] #filterPanelName {
+        border-bottom: 1px solid #aaa;
+        margin-bottom: .5em;
+    }
