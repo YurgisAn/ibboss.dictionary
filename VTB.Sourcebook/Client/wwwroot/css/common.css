@@ -20,26 +20,69 @@ div.sb-cell {
 }
 
 
-/*---------------Стили таблицы-----------------*/
-.sb-gridcell {/*стиль колонки таблицы*/
-    border-right: solid 1px #d5d8de;
-    border-collapse: collapse;
-    border-bottom: solid 1px #d5d8de;
-}
+/*-----------------------------------------Стили таблицы-------------------------------------*/
 
-.sb-gridcell2 {/*стиль последней колонки*/
-    border-collapse: collapse;
-    border-bottom: solid 1px #d5d8de;
-}
-
-.col-options-button {/*иконка фильтра*/
-    background-image: url('icons/icofilter1.png') !important;
-}
-
-    .col-options-button:hover {/*иконка фильтра при наведении*/
-        background-image: url('icons/icofilter2.png') !important;
-        background-color: #ffffff !important;
+/*############## Колонки без филтров ##############*/
+    .sb-gridcell {/*стиль колонки таблицы*/
+        border-right: solid 1px #d5d8de;
+        border-collapse: collapse;
+        border-bottom: solid 1px #d5d8de;
     }
+
+    .sb-gridcellLast {/*стиль последней колонки*/
+        border-collapse: collapse;
+        border-bottom: solid 1px #d5d8de;
+    }
+/*################################################*/
+
+/*================================ Колонки с фильтрами ==========================*/
+
+    /*@@@@@@@@@@@@@ стили для всех колонок кроме последней @@@@@@@*/
+    .sb-gridcellActive, .sb-gridcellPassive {
+        border-right: solid 1px #d5d8de;
+        border-collapse: collapse;
+        border-bottom: solid 1px #d5d8de;
+    }
+
+    th.sb-gridcellActive div:first-child button:first-child {
+        background-image: url('icons/filterEnable.png') !important;
+    }
+
+
+    th.sb-gridcellPassive div:first-child button:first-child {
+        background-image: url('icons/icofilter1.png') !important;
+    }
+
+        th.sb-gridcellPassive div:first-child button:first-child:hover {
+            background-image: url('icons/icofilter2.png') !important;
+            background-color: #ffffff !important;
+        }
+
+    /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+    /*:::::::::::::::::::::::: стиль последней колонки:::::::::::::*/
+    .sb-gridcellActiveLast, .sb-gridcellPassiveLast {
+        border-collapse: collapse;
+        border-bottom: solid 1px #d5d8de;
+    }
+
+    th.sb-gridcellActiveLast div:first-child button:first-child {
+        background-image: url('icons/filterEnable.png') !important;
+    }
+
+
+    th.sb-gridcellPassiveLast div:first-child button:first-child {
+        background-image: url('icons/icofilter1.png') !important;
+    }
+
+        th.sb-gridcellPassiveLast div:first-child button:first-child:hover {
+            background-image: url('icons/icofilter2.png') !important;
+            background-color: #ffffff !important;
+        }
+    /*::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*/
+/*==========================================================================*/
+
 
 .col-title:hover {/*убрать серый подсвет при наведении на заголовок*/
     background-color: #ffffff !important;
@@ -49,4 +92,5 @@ div.sb-cell {
     display: flex;
     flex-direction: row-reverse;
 }
-/*---------------------------------------------*/
+/*-----------------------------------------------------------------------------------------------*/
+

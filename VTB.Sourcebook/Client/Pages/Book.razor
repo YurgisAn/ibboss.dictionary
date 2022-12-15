@@ -41,15 +41,19 @@ else
     <QuickGrid ItemsProvider="@itemsProvider" Pagination="@pagination" @ref="grid" Class="sb-grid">
         @foreach (var ci in meta.Columns)
         {
-            var stylecell = ci != meta.Columns.Last() ? "sb-gridcell" : "sb-gridcell2";
+            
             var id = "filter_input" + ++counter;
             var show = (ci.Hints & Hints.Hidden) != Hints.Hidden;
             @if (show && ci.Filter is not null)
             {
-                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="@stylecell">
+                var af = filterData.First(f => f.Filter.Field == ci.Filter);
+                string styleFilterCell;
+                if (ci != meta.Columns.Last()) styleFilterCell = af.HasValue() ? "sb-gridcellActive" : "sb-gridcellPassive";
+                else styleFilterCell = af.HasValue() ? "sb-gridcellActiveLast" : "sb-gridcellPassiveLast";
+
+                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="@styleFilterCell">
                     <ColumnOptions>
                         @{
-                            var af = filterData.First(f => f.Filter.Field == ci.Filter);
                             var filter = meta.Filters.First(f => f.Field == ci.Filter);
                             @RenderFilter(id, filter, af, FilterHints.NoLabel)
                         }
@@ -63,7 +67,8 @@ else
             }
             else if (show)
             {
-                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="@stylecell">
+                var styleStandartCell = ci != meta.Columns.Last() ? "sb-gridcell" : "sb-gridcellLast";
+                <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="@styleStandartCell">
                     <ChildContent>
                         <div class="@GetAlignmentStyle(ci.Hints)">
                             @(new MarkupString(context[ci.Title]))
