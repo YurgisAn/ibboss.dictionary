@@ -25,7 +25,7 @@ else
                 @foreach (var filter in meta.Filters)
                 {
                     var id = "input" + ++counter;
-                    //if (!meta.Columns.Any(c => c.Filter == filter.Field))
+                    if ((filter.Hints & FilterHints.Hidden) == FilterHints.Hidden)
                     {
                         var af = filterData.First(f => f.Filter.Field == filter.Field);
                         <div class="sb-cell">
@@ -281,6 +281,13 @@ else
         grid.RefreshDataAsync();
     }
 
+    private async Task<List<Dictionary<string, string>>> GetRowData(int count, int startIndex, string sortCol, bool asc)
+    {
+        var url = $"sourcebooks/data/{Name}/{count}/{startIndex}/{sortCol}/{asc.ToString().ToLower()}";
+        var result = await Http.PutAsJsonAsync<QueryNode?>(url, query ?? Query.Empty());
+        return JsonSerializer.Deserialize<List<Dictionary<string, string>>>(await result.Content.ReadAsStringAsync());
+    }
+
     private void InitItemsProvider()
     {
         itemsProvider = async req =>
@@ -294,16 +301,20 @@ else
             if (req.SortByColumn is not null)
                 sortCol = meta!.Columns.First(f => f.Title == req.SortByColumn.Title).SortBy;
 
-            var url = $"sourcebooks/data/{Name}/{req.Count}/{req.StartIndex}/{sortCol}/{req.SortByAscending.ToString().ToLower()}";
-            result = await Http.PutAsJsonAsync<QueryNode?>(url, query ?? Query.Empty());
-            var data = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(await result.Content.ReadAsStringAsync());
-            var currentPageIndex = req.StartIndex / req.Count.Value;
+            var count = req.Count ?? 10;
+            var data = await GetRowData(count, req.StartIndex, sortCol, req.SortByAscending);
+            var currentPageIndex = req.StartIndex / count;
 
             if ((currentPageIndex > 0 && data!.Count == 0)
                 || (currentPageIndex + 1 == totalCount / pagination.ItemsPerPage && data!.Count == pagination.ItemsPerPage))
             {
-                displayWarning = true;
-                StateHasChanged();
+                var extraData = await GetRowData(1, req.StartIndex + count, sortCol, req.SortByAscending);
+
+                if (extraData.Count > 0)
+                {
+                    displayWarning = true;
+                    StateHasChanged();
+                }
             }
 
             return GridItemsProviderResult.From<Dictionary<string, string>>(items: data!, totalItemCount: totalCount);

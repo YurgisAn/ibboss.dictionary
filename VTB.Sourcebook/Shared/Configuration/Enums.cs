@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-
-namespace VTB.Sourcebook.Configuration;
+﻿namespace VTB.Sourcebook.Configuration;
 
 public enum FieldEditor
 {
@@ -33,5 +30,6 @@ public enum Hints
 public enum FilterHints
 {
     None = 0,
-    NoLabel = 0x01
+    Hidden = 0x01,
+    NoLabel = 0x02
 }
