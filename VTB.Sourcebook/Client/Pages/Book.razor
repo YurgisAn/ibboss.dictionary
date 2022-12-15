@@ -305,8 +305,13 @@ else
             var data = await GetRowData(count, req.StartIndex, sortCol, req.SortByAscending);
             var currentPageIndex = req.StartIndex / count;
 
-            if ((currentPageIndex > 0 && data!.Count == 0)
-                || (currentPageIndex + 1 == totalCount / pagination.ItemsPerPage && data!.Count == pagination.ItemsPerPage))
+            if (currentPageIndex > 0 && data!.Count == 0)
+            {
+                displayWarning = true;
+                StateHasChanged();
+            }
+
+            if (currentPageIndex + 1 == totalCount / pagination.ItemsPerPage && data!.Count == pagination.ItemsPerPage)
             {
                 var extraData = await GetRowData(1, req.StartIndex + count, sortCol, req.SortByAscending);
 
