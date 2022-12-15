@@ -25,7 +25,7 @@ else
                 @foreach (var filter in meta.Filters)
                 {
                     var id = "input" + ++counter;
-                    if ((filter.Hints & FilterHints.Hidden) == FilterHints.Hidden)
+                    if ((filter.Hints & FilterHints.Hidden) != FilterHints.Hidden)
                     {
                         var af = filterData.First(f => f.Filter.Field == filter.Field);
                         <div class="sb-cell">
