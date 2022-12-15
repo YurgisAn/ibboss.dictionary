@@ -48,11 +48,11 @@ else
             {
                 <TemplateColumn Title="@ci.Title" Sortable="@(ci.SortBy is not null)" Class="@stylecell">
                     <ColumnOptions>
-                    @{
-                        var af = filterData.First(f => f.Filter.Field == ci.Filter);
-                        var filter = meta.Filters.First(f => f.Field == ci.Filter);
-                        @RenderFilter(id, filter, af, FilterHints.NoLabel)
-                    }
+                        @{
+                            var af = filterData.First(f => f.Filter.Field == ci.Filter);
+                            var filter = meta.Filters.First(f => f.Field == ci.Filter);
+                            @RenderFilter(id, filter, af, FilterHints.NoLabel)
+                        }
                     </ColumnOptions>
                     <ChildContent>
                         <div class="@GetAlignmentStyle(ci.Hints)">
@@ -73,7 +73,39 @@ else
             }
         }
     </QuickGrid>
-    <Paginator Value="@pagination" />
+    @*<Paginator Value="@pagination" />*@
+
+
+    <div id="paginator">
+        <div class="paginatorChild" style="justify-content: flex-start;">
+            <div>Всего элементов:</div>
+            <div style="margin-left:5px;"><b>@pagination.TotalItemCount</b></div>
+        </div>
+
+        <div class="paginatorChild" style="justify-content:flex-end">
+            @if (pagination.TotalItemCount.HasValue)
+            {
+                var capturedIndex = pagination.CurrentPageIndex;
+                <button class="buttonPaginatorAdmiral" @onclick="@(() => GoToPageAsync(0))">
+                    <span class="oi oi-media-step-backward" style="color: white;"></span>
+                </button>
+                <button class="buttonPaginatorAdmiral" @onclick="@(() => GoToPageAsync(capturedIndex-1))">
+                    <span class="oi oi-media-play"  style="color: white; transform:scaleX(-1)"></span>
+                </button>
+                <div style="margin:5px;">
+                    Страница <b>@(capturedIndex + 1)</b> из <b>@(pagination.LastPageIndex + 1)</b>
+                </div>
+                <button class="buttonPaginatorAdmiral" @onclick="@(() => GoToPageAsync(capturedIndex+1))">
+                    <span class="oi oi-media-play" style="color: white;"></span>
+                </button>
+                <button class="buttonPaginatorAdmiral" @onclick="@(() => GoToPageAsync(pagination.LastPageIndex.Value))">
+                    <span class="oi oi-media-step-forward" style="color: white;"></span>
+                </button>
+            }
+        </div>
+    </div>
+
+
 
     @if (displayWarning)
     {
@@ -89,19 +121,21 @@ else
     {
         var hints = (filter.Hints ?? FilterHints.None) | (overrideHints ?? FilterHints.None);
         var label = (hints & FilterHints.NoLabel) != FilterHints.NoLabel;
-        
+        var focus = new Dictionary<string, object>();
+        if (!label) focus.Add("autofocus", "autofocus");
+
         switch (filter.Editor)
         {
             case FieldEditor.Text:
-                return @<input class="inputTextAdmiral" id="@id" name="@id" type="text" placeholder="@(label ? filter.Title : "")" @bind="@af.TextValue">;
+                return @<input class="inputTextAdmiral" @attributes="@focus" id="@id" name="@id" type="text" placeholder="@(label ? filter.Title : "")" @bind="@af.TextValue">;
             case FieldEditor.Number:
-                return @<input class="inputTextAdmiral" type="number" id="@id" name="@id" placeholder="@(label ? filter.Title : "")" @bind="@af.NumberValue">;
+                return @<input class="inputTextAdmiral" @attributes="@focus" type="number" id="@id" name="@id" placeholder="@(label ? filter.Title : "")" @bind="@af.NumberValue">;
             case FieldEditor.Boolean:
                 return __builder =>
                 {
                     if (label)
                     {
-                        <label for="@id">@filter.Title</label>
+                        <label for="@id" class="lableNameFilter">@filter.Title</label>
                     }
                     <select id="@id" class="selectAdmiral" name="@id" @bind="@af.NumberValue">
                         <option value="-1">всё</option>
@@ -115,7 +149,7 @@ else
                     var items = lists![filter.List!];
                     if (label)
                     {
-                        <label for="@id">@filter.Title</label>
+                        <label for="@id" class="lableNameFilter">@filter.Title</label>
                     }
                     var xs = meta.Lists.First(x => x.Name == filter.List);
                     if (xs.ValueType == ListValueType.Integer)
@@ -146,15 +180,14 @@ else
                     {
                         <label for="@id">@filter.Title</label>
                     }
-                    <label>с</label>
-                    <input type="date" id="start" class="dateInputAdmiral" name="trip-start" @bind-value="af.DateLowerBound" min="2000-01-01">
-                    <label>по</label>
+                    <input type="date" id="start" @attributes="@focus" class="dateInputAdmiral" name="trip-start" @bind-value="af.DateLowerBound" min="2000-01-01">
+                    <label>-</label>
                     <input type="date" id="finish" class="dateInputAdmiral" name="trip-finish" @bind-value="af.DateUpperBound" min="2000-01-01">
                     <br>
-                    <button class="buttonAdmiral" @onclick="(()=>SetDateRange(af,DateSetMode.today))">За сегодня </button>
-                    <button class="buttonAdmiral" @onclick="(()=>SetDateRange(af,DateSetMode.days30))">За 30 дней </button>
-                    <button class="buttonAdmiral" @onclick="(()=>SetDateRange(af,DateSetMode.days60))">За 60 дней </button>
-                    <button class="buttonAdmiral" @onclick="(()=>{af.DateLowerBound=null; af.DateUpperBound=null;})">Очистить</button>
+                    <button class="buttonAdmiral" style="width:130px;" @onclick="(()=>SetDateRange(af,DateSetMode.today))">За сегодня </button>
+                    <button class="buttonAdmiral" style="width:130px;" @onclick="(()=>SetDateRange(af,DateSetMode.days30))">За 30 дней </button>
+                    <button class="buttonAdmiral" style="width:130px;" @onclick="(()=>SetDateRange(af,DateSetMode.days60))">За 60 дней </button>
+                    <button class="buttonAdmiral" style="width:130px;" @onclick="(()=>{af.DateLowerBound=null; af.DateUpperBound=null;})">Очистить</button>
                 };
             default:
                 return null;
@@ -222,7 +255,7 @@ else
                     break;
                 case FieldEditor.DateRange:
                     var dates = value.Value as DateTime?[];
-                    if (dates?.Count(s=>s != null)==2)
+                    if (dates?.Count(s => s != null) == 2)
                         nodes.Add(Query.Between(fv.Filter.Field, dates[0].Value, dates[1].Value));
                     break;
                 default:
@@ -266,7 +299,7 @@ else
             var data = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(await result.Content.ReadAsStringAsync());
             var currentPageIndex = req.StartIndex / req.Count.Value;
 
-            if ((currentPageIndex > 0 && data!.Count == 0) 
+            if ((currentPageIndex > 0 && data!.Count == 0)
                 || (currentPageIndex + 1 == totalCount / pagination.ItemsPerPage && data!.Count == pagination.ItemsPerPage))
             {
                 displayWarning = true;
@@ -302,7 +335,7 @@ else
                 fv.DateUpperBound = fv.DateLowerBound + TimeSpan.FromDays(60);
                 break;
         }
-        
+
     }
 }
 
@@ -322,6 +355,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+
         var bookInfo = await Http.GetFromJsonAsync<BookInfo>($"sourcebooks/{Name}");
         var dict = new Dictionary<string, List<ListEntry>>();
 
@@ -354,7 +388,14 @@ else
             filterData.Add(fv);
         }
 
+        pagination.TotalItemCountChanged += (sender, eventArgs) => StateHasChanged();
         PopulateFilterData();
         InitItemsProvider();
+    }
+
+    private async Task GoToPageAsync(int pageIndex)
+    {
+        if (pageIndex >= 0)
+            await pagination.SetCurrentPageIndexAsync(pageIndex);
     }
 }

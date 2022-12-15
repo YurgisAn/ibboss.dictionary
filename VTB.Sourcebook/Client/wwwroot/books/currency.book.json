@@ -1,0 +1,42 @@
+{
+    "name": "currency",
+    "title": "Справочник валют",
+    "filters": [
+    ],
+    "columns": [
+        { "title": "Идентификатор", "value": "{currency_id}", "sortBy": "currency_id" },
+        { "title": "Тип актива", "value": "{asset_type_id}", "sortBy": "asset_type_id" },
+        { "title": "Уникальный цифровой код валюты", "value": "{code}", "sortBy": "code" },
+        { "title": "Наименование валюты (драгметалла)", "value": "{name}", "sortBy": "name" },
+        { "title": "Уникальный буквенный код валюты", "value": "{ascii_code}", "sortBy": "ascii_code" },
+        { "title": "Котировка на единицу валюты", "value": "{quote_value}", "sortBy": "quote_value" },
+        { "title": "Количество базовой валюты (рублей)", "value": "{base_currency_quantity}", "sortBy": "base_currency_quantity" }
+        
+    ],
+    "fields": [
+        { "name": "a.currency_id" },
+        { "name": "a.asset_type_id" },
+        { "name": "a.code" },
+        { "name": "a.name" },
+        { "name": "a.ascii_code" },
+
+        { "name": "b.quote_value" },
+        { "name": "b.base_currency_quantity" }
+    ],
+    "tables": [
+      {
+        "name": "dictionary.currency",
+        "key": "currency_id",
+        "alias": "a"
+      },
+      {
+        "name": "dictionary.сurrency_quote",
+        "alias": "b",
+        "key": "asset_id",
+        "relation": "dictionary.currency"
+      }
+    ],
+    "lists": [
+        
+    ]
+}

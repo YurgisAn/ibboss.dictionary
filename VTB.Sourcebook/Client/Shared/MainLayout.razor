@@ -2,15 +2,23 @@
 @inject CurrentBookService CurrentBook
 
 <link href="css/common.css" rel="stylesheet" />
-<div style="background-color: #070; width:auto;height:20px;">TEST</div>
 <div class="page">
-    
+    <div class="footer">
+        <div style="width: inherit;">
+            <span style="color:white">@GetVersion()</span>
+        </div>
+        <div style="width:30px">
+            <span class="oi oi-person" style="color: white;"></span>
+        </div>
+    </div>
+    <br>
     <div class="sidebar">
         <NavMenu />
     </div>
 
     <main>
         <div class="top-row px-4" style="font-weight: bold">
+
             @if (CurrentBook.Info is null)
             {
                 <span>Индекс справочников</span>
@@ -26,11 +34,16 @@
         </article>
     </main>
 </div>
-
 @code {
     protected override void OnInitialized()
     {
         CurrentBook.OnChange += () => StateHasChanged();
         base.OnInitialized();
+    }
+
+    private string GetVersion()
+    {
+        var ver = typeof(Program).Assembly.GetName().Version;
+        return $"{ver.Major}.{ver.Minor}.{ver.Build}.{ver.Revision}";
     }
 }

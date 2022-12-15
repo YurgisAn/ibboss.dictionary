@@ -1,0 +1,51 @@
+{
+    "name": "subject",
+    "title": "Справочник контрагентов",
+    "filters": [
+    ],
+    "columns": [
+        { "title": "Идентификатор", "value": "{subject_id}", "sortBy": "subject_id" },
+        { "title": "Тип контрагента", "value": "{subject_type_id}", "sortBy": "subject_type_id" },
+        { "title": "Тип действия", "value": "{impact_type_id}", "sortBy": "impact_type_id" },
+        { "title": "Резидент/нерезидент", "value": "<span class='oi_bool{is_res}'>{is_res}</span>", "sortBy": "is_res" },
+        { "title": "ОКПО", "value": "{okpo}", "sortBy": "okpo" },
+        { "title": "Дата рождения", "value": "{birth_date:dd/MM/yyyy}", "sortBy": "birth_date" },
+        { "title": "ИНН", "value": "{tax_inspection_code}", "sortBy": "tax_inspection_code" },
+        { "title": "КПП", "value": "{kpp}", "sortBy": "kpp" },
+
+        { "title": "Фамилия", "value": "{surname}", "sortBy": "surname" },
+        { "title": "Имя", "value": "{name}", "sortBy": "name" },
+        { "title": "Отчество", "value": "{patronymic}", "sortBy": "patronymic" }
+        
+    ],
+  "fields": [
+    { "name": "a.subject_id" },
+    { "name": "a.subject_type_id" },
+    { "name": "a.impact_type_id" },
+    { "name": "a.is_res" },
+    { "name": "a.okpo" },
+    { "name": "a.birth_date" },
+    { "name": "a.tax_inspection_code" },
+    { "name": "a.kpp" },
+
+    { "name": "b.surname" },
+    { "name": "b.name" },
+    { "name": "b.patronymic" }
+  ],
+    "tables": [
+      {
+        "name": "dictionary.subject",
+        "key": "subject_id",
+        "alias": "a"
+      },
+      {
+        "name": "dictionary.subject_name",
+        "alias": "b",
+        "key": "subject_id",
+        "relation": "dictionary.subject"
+      }
+    ],
+    "lists": [
+        
+    ]
+}

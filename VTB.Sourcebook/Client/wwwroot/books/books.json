@@ -1,4 +1,23 @@
 ﻿[
-    { "name": "bic", "title": "Справочник БИК", "disabled": false },
-    { "title": "Справочник, которого нет", "disabled": false, "page": "book404" }
+  {
+    "name": "bic",
+    "title": "Справочник БИК",
+    "disabled": false
+  },
+  {
+    "name": "currency",
+    "title": "Справочник валют",
+    "disabled": false
+  },
+  {
+    "name": "subject",
+    "title": "Справочник контрагентов",
+    "disabled": false
+  },
+
+  {
+    "title": "Справочник, которого нет",
+    "disabled": false,
+    "page": "book404"
+  }
 ]

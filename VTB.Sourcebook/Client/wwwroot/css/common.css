@@ -6,6 +6,12 @@
 .bool0 { color: red; }
 .bool0:before { content: '\e039' }
 
+
+.oi_boolTrue { color: green; }
+.oi_boolTrue:before { content: '\e038' }
+.oi_boolFalse { color: red; }
+.oi_boolFalse:before { content: '\e039' }
+
 div.sb-table { display: table; }
 div.sb-row { display: table-row; }
 div.sb-cell {
