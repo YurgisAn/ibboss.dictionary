@@ -352,12 +352,12 @@ else
                 fv.DateUpperBound = date;
                 break;
             case DateSetMode.days30:
-                fv.DateLowerBound = date;
-                fv.DateUpperBound = fv.DateLowerBound + TimeSpan.FromDays(30);
+                fv.DateLowerBound = date - TimeSpan.FromDays(30); ;
+                fv.DateUpperBound = date;
                 break;
             case DateSetMode.days60:
-                fv.DateLowerBound = date;
-                fv.DateUpperBound = fv.DateLowerBound + TimeSpan.FromDays(60);
+                fv.DateLowerBound = date - TimeSpan.FromDays(60);
+                fv.DateUpperBound = date;
                 break;
         }
 
