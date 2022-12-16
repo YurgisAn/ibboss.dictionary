@@ -1,8 +1,8 @@
 ﻿using Npgsql;
 using NpgsqlTypes;
-using VTB.Sourcebook.QueryModel;
+using Ogress.Sourcebook.QueryModel;
 
-namespace VTB.Sourcebook.Data;
+namespace Ogress.Sourcebook.Data;
 
 public sealed class DataReader
 {

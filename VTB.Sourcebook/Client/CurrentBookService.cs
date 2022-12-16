@@ -1,6 +1,6 @@
-﻿using VTB.Sourcebook.Configuration;
+﻿using Ogress.Sourcebook.Configuration;
 
-namespace VTB.Sourcebook;
+namespace Ogress.Sourcebook;
 
 public sealed class CurrentBookService
 {

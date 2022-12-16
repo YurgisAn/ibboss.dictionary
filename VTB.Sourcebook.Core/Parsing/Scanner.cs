@@ -1,9 +1,9 @@
 
 using System;
-using Buffer = VTB.Sourcebook.Parsing.SourceBuffer;
+using Buffer = Ogress.Sourcebook.Parsing.SourceBuffer;
 
 
-namespace VTB.Sourcebook.Parsing;
+namespace Ogress.Sourcebook.Parsing;
 
 internal sealed partial class Scanner
 {

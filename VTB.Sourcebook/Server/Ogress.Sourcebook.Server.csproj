@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
@@ -9,22 +9,20 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>VTB.Sourcebook</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Parsing\Parser.cs.old" />
-    <None Remove="Parsing\Scanner.cs.old" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.10" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Npgsql" Version="7.0.0" />
+    <ProjectReference Include="..\..\VTB.Sourcebook.Core\Ogress.Sourcebook.Core.csproj" />
+    <ProjectReference Include="..\Client\Ogress.Sourcebook.Client.csproj" />
+    <ProjectReference Include="..\Shared\Ogress.Sourcebook.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\VTB.SourceBook\Shared\VTB.Sourcebook.Shared.csproj" />
-  </ItemGroup>
 
 </Project>

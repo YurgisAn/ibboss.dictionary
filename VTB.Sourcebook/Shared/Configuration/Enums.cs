@@ -1,4 +1,4 @@
-﻿namespace VTB.Sourcebook.Configuration;
+﻿namespace Ogress.Sourcebook.Configuration;
 
 public enum FieldEditor
 {

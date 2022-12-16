@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VTB.Sourcebook.Server", "VTB.SourceBook\Server\VTB.Sourcebook.Server.csproj", "{6529BD3D-E878-4D0A-ABB1-176AF309D6C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Server", "VTB.SourceBook\Server\Ogress.Sourcebook.Server.csproj", "{6529BD3D-E878-4D0A-ABB1-176AF309D6C3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VTB.Sourcebook.Client", "VTB.SourceBook\Client\VTB.Sourcebook.Client.csproj", "{673C66B6-9D62-498A-9AA6-C4CBA89E0E6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Client", "VTB.SourceBook\Client\Ogress.Sourcebook.Client.csproj", "{673C66B6-9D62-498A-9AA6-C4CBA89E0E6C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VTB.Sourcebook.Shared", "VTB.SourceBook\Shared\VTB.Sourcebook.Shared.csproj", "{61BA0096-2C00-41B2-8FA0-4E94E1B804E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Shared", "VTB.SourceBook\Shared\Ogress.Sourcebook.Shared.csproj", "{61BA0096-2C00-41B2-8FA0-4E94E1B804E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VTB.Sourcebook.Core", "VTB.Sourcebook.Core\VTB.Sourcebook.Core.csproj", "{6E9FD17F-9777-44A3-8985-C9577FF773E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Core", "VTB.Sourcebook.Core\Ogress.Sourcebook.Core.csproj", "{6E9FD17F-9777-44A3-8985-C9577FF773E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,23 +39,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F811F97-0214-4090-95A9-179047A5E905}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://tfs4alm01v:8080/tfs/tfs2005%20-%20upgraded%20projects
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = VTB.SourceBook\\Client\\VTB.Sourcebook.Client.csproj
-		SccProjectName1 = VTB.SourceBook/Client
-		SccLocalPath1 = VTB.SourceBook\\Client
-		SccProjectUniqueName2 = VTB.SourceBook\\Server\\VTB.Sourcebook.Server.csproj
-		SccProjectName2 = VTB.SourceBook/Server
-		SccLocalPath2 = VTB.SourceBook\\Server
-		SccProjectUniqueName3 = VTB.SourceBook\\Shared\\VTB.Sourcebook.Shared.csproj
-		SccProjectName3 = VTB.SourceBook/Shared
-		SccLocalPath3 = VTB.SourceBook\\Shared
-		SccProjectUniqueName4 = VTB.Sourcebook.Core\\VTB.Sourcebook.Core.csproj
-		SccProjectName4 = VTB.Sourcebook.Core
-		SccLocalPath4 = VTB.Sourcebook.Core
 	EndGlobalSection
 EndGlobal

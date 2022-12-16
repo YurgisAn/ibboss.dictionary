@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace VTB.Sourcebook.Configuration;
+namespace Ogress.Sourcebook.Configuration;
 
 public sealed class EnumConverter<T> : JsonConverter<T> where T : struct
 {

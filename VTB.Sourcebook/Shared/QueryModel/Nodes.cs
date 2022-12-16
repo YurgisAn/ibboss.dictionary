@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace VTB.Sourcebook.QueryModel;
+namespace Ogress.Sourcebook.QueryModel;
 
 [JsonConverter(typeof(QueryNodeConverter))]
 public abstract record class QueryNode;

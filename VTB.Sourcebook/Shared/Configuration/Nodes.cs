@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace VTB.Sourcebook.Configuration;
+namespace Ogress.Sourcebook.Configuration;
 
 public record class BookEntry(
     [property: JsonPropertyName("name")] string Name,

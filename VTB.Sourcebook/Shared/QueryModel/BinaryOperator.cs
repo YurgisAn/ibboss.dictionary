@@ -1,4 +1,4 @@
-﻿namespace VTB.Sourcebook.QueryModel;
+﻿namespace Ogress.Sourcebook.QueryModel;
 
 public enum BinaryOperator
 {

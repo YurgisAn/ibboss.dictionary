@@ -1,4 +1,4 @@
-﻿namespace VTB.Sourcebook;
+﻿namespace Ogress.Sourcebook;
 
 public sealed class SourcebookException : Exception
 {

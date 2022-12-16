@@ -1,4 +1,4 @@
-﻿namespace VTB.Sourcebook.Format;
+﻿namespace Ogress.Sourcebook.Format;
 
 public sealed class ValueFormatter : IValueFormatter
 {

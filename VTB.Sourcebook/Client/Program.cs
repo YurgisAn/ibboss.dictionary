@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
-namespace VTB.Sourcebook.Client
+namespace Ogress.Sourcebook.Client
 {
     public class Program
     {

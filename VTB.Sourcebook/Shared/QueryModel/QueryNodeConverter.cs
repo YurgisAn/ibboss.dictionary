@@ -1,9 +1,9 @@
 ﻿using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using VTB.Sourcebook.Configuration;
+using Ogress.Sourcebook.Configuration;
 
-namespace VTB.Sourcebook.QueryModel;
+namespace Ogress.Sourcebook.QueryModel;
 
 public sealed class QueryNodeConverter : JsonConverter<QueryNode>
 {

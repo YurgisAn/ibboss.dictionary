@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VTB.Sourcebook.Configuration;
-using VTB.Sourcebook.Data;
-using VTB.Sourcebook.QueryModel;
+using Ogress.Sourcebook.Configuration;
+using Ogress.Sourcebook.Data;
+using Ogress.Sourcebook.QueryModel;
 
-namespace VTB.Sourcebook.Server.Controllers;
+namespace Ogress.Sourcebook.Server.Controllers;
 
 [ApiController]
 [Route("[controller]")]

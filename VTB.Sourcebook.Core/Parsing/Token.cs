@@ -1,4 +1,4 @@
-﻿namespace VTB.Sourcebook.Parsing;
+﻿namespace Ogress.Sourcebook.Parsing;
 
 internal sealed class Token
 {

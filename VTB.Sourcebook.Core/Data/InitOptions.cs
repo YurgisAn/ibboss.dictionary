@@ -1,3 +1,3 @@
-﻿namespace VTB.Sourcebook.Data;
+﻿namespace Ogress.Sourcebook.Data;
 
 public record class InitOptions(string ConnectionString, FileSystemInfo[] Directory);

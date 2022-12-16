@@ -1,7 +1,7 @@
-﻿using VTB.Sourcebook.Configuration;
-using VTB.Sourcebook.QueryModel;
+﻿using Ogress.Sourcebook.Configuration;
+using Ogress.Sourcebook.QueryModel;
 
-namespace VTB.Sourcebook.Client;
+namespace Ogress.Sourcebook.Client;
 
 public sealed class FilterValue
 {

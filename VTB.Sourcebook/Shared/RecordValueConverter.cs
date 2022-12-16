@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace VTB.Sourcebook;
+namespace Ogress.Sourcebook;
 
 public sealed class RecordValueConverter : JsonConverter<RecordValue>
 {

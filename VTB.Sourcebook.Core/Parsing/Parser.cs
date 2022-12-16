@@ -1,9 +1,9 @@
 
-using VTB.Sourcebook.QueryModel;
+using Ogress.Sourcebook.QueryModel;
 using System.Text;
 
 
-namespace VTB.Sourcebook.Parsing;
+namespace Ogress.Sourcebook.Parsing;
 
 internal sealed partial class Parser 
 {

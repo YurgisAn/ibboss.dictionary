@@ -1,8 +1,8 @@
 ﻿using System.Data.Common;
 using System.Text.RegularExpressions;
-using VTB.Sourcebook.Format;
+using Ogress.Sourcebook.Format;
 
-namespace VTB.Sourcebook;
+namespace Ogress.Sourcebook;
 
 internal class MacroProcessor
 {

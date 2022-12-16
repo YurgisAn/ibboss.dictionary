@@ -1,4 +1,4 @@
-﻿namespace VTB.Sourcebook.Parsing;
+﻿namespace Ogress.Sourcebook.Parsing;
 
 public abstract class SourceBuffer
 {

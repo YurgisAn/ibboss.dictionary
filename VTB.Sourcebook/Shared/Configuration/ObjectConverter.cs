@@ -2,7 +2,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace VTB.Sourcebook.Configuration;
+namespace Ogress.Sourcebook.Configuration;
 
 public class ObjectConverter : JsonConverter<object>
 {

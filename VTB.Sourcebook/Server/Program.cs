@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.ResponseCompression;
 
-namespace VTB.Sourcebook.Server
+namespace Ogress.Sourcebook.Server
 {
     public class Program
     {

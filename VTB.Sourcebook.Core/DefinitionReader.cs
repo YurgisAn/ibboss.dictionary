@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
-using VTB.Sourcebook.Configuration;
+using Ogress.Sourcebook.Configuration;
 
-namespace VTB.Sourcebook;
+namespace Ogress.Sourcebook;
 
 public static class DefinitionReader
 {
