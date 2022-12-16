@@ -1,6 +1,6 @@
 ﻿{
     "name": "bic",
-    "title": "Справочник БИК",
+    "title": "БИК",
     "filters": [
         { "field": "bic_code", "editor": "Text", "title": "БИК" },
         { "field": "participant_name", "editor": "Text", "title": "Участник" },

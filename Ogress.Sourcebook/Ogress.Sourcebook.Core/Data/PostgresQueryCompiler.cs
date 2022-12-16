@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ogress.Sourcebook.Data;
 
-public sealed class PostgresQueryCompiler
+public sealed class PostgresQueryCompiler  : IQueryCompiler
 {
     public ExternalSourceInfo Info { get; private set; } = null!;
 

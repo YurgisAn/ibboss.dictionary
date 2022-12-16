@@ -380,7 +380,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-
         var bookInfo = await Http.GetFromJsonAsync<BookInfo>($"sourcebooks/{Name}");
         var dict = new Dictionary<string, List<ListEntry>>();
 
