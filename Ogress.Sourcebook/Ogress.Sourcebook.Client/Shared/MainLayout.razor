@@ -44,6 +44,6 @@
     private string GetVersion()
     {
         var ver = typeof(Program).Assembly.GetName().Version;
-        return $"{ver.Major}.{ver.Minor}.{ver.Build}.{ver.Revision}";
+        return ver is not null ? $"{ver.Major}.{ver.Minor}.{ver.Build}.{ver.Revision}" : "";
     }
 }

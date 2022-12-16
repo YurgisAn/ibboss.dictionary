@@ -1,4 +1,5 @@
 
+#nullable disable
 using System;
 using Buffer = Ogress.Sourcebook.Parsing.SourceBuffer;
 

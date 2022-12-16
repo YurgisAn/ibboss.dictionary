@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "VTB.SourceBook": {
+    "Ogress.Sourcebook": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

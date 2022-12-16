@@ -1,8 +1,10 @@
 
-using VTB.Sourcebook.QueryModel;
+#nullable disable
+using Ogress.Sourcebook.QueryModel;
+using System.Text;
 
 
-namespace VTB.Sourcebook.Parsing;
+namespace Ogress.Sourcebook.Parsing;
 
 internal sealed partial class Parser 
 {
@@ -262,7 +264,7 @@ internal sealed partial class Parser
             default: s = "error " + n; break;
         }
         
-        AddError(s, n, line, col);
+        throw Error(s, line, col);
     }
 }
 

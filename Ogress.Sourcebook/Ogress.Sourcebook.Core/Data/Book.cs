@@ -104,7 +104,7 @@ public sealed class Book
             var valueField = findField("value");
             var compiler = new QueryCompiler(xs.Source);
             var rows = dbReader.GetRecords(compiler, null);
-            return rows.Select(r => new ListEntry(r["text"]?.ToString(), r["value"]?.ToString())).ToList();
+            return rows.Select(r => new ListEntry(r["text"]?.ToString() ?? "", r["value"]?.ToString() ?? "")).ToList();
         }
 
         if (xs.Values is null)

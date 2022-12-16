@@ -107,7 +107,7 @@ else
                 <button class="buttonPaginatorAdmiral" @onclick="@(() => GoToPageAsync(capturedIndex+1))">
                     <span class="oi oi-media-play" style="color: white;"></span>
                 </button>
-                <button class="buttonPaginatorAdmiral" @onclick="@(() => GoToPageAsync(pagination.LastPageIndex.Value))">
+                <button class="buttonPaginatorAdmiral" @onclick="@(() => GoToPageAsync(pagination.LastPageIndex ?? 0))">
                     <span class="oi oi-media-step-forward" style="color: white;"></span>
                 </button>
             }
@@ -160,7 +160,7 @@ else
                     {
                         <label for="@id" class="lableNameFilter">@filter.Title</label>
                     }
-                    var xs = meta.Lists.First(x => x.Name == filter.List);
+                    var xs = meta!.Lists.First(x => x.Name == filter.List);
                     if (xs.ValueType == ListValueType.Integer)
                     {
                         <select id="@id" class="selectAdmiral" name="@id" @bind="@af.NumberValue">
@@ -263,9 +263,9 @@ else
                     nodes.Add(Query.Like(fv.Filter.Field, value));
                     break;
                 case FieldEditor.DateRange:
-                    var dates = value.Value as DateTime?[];
-                    if (dates?.Count(s => s != null) == 2)
-                        nodes.Add(Query.Between(fv.Filter.Field, dates[0].Value, dates[1].Value));
+                    if (value.Value is DateTime?[] dates && dates.Length == 2 
+                        && dates[0] is not null && dates[1] is not null)
+                        nodes.Add(Query.Between(fv.Filter.Field, dates[0]!.Value, dates[1]!.Value));
                     break;
                 default:
                     nodes.Add(Query.Equals(fv.Filter.Field, value));
@@ -294,7 +294,8 @@ else
     {
         var url = $"sourcebooks/data/{Name}/{count}/{startIndex}/{sortCol}/{asc.ToString().ToLower()}";
         var result = await Http.PutAsJsonAsync<QueryNode?>(url, query ?? Query.Empty());
-        return JsonSerializer.Deserialize<List<Dictionary<string, string>>>(await result.Content.ReadAsStringAsync());
+        var retval = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(await result.Content.ReadAsStringAsync()!);
+        return retval!;
     }
 
     private void InitItemsProvider()
@@ -311,7 +312,7 @@ else
                 sortCol = meta!.Columns.First(f => f.Title == req.SortByColumn.Title).SortBy;
 
             var count = req.Count ?? 10;
-            var data = await GetRowData(count, req.StartIndex, sortCol, req.SortByAscending);
+            var data = await GetRowData(count, req.StartIndex, sortCol!, req.SortByAscending);
             var currentPageIndex = req.StartIndex / count;
 
             if (currentPageIndex > 0 && data!.Count == 0)
@@ -322,7 +323,7 @@ else
 
             if (currentPageIndex + 1 == totalCount / pagination.ItemsPerPage && data!.Count == pagination.ItemsPerPage)
             {
-                var extraData = await GetRowData(1, req.StartIndex + count, sortCol, req.SortByAscending);
+                var extraData = await GetRowData(1, req.StartIndex + count, sortCol!, req.SortByAscending);
 
                 if (extraData.Count > 0)
                 {

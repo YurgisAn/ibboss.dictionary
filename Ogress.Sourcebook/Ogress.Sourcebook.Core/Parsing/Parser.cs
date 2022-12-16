@@ -1,4 +1,5 @@
 
+#nullable disable
 using Ogress.Sourcebook.QueryModel;
 using System.Text;
 
@@ -263,7 +264,7 @@ internal sealed partial class Parser
             default: s = "error " + n; break;
         }
         
-		throw Error(s, line, col);
+        throw Error(s, line, col);
     }
 }
 
