@@ -2,73 +2,74 @@
     "name": "bic",
     "title": "Справочник БИК",
     "filters": [
-        { "field": "bic", "editor": "Text", "title": "БИК" },
+        { "field": "bic_code", "editor": "Text", "title": "БИК" },
         { "field": "participant_name", "editor": "Text", "title": "Участник" },
-        { "field": "is_active", "editor": "Boolean", "title": "Активен" },
-        { "field": "country_code", "editor": "List", "list": "countries", "title": "Страна" },
-        { "field": "country_code", "editor": "List", "list": "countries2", "title": "Страна 2" },
-        { "field": "business_day", "editor": "DateRange", "title": "Диапазон дат" }
+        { "field": "participant_type", "editor": "List", "list": "participant", "title": "Тип участника" },
+        { "field": "locality_name", "editor": "List", "list": "locality", "title": "Город" },
+        { "field": "date_in", "editor": "DateRange", "title": "Дата создания" }
     ],
     "columns": [
-        { "title": "БИК", "value": "{bic}", "sortBy": "bic", "filter": "bic" },
-        { "title": "Активен", "value": "<span class='oi bool{is_active}'></span>", "sortBy": "is_active", "hints": "AlignCenter" },
-        { "title": "БИК (2)", "value": "<a href='Redirect/bic/?bic={accbic}'>{bic}</a>", "sortBy": "accbic", "hints": "AlignRight" },
-        { "title": "Дата", "value": "{business_day:dd/MM/yyyy}", "sortBy": "business_day", "filter": "business_day" },
-        { "title": "Участник", "value": "{participant_name}", "sortBy": "participant_name", "hints_": "Hidden","filter": "participant_name" },
-        { "title": "Тип участника", "value": "{participant_type}", "sortBy": "participant_type" },
-        { "title": "Регул.", "value": "{regulation_type}", "sortBy": "regulation_type" },
-        { "title": "Страна", "value": "{country_code}", "sortBy": "country_code","filter": "country_code" },
-        { "title": "Счёт", "value": "{account}", "sortBy": "account" }
+        { "title": "БИК", "value": "<a href='Redirect/bic/?bic_code={bic_code}'>{bic_code}</a>", "sortBy": "bic_code", "filter": "bic_code" },
+        { "title": "Участник", "value": "{participant_name}", "sortBy": "participant_name", "hints_": "Hidden", "filter": "participant_name" },
+        { "title": "Тип участника", "value": "{participant_type}", "sortBy": "participant_type", "filter": "participant_type" },
+        { "title": "Город", "value": "{locality_type} {locality_name}", "sortBy": "locality_name", "filter": "locality_name" },
+        { "title": "Дата создания", "value": "{date_in:dd.MM.yyyy}", "sortBy": "date_in", "filter": "date_in" },
+        { "title": "Дата удаления", "value": "{date_out:dd.MM.yyyy}", "sortBy": "date_out" }
     ],
     "fields": [
-        { "name": "public.nsi_bic.bic" },
-        { "name": "a.is_active" },
-        { "name": "a.bic", "alias": "accbic" },
-        { "name": "a.business_day" },
+        { "name": "dictionary.bic.bic_code" },
         { "name": "a.participant_name" },
         { "name": "a.participant_type" },
-        { "name": "b.regulation_type" },
-        { "name": "a.country_code" },
-        { "name": "b.account" }
+        { "name": "a.locality_name" },
+        { "name": "a.locality_type" },
+        { "name": "a.date_in" },
+        { "name": "a.date_out" }
     ],
     "tables": [
         {
-            "name": "public.nsi_bic",
+            "name": "dictionary.bic",
             "key": "bic",
             "alias": "a"
-        },
-        {
-            "name": "public.nsi_bic_account",
-            "alias": "b",
-            "key": "bic",
-            "relation": "public.nsi_bic"
         }
     ],
     "condition_": "business_day != null && participant_name like 'A%'",
     "lists": [
         {
-            "name": "countries",
-            "valueType": "String",
+            "name": "participant",
+            "valueType": "Integer",
             "values": [
-                { "text": "RUS", "value": "RUS" },
-                { "text": "JAP", "value": "JAP" },
-                { "text": "CHI", "value": "CHI" },
-                { "text": "BEL", "value": "BEL" }
+                { "text": "0",  "value": "Главное управление Банка России" },
+                { "text": "10", "value": "Расчетно-кассовый центр" },
+                { "text": "12", "value": "Отделение, отделение – национальный банк главного управления Банка России" },
+                { "text": "15", "value": "Структурное подразделение центрального аппарата Банка России" },
+                { "text": "16", "value": "Кассовый центр" },
+                { "text": "20", "value": "Кредитная организация" },
+                { "text": "30", "value": "Филиал кредитной организации" },
+                { "text": "40", "value": "Полевое учреждение Банка России" },
+                { "text": "51", "value": "Федеральное казначейство" },
+                { "text": "52", "value": "Территориальный орган Федерального казначейства" },
+                { "text": "60", "value": "Иностранный банк (иностранная кредитная организация)" },
+                { "text": "65", "value": "Иностранный центральный (национальный) банк" },
+                { "text": "71", "value": "Клиент кредитной организации, являющийся косвенным участником" },
+                { "text": "75", "value": "Клиринговая организация" },
+                { "text": "78", "value": "Внешняя платежная система" },
+                { "text": "90", "value": "Конкурсный управляющий (ликвидатор, ликвидационная комиссия)" },
+                { "text": "99", "value": "Клиент Банка России, не являющийся участником платежной системы" }
             ]
         },
         {
-            "name": "countries2",
+            "name": "locality",
             "valueType": "String",
             "source": {
                 "fields": [
-                    { "name": "a.country_code", "alias": "text" },
-                    { "name": "a.country_code", "alias": "value" }
+                    { "name": "a.locality_name", "alias": "text" },
+                    { "name": "a.locality_name", "alias": "value" }
                 ],
                 "tables": [
-                    {
-                        "name": "public.nsi_bic",
-                        "alias": "a"
-                    }
+                  {
+                    "name": "dictionary.bic",
+                    "alias": "a"
+                  }
                 ],
                 "distinct": true,
                 "sortBy": "text",
