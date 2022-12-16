@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Server", "VTB.SourceBook\Server\Ogress.Sourcebook.Server.csproj", "{6529BD3D-E878-4D0A-ABB1-176AF309D6C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Server", "Ogress.Sourcebook\Ogress.Sourcebook.Server\Ogress.Sourcebook.Server.csproj", "{6529BD3D-E878-4D0A-ABB1-176AF309D6C3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Client", "VTB.SourceBook\Client\Ogress.Sourcebook.Client.csproj", "{673C66B6-9D62-498A-9AA6-C4CBA89E0E6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Client", "Ogress.Sourcebook\Ogress.Sourcebook.Client\Ogress.Sourcebook.Client.csproj", "{673C66B6-9D62-498A-9AA6-C4CBA89E0E6C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Shared", "VTB.SourceBook\Shared\Ogress.Sourcebook.Shared.csproj", "{61BA0096-2C00-41B2-8FA0-4E94E1B804E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook", "Ogress.Sourcebook\Ogress.Sourcebook\Ogress.Sourcebook.csproj", "{61BA0096-2C00-41B2-8FA0-4E94E1B804E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Core", "VTB.Sourcebook.Core\Ogress.Sourcebook.Core.csproj", "{6E9FD17F-9777-44A3-8985-C9577FF773E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Core", "Ogress.Sourcebook\Ogress.Sourcebook.Core\Ogress.Sourcebook.Core.csproj", "{6E9FD17F-9777-44A3-8985-C9577FF773E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -11,7 +11,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>VTB.Sourcebook</RootNamespace>
+    <RootNamespace>Ogress.Sourcebook</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

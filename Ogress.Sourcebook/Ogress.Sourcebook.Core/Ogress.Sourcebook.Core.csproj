@@ -11,7 +11,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>VTB.Sourcebook</RootNamespace>
+    <RootNamespace>Ogress.Sourcebook</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VTB.SourceBook\Shared\Ogress.Sourcebook.Shared.csproj" />
+    <ProjectReference Include="..\Ogress.Sourcebook\Ogress.Sourcebook.csproj" />
   </ItemGroup>
 
 </Project>

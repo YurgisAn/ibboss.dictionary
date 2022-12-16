@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Ogress.Sourcebook.Shared.csproj" />
+    <ProjectReference Include="..\Ogress.Sourcebook\Ogress.Sourcebook.csproj" />
   </ItemGroup>
 
   <ItemGroup>
