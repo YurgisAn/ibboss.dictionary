@@ -24,12 +24,12 @@
 
     .selectAdmiral:hover {
         background-color: #0046e2;
-        border: none;
+        border: 1px solid rgb(0, 98, 255);
     }
 
     .selectAdmiral:focus {
         outline: none;
-        border: none;
+        border: 1px solid rgb(0, 98, 255);
     }
 
 
@@ -40,7 +40,7 @@ label {
 }
 
 .lableNameFilter{
-    width:70px;
+    width:100px;
 }
 
 
