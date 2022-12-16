@@ -1,3 +1,3 @@
 ﻿namespace Ogress.Sourcebook.Data;
 
-public record class InitOptions(string ConnectionString, FileSystemInfo[] Directory);
+public record class InitOptions(string ConnectionString, string QueryCompiler, FileSystemInfo[] Directory);

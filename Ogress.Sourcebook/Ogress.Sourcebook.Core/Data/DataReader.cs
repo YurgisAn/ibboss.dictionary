@@ -10,7 +10,7 @@ public sealed class DataReader
 
     public DataReader(string connectionString) => ConnectionString = connectionString;
 
-    public int GetRecordCount(QueryCompiler generator, QueryNode? filter)
+    public int GetRecordCount(IQueryCompiler generator, QueryNode? filter)
     {
         using var conn = new NpgsqlConnection(ConnectionString);
         conn.Open();
@@ -20,7 +20,7 @@ public sealed class DataReader
         return Convert.ToInt32(cmd.ExecuteScalar());
     }
 
-    public List<Dictionary<string, object>> GetRecords(QueryCompiler compiler, QueryNode? filter)
+    public List<Dictionary<string, object>> GetRecords(IQueryCompiler compiler, QueryNode? filter)
     {
         var sql = compiler.GenerateStatement(filter);
         using var conn = new NpgsqlConnection(ConnectionString);
@@ -47,24 +47,7 @@ public sealed class DataReader
         return rows;
     }
 
-    //private string FormatValue(string field, object value, Dictionary<string, FieldInfo> infos)
-    //{
-    //    if (value is null or DBNull)
-    //        return "";
-
-    //    var inf = infos[field];
-
-    //    if (inf.Formatter is null)
-    //        return inf.Format is null ? (value.ToString() ?? "")
-    //            : string.Format("{0:" + inf.Format + "}", value);
-
-    //    if (!ValueFormatter.Formatters.TryGetValue(inf.Formatter, out var fmt))
-    //        throw new SourcebookException($"Unknown formatter \"{inf.Formatter}\".");
-
-    //    return fmt.Format(value, inf.Format);
-    //}
-
-    private void AddParameters(NpgsqlCommand cmd, QueryCompiler generator)
+    private void AddParameters(NpgsqlCommand cmd, IQueryCompiler generator)
     {
         foreach (var kv in generator.GetParameters())
         {

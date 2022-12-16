@@ -11,6 +11,7 @@ public class SourcebooksController : ControllerBase
 {
     private const string ConnectionStrings = nameof(ConnectionStrings);
     private const string Sourcebooks = nameof(Sourcebooks);
+    private const string QueryCompiler = nameof(QueryCompiler);
     private const string BookFolder = "books";
 
     private readonly ILogger<SourcebooksController> logger;
@@ -27,6 +28,7 @@ public class SourcebooksController : ControllerBase
     private InitOptions GetInitOptions() =>
          new(
             configuration.GetSection(ConnectionStrings).GetValue<string>(Sourcebooks),
+            configuration.GetSection(Sourcebooks).GetValue<string>(QueryCompiler) ?? throw new SourcebookException($"Missing required \"{QueryCompiler}\" parameter."),
             environment.WebRootFileProvider.GetDirectoryContents(BookFolder)
                 .Select(d => d.IsDirectory ? (FileSystemInfo)new DirectoryInfo(d.PhysicalPath) : new FileInfo(d.PhysicalPath))
                 .ToArray()

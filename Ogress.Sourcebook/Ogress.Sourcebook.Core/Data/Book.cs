@@ -11,9 +11,10 @@ public sealed class Book
 
     private readonly BookInfo info;
     private readonly DataReader dbReader;
+    private readonly string queryCompiler;
 
-    private Book(BookInfo info, DataReader dbReader) => 
-        (this.info, this.dbReader) = (info, dbReader);
+    private Book(BookInfo info, DataReader dbReader, string queryCompiler) => 
+        (this.info, this.dbReader, this.queryCompiler) = (info, dbReader, queryCompiler);
 
     public static Book Obtain(string name, InitOptions options)
     {
@@ -32,7 +33,7 @@ public sealed class Book
                 return fi.FullName;
            });
         var dbReader = new DataReader(options.ConnectionString);
-        return new Book(info, dbReader);
+        return new Book(info, dbReader, options.QueryCompiler);
     }
 
     public static BookEntry[] GetDirectory(InitOptions options)
@@ -46,14 +47,14 @@ public sealed class Book
             ?? throw new SourcebookException($"Directory listing \"{DirectoryFileName}\" is empty.");
     }
 
-    private QueryCompiler GetCompiler(ExternalSourceInfo info, int? take = null, int? skip = null, string? sortColumn = null, bool? asc = null)
+    private IQueryCompiler GetCompiler(ExternalSourceInfo info, int? take = null, int? skip = null, string? sortColumn = null, bool? asc = null)
     {
         var patched = info;
 
         if (take is not null || skip is not null || sortColumn is not null || asc is not null)
             patched = info with { Take = take, Skip = skip, SortBy = sortColumn, SortAscending = asc };
 
-        return new QueryCompiler(patched);
+        return QueryCompilerFactory.Obtain(queryCompiler, patched);
     }
 
     public BookInfo GetMetadata() => info;
@@ -102,7 +103,7 @@ public sealed class Book
 
             var textField = findField("text");
             var valueField = findField("value");
-            var compiler = new QueryCompiler(xs.Source);
+            var compiler = QueryCompilerFactory.Obtain(queryCompiler, xs.Source);
             var rows = dbReader.GetRecords(compiler, null);
             return rows.Select(r => new ListEntry(r["text"]?.ToString() ?? "", r["value"]?.ToString() ?? "")).ToList();
         }
