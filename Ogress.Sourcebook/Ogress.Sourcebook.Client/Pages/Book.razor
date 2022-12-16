@@ -20,32 +20,34 @@ else
 
     var counter = 0;
 
-    <details id="filterPanel">
-        <summary id="filterPanelName">Фильтры</summary>
-    <p>
-        <div class="sb-table">
-            <div class="sb-row">
-                @foreach (var filter in meta.Filters)
-                {
-                    var id = "input" + ++counter;
-                    if ((filter.Hints & FilterHints.Hidden) != FilterHints.Hidden)
-                    {
-                        var af = filterData.First(f => f.Filter.Field == filter.Field);
-                        <div class="sb-cell">
-                            @RenderFilter(id, filter, af)
-                        </div>
-                        <br>
-                    }
-                }
-            </div>
-        </div>
-    </p>
-    </details>
+    @if (meta.Filters?.Count > 0)
+    {
+        <details id="filterPanel">
+            <summary id="filterPanelName">Фильтры</summary>
+            <p>
+                <div class="sb-table">
+                    <div class="sb-row">
+                        @foreach (var filter in meta.Filters)
+                        {
+                            var id = "input" + ++counter;
+                            if ((filter.Hints & FilterHints.Hidden) != FilterHints.Hidden)
+                            {
+                                var af = filterData.First(f => f.Filter.Field == filter.Field);
+                                <div class="sb-cell">
+                                    @RenderFilter(id, filter, af)
+                                </div>
+                                <br>
+                            }
+                        }
+                    </div>
+                </div>
+            </p>
+        </details>
+    }
 
     <QuickGrid ItemsProvider="@itemsProvider" Pagination="@pagination" @ref="grid" Class="sb-grid">
         @foreach (var ci in meta.Columns)
         {
-            
             var id = "filter_input" + ++counter;
             var show = (ci.Hints & Hints.Hidden) != Hints.Hidden;
             @if (show && ci.Filter is not null)
