@@ -85,12 +85,12 @@ else
 
 
     <div id="paginator">
-        <div class="paginatorChild" style="justify-content: flex-start;">
+        <div class="paginatorChild" style="margin-right:30px;">
             <div>Всего элементов:</div>
             <div style="margin-left:5px;"><b>@pagination.TotalItemCount</b></div>
         </div>
 
-        <div class="paginatorChild" style="justify-content:flex-end">
+        <div class="paginatorChild">
             @if (pagination.TotalItemCount.HasValue)
             {
                 var capturedIndex = pagination.CurrentPageIndex;
@@ -103,7 +103,7 @@ else
                 <div style="margin:5px;">
                     Страница <b>@(capturedIndex + 1)</b> из <b>@(pagination.LastPageIndex + 1)</b>
                 </div>
-                <button class="buttonPaginatorAdmiral" @onclick="@(() => GoToPageAsync(capturedIndex+1))">
+                <button class="buttonPaginatorAdmiral" @onclick="@(() =>GoToPageAsync(capturedIndex+1>pagination.LastPageIndex?pagination.LastPageIndex.Value:capturedIndex+1))">
                     <span class="oi oi-media-play" style="color: white;"></span>
                 </button>
                 <button class="buttonPaginatorAdmiral" @onclick="@(() => GoToPageAsync(pagination.LastPageIndex ?? 0))">
