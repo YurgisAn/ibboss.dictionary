@@ -1,0 +1,80 @@
+﻿{
+    "name": "bic",
+    "title": "БИК",
+    "filters": [
+        { "field": "bic_code", "editor": "Text", "title": "БИК" },
+        { "field": "participant_name", "editor": "Text", "title": "Участник" },
+        { "field": "participant_type", "editor": "List", "list": "participant", "title": "Тип участника" },
+        { "field": "locality_name", "editor": "List", "list": "locality", "title": "Город" },
+        { "field": "date_in", "editor": "DateRange", "title": "Дата создания" }
+    ],
+    "columns": [
+        { "title": "БИК", "value": "<a href='Redirect/bic/?bic_code={bic_code}'>{bic_code}</a>", "sortBy": "bic_code", "filter": "bic_code" },
+        { "title": "Участник", "value": "{participant_name}", "sortBy": "participant_name", "hints_": "Hidden", "filter": "participant_name" },
+        { "title": "Тип участника", "value": "{participant_type}", "sortBy": "participant_type", "filter": "participant_type" },
+        { "title": "Город", "value": "{locality_type}&nbsp;{locality_name}", "sortBy": "locality_name", "filter": "locality_name" },
+        { "title": "Дата создания", "value": "{date_in:dd.MM.yyyy}", "sortBy": "date_in", "filter": "date_in" },
+        { "title": "Дата удаления", "value": "{date_out:dd.MM.yyyy}", "sortBy": "date_out" }
+    ],
+    "fields": [
+        { "name": "dictionary.bic.bic_code" },
+        { "name": "a.participant_name" },
+        { "name": "a.participant_type" },
+        { "name": "a.locality_name" },
+        { "name": "a.locality_type" },
+        { "name": "a.date_in" },
+        { "name": "a.date_out" }
+    ],
+    "tables": [
+        {
+            "name": "dictionary.bic",
+            "key": "bic",
+            "alias": "a"
+        }
+    ],
+    "condition_": "business_day != null && participant_name like 'A%'",
+    "lists": [
+        {
+            "name": "participant",
+            "valueType": "Integer",
+            "values": [
+                { "value": "0",  "text": "0   Главное управление Банка России" },
+                { "value": "10", "text": "10  Расчетно-кассовый центр" },
+                { "value": "12", "text": "12  Отделение, отделение – национальный банк главного управления Банка России" },
+                { "value": "15", "text": "15  Структурное подразделение центрального аппарата Банка России" },
+                { "value": "16", "text": "16  Кассовый центр" },
+                { "value": "20", "text": "20  Кредитная организация" },
+                { "value": "30", "text": "30  Филиал кредитной организации" },
+                { "value": "40", "text": "40  Полевое учреждение Банка России" },
+                { "value": "51", "text": "51  Федеральное казначейство" },
+                { "value": "52", "text": "52  Территориальный орган Федерального казначейства" },
+                { "value": "60", "text": "60  Иностранный банк (иностранная кредитная организация)" },
+                { "value": "65", "text": "65  Иностранный центральный (национальный) банк" },
+                { "value": "71", "text": "71  Клиент кредитной организации, являющийся косвенным участником" },
+                { "value": "75", "text": "75  Клиринговая организация" },
+                { "value": "78", "text": "78  Внешняя платежная система" },
+                { "value": "90", "text": "90  Конкурсный управляющий (ликвидатор, ликвидационная комиссия)" },
+                { "value": "99", "text": "99  Клиент Банка России, не являющийся участником платежной системы" }
+            ]
+        },
+        {
+            "name": "locality",
+            "valueType": "String",
+            "source": {
+                "fields": [
+                    { "name": "a.locality_name", "alias": "text" },
+                    { "name": "a.locality_name", "alias": "value" }
+                ],
+                "tables": [
+                  {
+                    "name": "dictionary.bic",
+                    "alias": "a"
+                  }
+                ],
+                "distinct": true,
+                "sortBy": "text",
+                "condition": "value != null"
+            }
+        }
+    ]
+}

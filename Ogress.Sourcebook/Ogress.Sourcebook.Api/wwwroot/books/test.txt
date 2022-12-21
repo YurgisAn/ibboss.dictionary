@@ -1,0 +1,35 @@
+﻿"condition_": "business_day != null && participant_name like 'A%'",
+
+
+
+ "lists": [
+        {
+            "name": "countries",
+            "valueType": "String",
+            "values": [
+                { "text": "RUS", "value": "RUS" },
+                { "text": "JAP", "value": "JAP" },
+                { "text": "CHI", "value": "CHI" },
+                { "text": "BEL", "value": "BEL" }
+            ]
+        }/*,
+        {
+            "name": "fixed_list",
+            "values": [
+                { "text": "Key1", "value": 12 },
+                { "text": "Key2", "value": 24 }
+            ],
+            "source": {
+                "fields": [
+                    { "name": "a.text", "alias": "text" },
+                    { "name": "a.value", "alias": "value" }
+                ],
+                "tables": [
+                    {
+                        "name": "public.voc",
+                        "key": "bic",
+                        "alias": "a"
+                    }
+                ]
+            }
+        }*/
