@@ -57,7 +57,7 @@ public sealed class QueryNodeConverter : JsonConverter<QueryNode>
 
     private object ReadAsObject(LiteralType type, JsonElement elem)
     {
-        var str = elem.ToString();
+        var str = elem.ToString()!;
         switch (type)
         {
             case LiteralType.String:
