@@ -21,6 +21,12 @@ namespace Ogress.Sourcebook.Api
                 app.UseSwaggerUI();
             }
 
+            app.UseCors(policy =>
+            {
+                policy.AllowAnyOrigin();
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+            });
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseHttpsRedirection();
             app.UseAuthorization();

@@ -61,22 +61,20 @@ public sealed class Book
 
     public int GetRecordCount(QueryNode? filter) => dbReader.GetRecordCount(GetCompiler(info), filter);
 
-    public List<Dictionary<string, string>> GetRows(int take, int skip, string? sortColumn, bool asc, QueryNode? filter)
+    public List<Item> GetRows(int take, int skip, string? sortColumn, bool asc, QueryNode? filter)
     {
         var records = dbReader.GetRecords(GetCompiler(info, take, skip, sortColumn, asc), filter);
-        var xs = new List<Dictionary<string, string>>();
+        var xs = new List<Item>();
 
         foreach (var rec in records)
         {
-            var dict = new Dictionary<string, string>();
-
+            var list = new List<ItemValue>();
             foreach (var col in info.Columns)
             {
                 var expanded = MacroProcessor.Expand(col.Value, rec);
-                dict.Add(col.Title, expanded);
+                list.Add(new ItemValue(col.Title,expanded));
             }
-
-            xs.Add(dict);
+            xs.Add(new Item(list));
         }
 
         return xs;

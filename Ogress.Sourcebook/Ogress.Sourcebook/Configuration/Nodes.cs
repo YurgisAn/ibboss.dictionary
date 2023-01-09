@@ -8,6 +8,7 @@ public record class BookEntry(
     [property: JsonPropertyName("page")] string Page,
     [property: JsonPropertyName("disabled")] bool Disabled);
 
+
 public record class BookInfo(
     [property: JsonPropertyName("name")] string Name,
     [property: JsonPropertyName("title")] string Title,
@@ -69,5 +70,23 @@ public record class ListInfo(
 
 public record class ListEntry(
     [property: JsonPropertyName("caption")] string Caption,
+    [property: JsonPropertyName("value")] string Value
+    );
+/// <summary>
+/// Список данны
+/// </summary>
+/// <param name="Title"></param>
+/// <param name="Value"></param>
+public record class Item(
+    [property: JsonPropertyName("items")] List<ItemValue> Items
+    );
+
+/// <summary>
+/// Значения данных
+/// </summary>
+/// <param name="Title"></param>
+/// <param name="Value"></param>
+public record class ItemValue(
+    [property: JsonPropertyName("title")] string Title,
     [property: JsonPropertyName("value")] string Value
     );

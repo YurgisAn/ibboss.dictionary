@@ -9,10 +9,10 @@
         { "field": "date_in", "editor": "DateRange", "title": "Дата создания" }
     ],
     "columns": [
-        { "title": "БИК", "value": "<a href='Redirect/bic/?bic_code={bic_code}'>{bic_code}</a>", "sortBy": "bic_code", "filter": "bic_code" },
+        { "title": "БИК", "value": "{bic_code}", "sortBy": "bic_code", "filter": "bic_code" },
         { "title": "Участник", "value": "{participant_name}", "sortBy": "participant_name", "hints_": "Hidden", "filter": "participant_name" },
         { "title": "Тип участника", "value": "{participant_type}", "sortBy": "participant_type", "filter": "participant_type" },
-        { "title": "Город", "value": "{locality_type}&nbsp;{locality_name}", "sortBy": "locality_name", "filter": "locality_name" },
+        { "title": "Город", "value": "{locality_type} {locality_name}", "sortBy": "locality_name", "filter": "locality_name" },
         { "title": "Дата создания", "value": "{date_in:dd.MM.yyyy}", "sortBy": "date_in", "filter": "date_in" },
         { "title": "Дата удаления", "value": "{date_out:dd.MM.yyyy}", "sortBy": "date_out" }
     ],
