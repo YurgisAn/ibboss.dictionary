@@ -14,24 +14,39 @@ import {
             Resizer
         } from '../styled';
 import { isDefined } from '~/helpers/guards';
-import { Column } from '@vtb/ui-kit3';       
+import { Column } from '@vtb/ui-kit3';     
+import { Filter } from '../Filter/Filter';  
 import type { СolumnInfoDto } from '~/shared/models';
 import { DEFAULT_COLUMN_WIDTH } from '../constants';
-
 type ColumnWithResizerWidth = Column & { resizerWidth: number };
+
+type FilterProps = {
+  closeMenu: () => void;
+  setFilterActive: (isActive: boolean) => void;
+};
 
 type PropType = {
     columns: СolumnInfoDto[];
     headerLineClamp?:number;
     dimension?: string;
     onSortChange?: (sortObj: { name: string; sort: 'asc' | 'desc' | 'initial' }) => void;
+    renderFilter?: (obj: FilterProps) => React.ReactNode;
+    renderFilterIcon?: () => React.ReactNode;
+    onFilterMenuClickOutside?: (obj: FilterProps, event: Event) => void;
+    onFilterMenuOpen?: () => void;
+    onFilterMenuClose?: () => void;
 };
 
 
 export const TableHeader: React.FC<PropType> = ({columns,   
                                             headerLineClamp = 1,
                                             dimension = 'm',
-                                            onSortChange}) => 
+                                            onSortChange,
+                                            renderFilter,
+                                            renderFilterIcon,
+                                            onFilterMenuClickOutside,
+                                            onFilterMenuClose,
+                                            onFilterMenuOpen}) => 
 {
     // Счетчик смены сортировки для столбца. При третьем нажатии на столбец сортировка должна отменяться
     const sortedCol = React.useRef<{ name: string; count: number }>({ name: '', count: 0 });
@@ -51,6 +66,11 @@ export const TableHeader: React.FC<PropType> = ({columns,
           width = DEFAULT_COLUMN_WIDTH,
           cellAlign = 'left',
           sortable = false,
+          renderFilter,
+          renderFilterIcon,
+          onFilterMenuClickOutside,
+          onFilterMenuClose,
+          onFilterMenuOpen
         }: ColumnWithResizerWidth,
         index: number,
       ) => {
@@ -71,7 +91,18 @@ export const TableHeader: React.FC<PropType> = ({columns,
                 </TitleContent>
                 {sortable && <SortIcon width={iconSize} height={iconSize} />}
               </HeaderCellTitle>
-              <HeaderCellSpacer width={spacer} />
+              <HeaderCellSpacer width={renderFilter ? spacer : `${parseInt(spacer) - parseInt(defaultSpacer)}px`} />
+                {renderFilter && (
+                  <Filter
+                    renderFilter={renderFilter}
+                    renderFilterIcon={renderFilterIcon}
+                    onFilterMenuClickOutside={onFilterMenuClickOutside}
+                    onFilterMenuOpen={onFilterMenuOpen}
+                    onFilterMenuClose={onFilterMenuClose}
+                    cellAlign={cellAlign}
+                    targetRef={cellRef}
+                  />
+                )}
             </HeaderCellContent>
             <ResizerWrapper>
               <Resizer />
