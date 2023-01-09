@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react",
+    "baseUrl": "./src",
+    "paths": {
+        "~/app": ["./app"],
+        "~/app/*": ["./app/*"],
+        "~/assets/*": ["./assets/*"],
+        "~/types": ["./types"],
+        "~/types/*": ["./types/*"],
+        "~/helpers/*": ["./helpers/*"],
+        "~/routes": ["./routes"],
+        "~/routes/*": ["./routes/*"],
+        "~/components": ["./components"] , 
+        "~/components/*": ["./components/*"],  
+        "~/constants/*": ["./constants/*"],
+        "~/modules/*": ["./modules/*"],    
+        "~/shared/*": ["./shared/*"],  
+        "~/hooks": ["./hooks"], 
+        "~/hooks/*": ["./hooks/*"], 
+         
+    }
+  },
+  "include": [
+    "src"
+  ]
+}

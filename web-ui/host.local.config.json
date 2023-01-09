@@ -1,0 +1,8 @@
+{
+    "name": "hostApp",
+    "cicd_contour": "local",
+    "public_path": "",
+    "api_path": "http://localhost:5000/",
+    "pa_enable": "true",
+    "async_task_reports": "true"
+}

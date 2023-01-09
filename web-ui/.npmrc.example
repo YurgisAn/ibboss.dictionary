@@ -1,0 +1,8 @@
+registry=https://nexus-ci.corp.dev.vtb/repository/pfomb-npm
+@vtb:registry=https://nexus-ci.corp.dev.vtb/repository/pfomb-npm/
+@vtb-ermo:registry=https://nexus-ci.corp.dev.vtb/repository/ermo-npm
+audit=false
+cafile=/etc/ssl/certs/ca-bundle.crt
+always-auth=true
+email=<email>@vtb.ru
+_auth=<base64(VTB*******:password)>

@@ -1,0 +1,7 @@
+{
+  "name": "ERMO_STARTER_KIT",
+  "filename": "remoteEntry.js",
+  "exposes": {
+    "./ErmoStarterKitApp": "./src/exposes/ErmoStarterKitApp.tsx"
+  }
+}
