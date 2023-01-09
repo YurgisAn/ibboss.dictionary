@@ -17,7 +17,8 @@ public sealed class QueryNodeConverter : JsonConverter<QueryNode>
 
     private QueryNode ReadObject(JsonElement elem)
     {
-        var type = elem.GetProperty("$type");
+        if (!elem.TryGetProperty("$type", out var type))
+            return Query.Empty();
 
         switch (type.GetString())
         {
