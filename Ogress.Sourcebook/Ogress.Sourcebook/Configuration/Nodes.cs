@@ -73,10 +73,9 @@ public record class ListEntry(
     [property: JsonPropertyName("value")] string Value
     );
 /// <summary>
-/// Список данны
+/// Список данных
 /// </summary>
-/// <param name="Title"></param>
-/// <param name="Value"></param>
+/// <param name="Items">Значения строки</param>
 public record class Item(
     [property: JsonPropertyName("items")] List<ItemValue> Items
     );
@@ -84,8 +83,8 @@ public record class Item(
 /// <summary>
 /// Значения данных
 /// </summary>
-/// <param name="Title"></param>
-/// <param name="Value"></param>
+/// <param name="Title">Наименование параметра</param>
+/// <param name="Value">Значение параметра</param>
 public record class ItemValue(
     [property: JsonPropertyName("title")] string Title,
     [property: JsonPropertyName("value")] string Value
