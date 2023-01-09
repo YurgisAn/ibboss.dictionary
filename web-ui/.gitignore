@@ -2,8 +2,8 @@
 .idea
 package-lock.json
 
-# dependencies
-/node_modules
+# dependenciess
+#/node_modules
 /.pnp
 .pnp.js
 

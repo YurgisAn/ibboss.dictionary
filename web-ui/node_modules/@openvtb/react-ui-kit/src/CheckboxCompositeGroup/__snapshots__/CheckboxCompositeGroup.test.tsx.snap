@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckboxCompositeGroup should render component with label 1`] = `
+<styled.div>
+  <Component
+    checked={false}
+    indeterminate={false}
+    label="CheckboxCompositeGroup"
+    onChange={[Function]}
+    size="big"
+  />
+  <styled.div
+    size="big"
+    theme={Object {}}
+  >
+    <styled.div
+      key="0"
+      size="big"
+      theme={Object {}}
+    >
+      <Component
+        checked={false}
+        label="First item"
+        onChange={[Function]}
+        size="big"
+      />
+    </styled.div>
+    <styled.div
+      key="1"
+      size="big"
+      theme={Object {}}
+    >
+      <Component
+        checked={false}
+        label="Second item"
+        onChange={[Function]}
+        size="big"
+      />
+    </styled.div>
+    <styled.div
+      key="2"
+      size="big"
+      theme={Object {}}
+    >
+      <Component
+        checked={false}
+        label="Third item"
+        onChange={[Function]}
+        size="big"
+      />
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`CheckboxCompositeGroup should render component with required properties 1`] = `
+<styled.div>
+  <Component
+    checked={false}
+    indeterminate={false}
+    onChange={[Function]}
+    size="big"
+  />
+  <styled.div
+    size="big"
+    theme={Object {}}
+  >
+    <styled.div
+      key="0"
+      size="big"
+      theme={Object {}}
+    >
+      <Component
+        checked={false}
+        label="First item"
+        onChange={[Function]}
+        size="big"
+      />
+    </styled.div>
+    <styled.div
+      key="1"
+      size="big"
+      theme={Object {}}
+    >
+      <Component
+        checked={false}
+        label="Second item"
+        onChange={[Function]}
+        size="big"
+      />
+    </styled.div>
+    <styled.div
+      key="2"
+      size="big"
+      theme={Object {}}
+    >
+      <Component
+        checked={false}
+        label="Third item"
+        onChange={[Function]}
+        size="big"
+      />
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`CheckboxCompositeGroup should render component with small size 1`] = `
+<styled.div>
+  <Component
+    checked={false}
+    indeterminate={false}
+    onChange={[Function]}
+    size="small"
+  />
+  <styled.div
+    size="small"
+    theme={Object {}}
+  >
+    <styled.div
+      key="0"
+      size="small"
+      theme={Object {}}
+    >
+      <Component
+        checked={false}
+        label="First item"
+        onChange={[Function]}
+        size="small"
+      />
+    </styled.div>
+    <styled.div
+      key="1"
+      size="small"
+      theme={Object {}}
+    >
+      <Component
+        checked={false}
+        label="Second item"
+        onChange={[Function]}
+        size="small"
+      />
+    </styled.div>
+    <styled.div
+      key="2"
+      size="small"
+      theme={Object {}}
+    >
+      <Component
+        checked={false}
+        label="Third item"
+        onChange={[Function]}
+        size="small"
+      />
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

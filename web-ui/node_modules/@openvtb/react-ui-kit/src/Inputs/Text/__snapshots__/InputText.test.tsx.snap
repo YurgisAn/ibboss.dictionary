@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input.Text should render component 1`] = `
+<Component
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  size="big"
+  value=""
+  withTooltip={true}
+/>
+`;
+
+exports[`Input.Text should render component with clearable field, icon and name 1`] = `
+<Component
+  icon={<div />}
+  iconServices={
+    <React.Fragment>
+      <ForwardRef(styled.div)
+        height={20}
+        onClick={[Function]}
+        theme={Object {}}
+        width={20}
+      />
+    </React.Fragment>
+  }
+  inputName="test"
+  label="Введите ваше имя"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  size="micro"
+  value=""
+  withTooltip={true}
+/>
+`;
+
+exports[`Input.Text should render component with error status 1`] = `
+<Component
+  additionalText="Ошибка"
+  iconServices={
+    <React.Fragment>
+      <ForwardRef(styled.div)
+        $active={false}
+        height={24}
+        theme={Object {}}
+        width={24}
+      />
+    </React.Fragment>
+  }
+  label=""
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  size="big"
+  status="error"
+  value=""
+  withTooltip={true}
+/>
+`;
+
+exports[`Input.Text should render component with success status 1`] = `
+<Component
+  additionalText="Успех"
+  label="Введите ваше имя"
+  onBlur={[Function]}
+  onChange={[Function]}
+  onFocus={[Function]}
+  size="big"
+  status="success"
+  value=""
+  withTooltip={true}
+/>
+`;

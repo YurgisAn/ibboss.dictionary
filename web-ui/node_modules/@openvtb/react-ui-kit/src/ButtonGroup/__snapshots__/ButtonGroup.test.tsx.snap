@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonGroup should render component with required properties 1`] = `
+<styled.div
+  kind="solid"
+  size="medium"
+  theme={
+    Object {
+      "borderRadius": "",
+      "color": Object {
+        "neutral": Object {
+          "30": "",
+          "50": "",
+        },
+      },
+    }
+  }
+>
+  <styled.div
+    active={true}
+    disabled={false}
+    key="0"
+    kind="solid"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onMouseDown={[Function]}
+    size="medium"
+    tabIndex={1}
+    theme={
+      Object {
+        "borderRadius": "",
+        "color": Object {
+          "neutral": Object {
+            "30": "",
+            "50": "",
+          },
+        },
+      }
+    }
+  >
+    <styled.div>
+      Foo
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

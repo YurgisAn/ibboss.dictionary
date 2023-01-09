@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioButton should render component with disabled state 1`] = `
+<styled.div
+  disabled={true}
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  size="big"
+  tabIndex={1}
+  theme={Object {}}
+>
+  <styled.input
+    checked={false}
+    disabled={true}
+    readOnly={true}
+    theme={Object {}}
+    type="radio"
+    value="radio1"
+  />
+  <styled.div
+    disabled={true}
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+  />
+  <Styled(styled.div)
+    disabled={true}
+    theme={Object {}}
+  >
+    RadioButton
+  </Styled(styled.div)>
+</styled.div>
+`;
+
+exports[`RadioButton should render component with error state 1`] = `
+<styled.div
+  error={true}
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  size="big"
+  tabIndex={1}
+  theme={Object {}}
+>
+  <styled.input
+    checked={false}
+    readOnly={true}
+    theme={Object {}}
+    type="radio"
+    value="radio1"
+  />
+  <styled.div
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+  />
+  <Styled(styled.div)
+    theme={Object {}}
+  >
+    RadioButton
+  </Styled(styled.div)>
+</styled.div>
+`;
+
+exports[`RadioButton should render component with required properties 1`] = `
+<styled.div
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  size="big"
+  tabIndex={1}
+  theme={Object {}}
+>
+  <styled.input
+    checked={false}
+    readOnly={true}
+    theme={Object {}}
+    type="radio"
+    value="radio1"
+  />
+  <styled.div
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+  />
+  <Styled(styled.div)
+    theme={Object {}}
+  >
+    RadioButton
+  </Styled(styled.div)>
+</styled.div>
+`;
+
+exports[`RadioButton should render component with small size 1`] = `
+<styled.div
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  size="small"
+  tabIndex={1}
+  theme={Object {}}
+>
+  <styled.input
+    checked={false}
+    readOnly={true}
+    theme={Object {}}
+    type="radio"
+    value="radio1"
+  />
+  <styled.div
+    size="small"
+    tabIndex={-1}
+    theme={Object {}}
+  />
+  <Styled(styled.div)
+    theme={Object {}}
+  >
+    RadioButton
+  </Styled(styled.div)>
+</styled.div>
+`;

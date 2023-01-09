@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input.Informer should render component 1`] = `
+<Component
+  activeInformer={false}
+  iconServices={
+    <HintHOC
+      message=""
+      offset={16}
+      onClick={[Function]}
+      onRequestHide={[Function]}
+      size="small"
+      visible={false}
+    />
+  }
+  onChange={[Function]}
+  size="big"
+  value=""
+/>
+`;
+
+exports[`Input.Informer should render component with clearable field, icon and name 1`] = `
+<Component
+  activeInformer={false}
+  clearable={true}
+  icon={<div />}
+  iconServices={
+    <HintHOC
+      message=""
+      offset={16}
+      onClick={[Function]}
+      onRequestHide={[Function]}
+      size="small"
+      visible={false}
+    />
+  }
+  inputName="test"
+  label="Введите ваше имя"
+  onChange={[Function]}
+  size="micro"
+  value=""
+/>
+`;
+
+exports[`Input.Informer should render component with error status 1`] = `
+<Component
+  activeInformer={false}
+  additionalText="Ошибка"
+  iconServices={
+    <HintHOC
+      message=""
+      offset={16}
+      onClick={[Function]}
+      onRequestHide={[Function]}
+      size="small"
+      visible={false}
+    />
+  }
+  label=""
+  onChange={[Function]}
+  size="big"
+  status="error"
+  value=""
+/>
+`;
+
+exports[`Input.Informer should render component with message props 1`] = `
+<Component
+  activeInformer={false}
+  additionalText="Ошибка"
+  iconServices={
+    <HintHOC
+      message="Привет информер"
+      offset={16}
+      onClick={[Function]}
+      onRequestHide={[Function]}
+      size="small"
+      visible={false}
+    />
+  }
+  label="Информер"
+  onChange={[Function]}
+  size="big"
+  status="error"
+  value=""
+/>
+`;
+
+exports[`Input.Informer should render component with success status 1`] = `
+<Component
+  activeInformer={false}
+  additionalText="Успех"
+  iconServices={
+    <HintHOC
+      message=""
+      offset={16}
+      onClick={[Function]}
+      onRequestHide={[Function]}
+      size="small"
+      visible={false}
+    />
+  }
+  label="Введите ваше имя"
+  onChange={[Function]}
+  size="big"
+  status="success"
+  value=""
+/>
+`;

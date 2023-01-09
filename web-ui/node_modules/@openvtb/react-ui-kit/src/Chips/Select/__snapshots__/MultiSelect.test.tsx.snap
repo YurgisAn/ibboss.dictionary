@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chips.MultiSelect should render component with disabled items 1`] = `
+<styled.div>
+  <styled.div
+    disabled={true}
+    focused={false}
+    selected={false}
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+    tooltip="Суздаль"
+  >
+    <styled.div
+      size="big"
+      withIcon={false}
+    >
+      <Styled(styled.div)>
+        Суздаль
+      </Styled(styled.div)>
+    </styled.div>
+  </styled.div>
+  <styled.div />
+  <styled.div
+    disabled={true}
+    focused={false}
+    selected={false}
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+    tooltip="Москва"
+  >
+    <styled.div
+      size="big"
+      withIcon={false}
+    >
+      <Styled(styled.div)>
+        Москва
+      </Styled(styled.div)>
+    </styled.div>
+  </styled.div>
+  <styled.div />
+  <styled.div
+    disabled={true}
+    focused={false}
+    selected={false}
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+    tooltip="Тверь"
+  >
+    <styled.div
+      size="big"
+      withIcon={false}
+    >
+      <Styled(styled.div)>
+        Тверь
+      </Styled(styled.div)>
+    </styled.div>
+  </styled.div>
+  <styled.div />
+  <styled.div
+    disabled={true}
+    focused={false}
+    selected={false}
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+    tooltip="Самара"
+  >
+    <styled.div
+      size="big"
+      withIcon={false}
+    >
+      <Styled(styled.div)>
+        Самара
+      </Styled(styled.div)>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Chips.MultiSelect should render component with items 1`] = `
+<styled.div>
+  <styled.div
+    focused={false}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    selected={false}
+    size="big"
+    tabIndex={1}
+    theme={Object {}}
+    tooltip="Суздаль"
+  >
+    <styled.div
+      size="big"
+      withIcon={false}
+    >
+      <Styled(styled.div)>
+        Суздаль
+      </Styled(styled.div)>
+    </styled.div>
+  </styled.div>
+  <styled.div />
+  <styled.div
+    disabled={true}
+    focused={false}
+    selected={false}
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+    tooltip="Москва"
+  >
+    <styled.div
+      size="big"
+      withIcon={false}
+    >
+      <Styled(styled.div)>
+        Москва
+      </Styled(styled.div)>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

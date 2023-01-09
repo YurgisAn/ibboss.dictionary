@@ -1,0 +1,14 @@
+export const ICON_SIZE_SMALL = 16;
+export const ICON_SIZE_BIG = 20;
+export const SHAPE_MICRO = '14px';
+export const MAX_WIDTH = '400px';
+export const HEIGHT_SMALL = '24px';
+export const HEIGHT_BIG = '28px';
+export const PADDING_BIG = '4px 0 4px 9px';
+export const PADDING_SMALL = '4px 0 4px 8px';
+export const TEXT_WIDTH_BIG = '358px';
+export const TEXT_WIDTH_SMALL = '366px';
+export const MARGIN_LEFT_BIG = '4px';
+export const MARGIN_LEFT_SMALL = '2px';
+export const IN_SELECT_MARGIN_SMALL = '8px';
+export const IN_SELECT_MARGIN_BIG = '12px';

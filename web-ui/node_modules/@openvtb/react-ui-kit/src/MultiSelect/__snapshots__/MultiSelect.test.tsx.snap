@@ -1,0 +1,373 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiSelect should render component with big size 1`] = `
+<styled.div
+  data-close-border={true}
+  width="320px"
+>
+  <styled.div
+    className=""
+    data-select-container={true}
+    dropdownListBorders={false}
+    error={false}
+    menuIsOpen={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    size="big"
+    tabIndex={1}
+    theme={Object {}}
+    type="default"
+  >
+    <Input
+      currentMultiValue={Array []}
+      maxWidthChip="60px"
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      placeholder=""
+      size="big"
+    />
+    <DropdownList
+      classNameDropdownList=""
+      currentMultiValue={Array []}
+      dropdownListBorders={false}
+      error={false}
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      optionsList={
+        Array [
+          Object {
+            "label": "Москва",
+            "value": 1,
+          },
+          Object {
+            "label": "Новгород",
+            "value": 2,
+          },
+          Object {
+            "label": "Орел",
+            "value": 3,
+          },
+          <div
+            data-label="Берлин"
+            data-value="Berlin"
+          >
+            Берлин
+          </div>,
+        ]
+      }
+      setOpened={[Function]}
+      size="big"
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`MultiSelect should render component with disabled state 1`] = `
+<styled.div
+  data-close-border={true}
+  width="320px"
+>
+  <styled.div
+    className=""
+    data-select-container={true}
+    disabled={true}
+    dropdownListBorders={false}
+    error={false}
+    menuIsOpen={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    size="big"
+    tabIndex={1}
+    theme={Object {}}
+    type="default"
+  >
+    <Input
+      currentMultiValue={Array []}
+      disabled={true}
+      maxWidthChip="60px"
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      placeholder=""
+      size="big"
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`MultiSelect should render component with error state 1`] = `
+<styled.div
+  data-close-border={true}
+  width="320px"
+>
+  <styled.div
+    className=""
+    data-select-container={true}
+    dropdownListBorders={false}
+    error={true}
+    menuIsOpen={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    size="big"
+    tabIndex={1}
+    theme={Object {}}
+    type="default"
+  >
+    <Input
+      currentMultiValue={Array []}
+      maxWidthChip="60px"
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      placeholder=""
+      size="big"
+    />
+    <DropdownList
+      classNameDropdownList=""
+      currentMultiValue={Array []}
+      dropdownListBorders={false}
+      error={true}
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      optionsList={
+        Array [
+          Object {
+            "label": "Москва",
+            "value": 1,
+          },
+          Object {
+            "label": "Новгород",
+            "value": 2,
+          },
+          Object {
+            "label": "Орел",
+            "value": 3,
+          },
+          <div
+            data-label="Берлин"
+            data-value="Berlin"
+          >
+            Берлин
+          </div>,
+        ]
+      }
+      setOpened={[Function]}
+      size="big"
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`MultiSelect should render component with initialValue state 1`] = `
+<styled.div
+  data-close-border={true}
+  width="320px"
+>
+  <styled.div
+    className=""
+    data-select-container={true}
+    dropdownListBorders={false}
+    error={false}
+    menuIsOpen={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    size="big"
+    tabIndex={1}
+    theme={Object {}}
+    type="default"
+  >
+    <Input
+      currentMultiValue={
+        Array [
+          Object {
+            "label": "Москва",
+            "value": "Moscow",
+          },
+          <div
+            data-label="Берлин"
+            data-value="Berlin"
+          >
+            Берлин
+          </div>,
+        ]
+      }
+      maxWidthChip="60px"
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      placeholder=""
+      size="big"
+    />
+    <DropdownList
+      classNameDropdownList=""
+      currentMultiValue={
+        Array [
+          Object {
+            "label": "Москва",
+            "value": "Moscow",
+          },
+          <div
+            data-label="Берлин"
+            data-value="Berlin"
+          >
+            Берлин
+          </div>,
+        ]
+      }
+      dropdownListBorders={false}
+      error={false}
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      optionsList={
+        Array [
+          Object {
+            "label": "Москва",
+            "value": "Moscow",
+          },
+          Object {
+            "label": "Париж",
+            "value": "Paris",
+          },
+          Object {
+            "label": "Прага",
+            "value": "Prague",
+          },
+          <div
+            data-label="Берлин"
+            data-value="Berlin"
+          >
+            Берлин
+          </div>,
+          Object {
+            "label": "Амстердам",
+            "value": "Amsterdam",
+          },
+        ]
+      }
+      setOpened={[Function]}
+      size="big"
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`MultiSelect should render component with micro size 1`] = `
+<styled.div
+  data-close-border={true}
+  width="320px"
+>
+  <styled.div
+    className=""
+    data-select-container={true}
+    dropdownListBorders={false}
+    error={false}
+    menuIsOpen={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    size="micro"
+    tabIndex={1}
+    theme={Object {}}
+    type="default"
+  >
+    <Input
+      currentMultiValue={Array []}
+      maxWidthChip="60px"
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      placeholder=""
+      size="micro"
+    />
+    <DropdownList
+      classNameDropdownList=""
+      currentMultiValue={Array []}
+      dropdownListBorders={false}
+      error={false}
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      optionsList={
+        Array [
+          Object {
+            "label": "Москва",
+            "value": 1,
+          },
+          Object {
+            "label": "Новгород",
+            "value": 2,
+          },
+          Object {
+            "label": "Орел",
+            "value": 3,
+          },
+          <div
+            data-label="Берлин"
+            data-value="Berlin"
+          >
+            Берлин
+          </div>,
+        ]
+      }
+      setOpened={[Function]}
+      size="micro"
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`MultiSelect should render component with small size 1`] = `
+<styled.div
+  data-close-border={true}
+  width="320px"
+>
+  <styled.div
+    className=""
+    data-select-container={true}
+    dropdownListBorders={false}
+    error={false}
+    menuIsOpen={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    size="small"
+    tabIndex={1}
+    theme={Object {}}
+    type="default"
+  >
+    <Input
+      currentMultiValue={Array []}
+      maxWidthChip="60px"
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      placeholder=""
+      size="small"
+    />
+    <DropdownList
+      classNameDropdownList=""
+      currentMultiValue={Array []}
+      dropdownListBorders={false}
+      error={false}
+      menuIsOpen={false}
+      onChange={[MockFunction]}
+      optionsList={
+        Array [
+          Object {
+            "label": "Москва",
+            "value": 1,
+          },
+          Object {
+            "label": "Новгород",
+            "value": 2,
+          },
+          Object {
+            "label": "Орел",
+            "value": 3,
+          },
+          <div
+            data-label="Берлин"
+            data-value="Berlin"
+          >
+            Берлин
+          </div>,
+        ]
+      }
+      setOpened={[Function]}
+      size="small"
+    />
+  </styled.div>
+</styled.div>
+`;

@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal should render component with header and text content by default 1`] = `
+<styled.div
+  buttonCount={0}
+  height={84}
+  theme={
+    Object {
+      "boxShadow": Object {
+        "16": "",
+      },
+      "color": Object {
+        "neutral": Object {
+          "white": "",
+        },
+        "opacity": Object {
+          "blackHover": "",
+        },
+      },
+    }
+  }
+  width={800}
+>
+  <styled.div>
+    Header
+  </styled.div>
+  <styled.div
+    markerOffset={6}
+    onClick={[Function]}
+    theme={
+      Object {
+        "boxShadow": Object {
+          "16": "",
+        },
+        "color": Object {
+          "neutral": Object {
+            "white": "",
+          },
+          "opacity": Object {
+            "blackHover": "",
+          },
+        },
+      }
+    }
+  >
+    <ReactComponent
+      height={24}
+      width={24}
+    />
+  </styled.div>
+  <styled.div>
+    Content
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Modal should render component with header and text content including primary & secondary button 1`] = `
+<styled.div
+  buttonCount={2}
+  height={84}
+  theme={
+    Object {
+      "boxShadow": Object {
+        "16": "",
+      },
+      "color": Object {
+        "neutral": Object {
+          "white": "",
+        },
+        "opacity": Object {
+          "blackHover": "",
+        },
+      },
+    }
+  }
+  width={800}
+>
+  <styled.div>
+    Header
+  </styled.div>
+  <styled.div
+    markerOffset={6}
+    onClick={[Function]}
+    theme={
+      Object {
+        "boxShadow": Object {
+          "16": "",
+        },
+        "color": Object {
+          "neutral": Object {
+            "white": "",
+          },
+          "opacity": Object {
+            "blackHover": "",
+          },
+        },
+      }
+    }
+  >
+    <ReactComponent
+      height={24}
+      width={24}
+    />
+  </styled.div>
+  <styled.div>
+    Content
+  </styled.div>
+  <styled.div>
+    <Component
+      kind="secondary"
+      onClick={[Function]}
+      size="small"
+    >
+      Secondary button
+    </Component>
+    <Component
+      onClick={[Function]}
+      size="small"
+    >
+      Primary button
+    </Component>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Modal should render component with header and text content including primary button 1`] = `
+<styled.div
+  buttonCount={1}
+  height={84}
+  theme={
+    Object {
+      "boxShadow": Object {
+        "16": "",
+      },
+      "color": Object {
+        "neutral": Object {
+          "white": "",
+        },
+        "opacity": Object {
+          "blackHover": "",
+        },
+      },
+    }
+  }
+  width={800}
+>
+  <styled.div>
+    Header
+  </styled.div>
+  <styled.div
+    markerOffset={6}
+    onClick={[Function]}
+    theme={
+      Object {
+        "boxShadow": Object {
+          "16": "",
+        },
+        "color": Object {
+          "neutral": Object {
+            "white": "",
+          },
+          "opacity": Object {
+            "blackHover": "",
+          },
+        },
+      }
+    }
+  >
+    <ReactComponent
+      height={24}
+      width={24}
+    />
+  </styled.div>
+  <styled.div>
+    Content
+  </styled.div>
+  <styled.div>
+    <Component
+      onClick={[Function]}
+      size="small"
+    >
+      Primary button
+    </Component>
+  </styled.div>
+</styled.div>
+`;

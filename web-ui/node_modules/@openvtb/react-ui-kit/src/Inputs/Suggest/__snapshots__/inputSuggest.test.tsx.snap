@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input.Suggest should render input suggest 1`] = `
+<styled.div>
+  <Component
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    onChangeSelected={[Function]}
+    setInputValue={[Function]}
+    setShowMenu={[Function]}
+    size="big"
+    value=""
+  />
+  <Component
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    inputValue=""
+    load={false}
+    loadMessage="Поиск совпадений"
+    menuMaxHeight={190}
+    noopMessage="Варианты не найдены"
+    onChange={[Function]}
+    options={
+      Array [
+        "testValue",
+        "testValue",
+      ]
+    }
+    setInputValue={[Function]}
+    setShowMenu={[Function]}
+    shouldRenderDropdown={false}
+    showMenu={false}
+    size="big"
+  />
+</styled.div>
+`;
+
+exports[`Input.Suggest should render input suggest with custom option 1`] = `
+<styled.div>
+  <Component
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    onChangeSelected={[Function]}
+    setInputValue={[Function]}
+    setShowMenu={[Function]}
+    size="big"
+    value=""
+  />
+  <Component
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    inputValue=""
+    load={false}
+    loadMessage="Поиск совпадений"
+    menuMaxHeight={190}
+    noopMessage="Варианты не найдены"
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "id": 1,
+          "label": "Москва",
+        },
+        Object {
+          "id": 2,
+          "label": "Мо",
+        },
+        Object {
+          "id": 3,
+          "label": "Мос",
+        },
+        Object {
+          "id": 4,
+          "label": "LA",
+        },
+        Object {
+          "id": 6,
+          "label": "Chicago",
+        },
+      ]
+    }
+    renderElementOption={[Function]}
+    setInputValue={[Function]}
+    setShowMenu={[Function]}
+    shouldRenderDropdown={false}
+    showMenu={false}
+    size="big"
+  />
+</styled.div>
+`;
+
+exports[`Input.Suggest should render input suggest with micro size 1`] = `
+<styled.div>
+  <Component
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    onChangeSelected={[Function]}
+    setInputValue={[Function]}
+    setShowMenu={[Function]}
+    size="micro"
+    value=""
+  />
+  <Component
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    inputValue=""
+    load={false}
+    loadMessage="Поиск совпадений"
+    menuMaxHeight={190}
+    noopMessage="Варианты не найдены"
+    onChange={[Function]}
+    options={
+      Array [
+        "testValue",
+        "testValue",
+      ]
+    }
+    setInputValue={[Function]}
+    setShowMenu={[Function]}
+    shouldRenderDropdown={false}
+    showMenu={false}
+    size="micro"
+  />
+</styled.div>
+`;
+
+exports[`Input.Suggest should render input suggest with small size 1`] = `
+<styled.div>
+  <Component
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    onChangeSelected={[Function]}
+    setInputValue={[Function]}
+    setShowMenu={[Function]}
+    size="small"
+    value=""
+  />
+  <Component
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    inputValue=""
+    load={false}
+    loadMessage="Поиск совпадений"
+    menuMaxHeight={190}
+    noopMessage="Варианты не найдены"
+    onChange={[Function]}
+    options={
+      Array [
+        "testValue",
+        "testValue",
+      ]
+    }
+    setInputValue={[Function]}
+    setShowMenu={[Function]}
+    shouldRenderDropdown={false}
+    showMenu={false}
+    size="small"
+  />
+</styled.div>
+`;

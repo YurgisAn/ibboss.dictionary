@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToastNotification should render component by default as "INFO" notification with header 1`] = `
+<Component
+  inverse={true}
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  >
+    ToastNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component by default as "INFO" notification with link 1`] = `
+<Component
+  inverse={true}
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  />
+  <Styled(styled.div)
+    paddingBottom={12}
+  >
+    ToastNotification Message
+  </Styled(styled.div)>
+  <Component
+    href="#0"
+    inverse={true}
+    size="small"
+  >
+    Link Text
+  </Component>
+</Component>
+`;
+
+exports[`ToastNotification should render component by default as "INFO" notification without header 1`] = `
+<Component
+  inverse={true}
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  />
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component by default as "INFO" notification without header with custom width 1`] = `
+<Component
+  inverse={true}
+  right={16}
+  top={16}
+  width={777}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  />
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component inside the document.body container 1`] = `
+<Component
+  container={<body />}
+  inverse={true}
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  />
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component with kind="ERROR" notification with header 1`] = `
+<Component
+  inverse={true}
+  kind="error"
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  >
+    ToastNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component with kind="ERROR" notification without header 1`] = `
+<Component
+  inverse={true}
+  kind="error"
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  />
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component with kind="INFO" notification with header 1`] = `
+<Component
+  inverse={true}
+  kind="info"
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  >
+    ToastNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component with kind="INFO" notification without header 1`] = `
+<Component
+  inverse={true}
+  kind="info"
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  />
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component with kind="SUCCESS" notification with header 1`] = `
+<Component
+  inverse={true}
+  kind="success"
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  >
+    ToastNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component with kind="SUCCESS" notification without header 1`] = `
+<Component
+  inverse={true}
+  kind="success"
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  />
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component with kind="WARNING" notification with header 1`] = `
+<Component
+  inverse={true}
+  kind="warning"
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  >
+    ToastNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`ToastNotification should render component with kind="WARNING" notification without header 1`] = `
+<Component
+  inverse={true}
+  kind="warning"
+  right={16}
+  top={16}
+  width={384}
+>
+  <Styled(styled.div)
+    hasOffset={true}
+  />
+  <Styled(styled.div)>
+    ToastNotification Message
+  </Styled(styled.div)>
+</Component>
+`;

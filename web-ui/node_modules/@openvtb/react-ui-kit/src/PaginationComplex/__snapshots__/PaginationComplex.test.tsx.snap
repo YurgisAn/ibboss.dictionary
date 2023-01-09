@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationComplex should render component 1`] = `
+<styled.div
+  mobile={false}
+>
+  <Component
+    disableItemsPerPageSelect={false}
+    itemsPerPage={20}
+    lastPage={6}
+    mobile={false}
+    onChange={[MockFunction]}
+    page={1}
+    ranges={
+      Array [
+        20,
+        40,
+        60,
+        80,
+      ]
+    }
+    totalItems={113}
+  />
+  <Component
+    disablePageSelect={false}
+    lastPage={6}
+    mobile={false}
+    onChange={[MockFunction]}
+    page={1}
+  />
+</styled.div>
+`;

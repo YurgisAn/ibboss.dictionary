@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TooltipHOC should render component 1`] = `
+<styled.div
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <WrappedComponent
+    tooltip=""
+  />
+  <styled.div
+    pointerDirection="top"
+    position={
+      Object {
+        "posX": 0,
+        "posY": 0,
+      }
+    }
+    showTooltip={false}
+    theme={
+      Object {
+        "borderRadius": "",
+        "color": Object {
+          "neutral": Object {
+            "80": "",
+            "white": "",
+          },
+        },
+      }
+    }
+  >
+    <Caption1 />
+  </styled.div>
+</styled.div>
+`;

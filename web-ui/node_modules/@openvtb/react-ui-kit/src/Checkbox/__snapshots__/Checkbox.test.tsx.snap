@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should render component with indeterminate state 1`] = `
+<styled.div
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  size="big"
+  tabIndex={1}
+  theme={Object {}}
+>
+  <styled.input
+    checked={false}
+    readOnly={true}
+    theme={Object {}}
+    type="checkbox"
+  />
+  <styled.div
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+    withLabel={false}
+  >
+    <Component />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Checkbox should render component with label 1`] = `
+<styled.div
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  size="big"
+  tabIndex={1}
+  theme={Object {}}
+>
+  <styled.input
+    checked={false}
+    readOnly={true}
+    theme={Object {}}
+    type="checkbox"
+  />
+  <styled.div
+    checked={false}
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+    withLabel={true}
+  >
+    <Component />
+  </styled.div>
+  <Styled(styled.div)
+    theme={Object {}}
+  >
+    Checkbox
+  </Styled(styled.div)>
+</styled.div>
+`;
+
+exports[`Checkbox should render component with required properties 1`] = `
+<styled.div
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  size="big"
+  tabIndex={1}
+  theme={Object {}}
+>
+  <styled.input
+    checked={false}
+    readOnly={true}
+    theme={Object {}}
+    type="checkbox"
+  />
+  <styled.div
+    checked={false}
+    size="big"
+    tabIndex={-1}
+    theme={Object {}}
+    withLabel={false}
+  >
+    <Component />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Checkbox should render component with small size 1`] = `
+<styled.div
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  size="small"
+  tabIndex={1}
+  theme={Object {}}
+>
+  <styled.input
+    checked={false}
+    readOnly={true}
+    theme={Object {}}
+    type="checkbox"
+  />
+  <styled.div
+    checked={false}
+    size="small"
+    tabIndex={-1}
+    theme={Object {}}
+    withLabel={false}
+  >
+    <Component />
+  </styled.div>
+</styled.div>
+`;

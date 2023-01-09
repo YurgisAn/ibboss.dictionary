@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LineNotification should render component by default as "INFO" notification with dark background 1`] = `
+<Component
+  inverse={true}
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component by default as "INFO" notification with header 1`] = `
+<Component
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component by default as "INFO" notification without header 1`] = `
+<Component
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component by default as "INFO" notification without header with custom width 1`] = `
+<Component
+  left={0}
+  top={0}
+  width={777}
+>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component inside the document.body container 1`] = `
+<Component
+  container={<body />}
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component with kind="ERROR" notification with dark background 1`] = `
+<Component
+  inverse={true}
+  kind="error"
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component with kind="ERROR" notification with header 1`] = `
+<Component
+  kind="error"
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component with kind="ERROR" notification without header 1`] = `
+<Component
+  kind="error"
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component with kind="INFO" notification with header 1`] = `
+<Component
+  kind="info"
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component with kind="INFO" notification without header 1`] = `
+<Component
+  kind="info"
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component with kind="SUCCESS" notification with header 1`] = `
+<Component
+  kind="success"
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component with kind="SUCCESS" notification without header 1`] = `
+<Component
+  kind="success"
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component with kind="WARNING" notification with header 1`] = `
+<Component
+  kind="warning"
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;
+
+exports[`LineNotification should render component with kind="WARNING" notification without header 1`] = `
+<Component
+  kind="warning"
+  left={0}
+  top={0}
+>
+  <Styled(styled.div)>
+    LineNotification Message
+  </Styled(styled.div)>
+</Component>
+`;

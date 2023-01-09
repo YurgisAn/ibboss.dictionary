@@ -1,0 +1,280 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextArea should render component basically 1`] = `
+<styled.div
+  $focused={false}
+  $width="320px"
+  theme={Object {}}
+>
+  <Styled(TextareaAutosize)
+    $focused={false}
+    $resize="none"
+    $status="default"
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    maxLength={999}
+    maxRows={10}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    theme={Object {}}
+    value=""
+  />
+  <styled.div>
+    <Styled(styled.div)
+      $status="default"
+      theme={Object {}}
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`TextArea should render component with error state 1`] = `
+<styled.div
+  $focused={false}
+  $width="320px"
+  theme={Object {}}
+>
+  <Styled(TextareaAutosize)
+    $focused={false}
+    $resize="none"
+    $status="error"
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    maxLength={100}
+    maxRows={10}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    theme={Object {}}
+    value="С другой стороны рамки и место обучения кадров представляет собой интересный эксперимент проверки модели развития. Повседневная практика показывает, что консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании форм развития. Идейные соображения высшего порядка, а также сложившаяся структура организации в значительной степени обуславливает создание соответствующий условий активизации. Таким образом консультация с широким активом представляет собой интересный эксперимент проверки систем массового участия."
+  />
+  <styled.div>
+    <Styled(styled.div)
+      $status="error"
+      theme={Object {}}
+    >
+      548
+       / 
+      100
+    </Styled(styled.div)>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`TextArea should render component with label 1`] = `
+<styled.div
+  $focused={false}
+  $width="320px"
+  theme={Object {}}
+>
+  <styled.div>
+    Label
+  </styled.div>
+  <styled.div />
+  <Styled(TextareaAutosize)
+    $focused={false}
+    $resize="none"
+    $status="default"
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    maxLength={999}
+    maxRows={10}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    theme={Object {}}
+    value=""
+  />
+  <styled.div>
+    <Styled(styled.div)
+      $status="default"
+      theme={Object {}}
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`TextArea should render component with label and limit information 1`] = `
+<styled.div
+  $focused={false}
+  $width="320px"
+  theme={Object {}}
+>
+  <styled.div>
+    Label
+  </styled.div>
+  <styled.div />
+  <Styled(TextareaAutosize)
+    $focused={false}
+    $resize="none"
+    $status="default"
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    maxLength={100}
+    maxRows={10}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    theme={Object {}}
+    value="Small text"
+  />
+  <styled.div>
+    <Styled(styled.div)
+      $status="default"
+      theme={Object {}}
+    >
+      10
+       / 
+      100
+    </Styled(styled.div)>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`TextArea should render component with limit information 1`] = `
+<styled.div
+  $focused={false}
+  $width="320px"
+  theme={Object {}}
+>
+  <Styled(TextareaAutosize)
+    $focused={false}
+    $resize="none"
+    $status="default"
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    maxLength={100}
+    maxRows={10}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    theme={Object {}}
+    value="Small text"
+  />
+  <styled.div>
+    <Styled(styled.div)
+      $status="default"
+      theme={Object {}}
+    >
+      10
+       / 
+      100
+    </Styled(styled.div)>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`TextArea should render component with scrollbar and in default state 1`] = `
+<styled.div
+  $focused={false}
+  $width="320px"
+  theme={Object {}}
+>
+  <Styled(TextareaAutosize)
+    $focused={false}
+    $resize="none"
+    $status="default"
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    maxLength={999}
+    maxRows={10}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    theme={Object {}}
+    value=""
+  />
+  <styled.div>
+    <Styled(styled.div)
+      $status="default"
+      theme={Object {}}
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`TextArea should render disabled component 1`] = `
+<styled.div
+  $focused={false}
+  $width="320px"
+  disabled={true}
+  theme={Object {}}
+>
+  <Styled(TextareaAutosize)
+    $focused={false}
+    $resize="none"
+    $status="default"
+    disabled={true}
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    maxLength={999}
+    maxRows={10}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    theme={Object {}}
+    value="С другой стороны рамки и место обучения кадров представляет собой интересный эксперимент проверки модели развития. Повседневная практика показывает, что консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании форм развития. Идейные соображения высшего порядка, а также сложившаяся структура организации в значительной степени обуславливает создание соответствующий условий активизации. Таким образом консультация с широким активом представляет собой интересный эксперимент проверки систем массового участия."
+  />
+  <styled.div>
+    <Styled(styled.div)
+      $status="default"
+      theme={Object {}}
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`TextArea should render readonly component 1`] = `
+<styled.div
+  $focused={false}
+  $width="320px"
+  theme={Object {}}
+>
+  <Styled(TextareaAutosize)
+    $focused={false}
+    $resize="none"
+    $status="default"
+    inputRef={
+      Object {
+        "current": null,
+      }
+    }
+    maxLength={999}
+    maxRows={10}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    readOnly={true}
+    theme={Object {}}
+    value="С другой стороны рамки и место обучения кадров представляет собой интересный эксперимент проверки модели развития. Повседневная практика показывает, что консультация с широким активом обеспечивает широкому кругу (специалистов) участие в формировании форм развития. Идейные соображения высшего порядка, а также сложившаяся структура организации в значительной степени обуславливает создание соответствующий условий активизации. Таким образом консультация с широким активом представляет собой интересный эксперимент проверки систем массового участия."
+  />
+  <styled.div>
+    <Styled(styled.div)
+      $status="default"
+      theme={Object {}}
+    />
+  </styled.div>
+</styled.div>
+`;

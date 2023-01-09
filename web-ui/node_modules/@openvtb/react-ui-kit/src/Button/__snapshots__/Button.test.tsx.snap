@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render component 1`] = `
+<styled.button
+  disabled={false}
+  fullWidth={false}
+  kind="primary"
+  multipleChildren={false}
+  onMouseDown={[Function]}
+  onlyIcon={false}
+  rightIcon={false}
+  size="medium"
+  theme={Object {}}
+  type="button"
+/>
+`;
+
+exports[`Button should render component with icon 1`] = `
+<styled.button
+  disabled={false}
+  fullWidth={false}
+  kind="primary"
+  multipleChildren={false}
+  onMouseDown={[Function]}
+  onlyIcon={true}
+  rightIcon={false}
+  size="medium"
+  theme={Object {}}
+  type="button"
+>
+  <styled.div
+    onlyIcon={true}
+    rightIcon={false}
+  >
+    <Icon />
+  </styled.div>
+</styled.button>
+`;
+
+exports[`Button should render component with text 1`] = `
+<styled.button
+  disabled={false}
+  fullWidth={false}
+  kind="primary"
+  multipleChildren={false}
+  onMouseDown={[Function]}
+  onlyIcon={false}
+  rightIcon={false}
+  size="medium"
+  theme={Object {}}
+  type="button"
+>
+  <styled.div>
+    Text
+  </styled.div>
+</styled.button>
+`;
+
+exports[`Button should render component with text and left icon 1`] = `
+<styled.button
+  disabled={false}
+  fullWidth={false}
+  kind="primary"
+  multipleChildren={true}
+  onMouseDown={[Function]}
+  onlyIcon={false}
+  rightIcon={false}
+  size="medium"
+  theme={Object {}}
+  type="button"
+>
+  <styled.div
+    key="0"
+    onlyIcon={false}
+    rightIcon={false}
+  >
+    <Icon />
+  </styled.div>
+  <styled.div
+    key="1"
+  >
+     Text
+  </styled.div>
+</styled.button>
+`;
+
+exports[`Button should render component with text and right icon 1`] = `
+<styled.button
+  disabled={false}
+  fullWidth={false}
+  kind="primary"
+  multipleChildren={true}
+  onMouseDown={[Function]}
+  onlyIcon={false}
+  rightIcon={true}
+  size="medium"
+  theme={Object {}}
+  type="button"
+>
+  <styled.div
+    key="0"
+  >
+    Text 
+  </styled.div>
+  <styled.div
+    key="1"
+    onlyIcon={false}
+    rightIcon={true}
+  >
+    <Icon />
+  </styled.div>
+</styled.button>
+`;

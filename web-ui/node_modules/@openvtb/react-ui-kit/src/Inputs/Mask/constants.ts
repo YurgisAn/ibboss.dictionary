@@ -1,0 +1,16 @@
+export const MASK_LINE_HEIGHT_BIG = 17;
+export const MASK_LINE_HEIGHT_SMALL = 9;
+export const MASK_LINE_HEIGHT_MICRO = 6;
+export const INPUT_MARGIN_TOP_SMALL = 8;
+export const INPUT_MARGIN_TOP_MICRO = 6;
+export const INPUT_MARGIN_TOP_BIG = 17;
+export const INPUT_TEXT_MARGIN = 8;
+export const ICON_SIZE_DEFAULT = 24;
+export const ICON_SIZE_MICRO = 20;
+export const DEFAULT_MASK = '9999 9999 9999 9999';
+export const DEFAULT_WIDTH = '100%';
+export const LINE_HEIGHT_INPUT = 23;
+export const FIX_POISTION_TOP = 1;
+export const ICON_PADDING_TOP_ACTIVE = 19;
+export const ICON_PADDING_TOP = 20;
+export const INPUT_PADDING = 18;

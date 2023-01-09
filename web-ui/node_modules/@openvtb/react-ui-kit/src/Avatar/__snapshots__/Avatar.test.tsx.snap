@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar should render component with default kind, size and icon 1`] = `
+<Fragment>
+  <Styled(styled.div)
+    kind="white"
+    size={56}
+    theme={
+      Object {
+        "color": Object {
+          "neutral": Object {
+            "white": "",
+          },
+        },
+      }
+    }
+  >
+    <div />
+  </Styled(styled.div)>
+</Fragment>
+`;
+
+exports[`Avatar should render component with kind Blue and size 32 1`] = `
+<Fragment>
+  <Styled(styled.div)
+    kind="blue"
+    size={32}
+    theme={
+      Object {
+        "color": Object {
+          "neutral": Object {
+            "white": "",
+          },
+        },
+      }
+    }
+  >
+    <div />
+  </Styled(styled.div)>
+</Fragment>
+`;

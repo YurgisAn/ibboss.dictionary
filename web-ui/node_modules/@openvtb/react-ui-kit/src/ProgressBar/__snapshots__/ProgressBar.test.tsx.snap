@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressBar should render component with error when kind equals "page" 1`] = `
+<styled.div
+  kind="page"
+>
+  <styled.div
+    error={true}
+    theme={Object {}}
+  >
+    <styled.div />
+    <styled.div>
+      0%
+    </styled.div>
+  </styled.div>
+  <styled.div
+    theme={Object {}}
+  >
+    <styled.div
+      error={true}
+      theme={Object {}}
+      value={0}
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`ProgressBar should render component with kind "page" by default 1`] = `
+<styled.div
+  kind="page"
+>
+  <styled.div
+    error={false}
+    theme={Object {}}
+  >
+    <styled.div />
+    <styled.div>
+      0%
+    </styled.div>
+  </styled.div>
+  <styled.div
+    theme={Object {}}
+  >
+    <styled.div
+      error={false}
+      theme={Object {}}
+      value={0}
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`ProgressBar should render component with kind "top" 1`] = `
+<styled.div
+  kind="top"
+>
+  <styled.div
+    theme={Object {}}
+  >
+    <styled.div
+      error={false}
+      theme={Object {}}
+      value={0}
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`ProgressBar should render component with label when kind equals "page" 1`] = `
+<styled.div
+  kind="page"
+>
+  <styled.div
+    error={false}
+    theme={Object {}}
+  >
+    <styled.div>
+      Загрузка данных ...
+    </styled.div>
+    <styled.div>
+      0%
+    </styled.div>
+  </styled.div>
+  <styled.div
+    theme={Object {}}
+  >
+    <styled.div
+      error={false}
+      theme={Object {}}
+      value={0}
+    />
+  </styled.div>
+</styled.div>
+`;
+
+exports[`ProgressBar should render component with percentage progress when kind equals "page" 1`] = `
+<styled.div
+  kind="page"
+>
+  <styled.div
+    error={false}
+    theme={Object {}}
+  >
+    <styled.div />
+    <styled.div>
+      50%
+    </styled.div>
+  </styled.div>
+  <styled.div
+    theme={Object {}}
+  >
+    <styled.div
+      error={false}
+      theme={Object {}}
+      value={50}
+    />
+  </styled.div>
+</styled.div>
+`;

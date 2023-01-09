@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch should render component with label and small size 1`] = `
+<styled.div
+  disabled={false}
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  tabIndex={1}
+  theme={Object {}}
+>
+  <styled.div>
+    <styled.input
+      $size="small"
+      checked={false}
+      readOnly={true}
+      type="checkbox"
+    />
+    <styled.div
+      checked={false}
+      disabled={false}
+      labelPosition="right"
+      size="small"
+      theme={Object {}}
+    />
+  </styled.div>
+  <styled.div>
+    Switch
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Switch should render component with required properties 1`] = `
+<styled.div
+  disabled={false}
+  onClick={[Function]}
+  onKeyUp={[Function]}
+  onMouseDown={[Function]}
+  tabIndex={1}
+  theme={Object {}}
+>
+  <styled.div>
+    <styled.input
+      $size="big"
+      checked={false}
+      readOnly={true}
+      type="checkbox"
+    />
+    <styled.div
+      checked={false}
+      disabled={false}
+      labelPosition="right"
+      size="big"
+      theme={Object {}}
+    />
+  </styled.div>
+</styled.div>
+`;

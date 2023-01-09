@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileUploader should correctly render 1`] = `
+<styled.div>
+  <Component
+    files={Array []}
+    maxSize={20971520}
+    maxTotalSize={20971520}
+    onChange={[Function]}
+    onFileCountLimitExceed={[Function]}
+    onFileTotalSizeLimitExceed={[Function]}
+    uploadText="Перетащите файлы в эту область или нажмите для загрузки"
+  />
+</styled.div>
+`;
+
+exports[`FileUploader should correctly render if disabled 1`] = `
+<styled.div>
+  <Component
+    disabled={true}
+    files={Array []}
+    maxSize={20971520}
+    maxTotalSize={20971520}
+    onChange={[Function]}
+    onFileCountLimitExceed={[Function]}
+    onFileTotalSizeLimitExceed={[Function]}
+    uploadText="Перетащите файлы в эту область или нажмите для загрузки"
+  />
+</styled.div>
+`;
+
+exports[`FileUploader should render with mobile prop 1`] = `
+<styled.div
+  mobile={true}
+>
+  <Component
+    files={Array []}
+    maxSize={20971520}
+    maxTotalSize={20971520}
+    mobile={true}
+    onChange={[Function]}
+    onFileCountLimitExceed={[Function]}
+    onFileTotalSizeLimitExceed={[Function]}
+    uploadText="Нажмите для загрузки"
+  />
+</styled.div>
+`;

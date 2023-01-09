@@ -1,0 +1,541 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Range should render component with full props 1`] = `
+<styled.div
+  width="inherit"
+>
+  <styled.div
+    disabled={false}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}
+  >
+    <styled.div
+      disabled={false}
+      theme={
+        Object {
+          "borderRadius": "",
+          "boxShadow": Object {},
+          "color": Object {
+            "error": Object {},
+            "neutral": Object {},
+            "opacity": Object {},
+            "primary": Object {},
+            "success": Object {},
+          },
+          "input": Object {
+            "iconPaddingTop": Object {},
+          },
+        }
+      }
+    >
+      <styled.div
+        animation={false}
+        disabled={false}
+        theme={
+          Object {
+            "borderRadius": "",
+            "boxShadow": Object {},
+            "color": Object {
+              "error": Object {},
+              "neutral": Object {},
+              "opacity": Object {},
+              "primary": Object {},
+              "success": Object {},
+            },
+            "input": Object {
+              "iconPaddingTop": Object {},
+            },
+          }
+        }
+      />
+      <styled.div>
+        <styled.div
+          animation={false}
+          disabled={false}
+        >
+          <styled.div
+            disabled={false}
+            onMouseDown={[Function]}
+            onTouchStart={[Function]}
+            theme={
+              Object {
+                "borderRadius": "",
+                "boxShadow": Object {},
+                "color": Object {
+                  "error": Object {},
+                  "neutral": Object {},
+                  "opacity": Object {},
+                  "primary": Object {},
+                  "success": Object {},
+                },
+                "input": Object {
+                  "iconPaddingTop": Object {},
+                },
+              }
+            }
+          />
+        </styled.div>
+        <styled.div
+          disabled={false}
+          onMouseDown={[Function]}
+          theme={
+            Object {
+              "borderRadius": "",
+              "boxShadow": Object {},
+              "color": Object {
+                "error": Object {},
+                "neutral": Object {},
+                "opacity": Object {},
+                "primary": Object {},
+                "success": Object {},
+              },
+              "input": Object {
+                "iconPaddingTop": Object {},
+              },
+            }
+          }
+        >
+          <styled.div>
+            10
+          </styled.div>
+        </styled.div>
+        <styled.div
+          disabled={false}
+          isRight={true}
+          onMouseDown={[Function]}
+          theme={
+            Object {
+              "borderRadius": "",
+              "boxShadow": Object {},
+              "color": Object {
+                "error": Object {},
+                "neutral": Object {},
+                "opacity": Object {},
+                "primary": Object {},
+                "success": Object {},
+              },
+              "input": Object {
+                "iconPaddingTop": Object {},
+              },
+            }
+          }
+        >
+          <styled.div>
+            100
+          </styled.div>
+        </styled.div>
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Range should render component with input 1`] = `
+<styled.div
+  width="inherit"
+>
+  <Component
+    disabled={false}
+    number={true}
+    onBlur={[Function]}
+    onChange={[Function]}
+    range={true}
+    value=""
+    width="inherit"
+  />
+  <styled.div
+    disabled={false}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}
+  >
+    <styled.div
+      disabled={false}
+      theme={
+        Object {
+          "borderRadius": "",
+          "boxShadow": Object {},
+          "color": Object {
+            "error": Object {},
+            "neutral": Object {},
+            "opacity": Object {},
+            "primary": Object {},
+            "success": Object {},
+          },
+          "input": Object {
+            "iconPaddingTop": Object {},
+          },
+        }
+      }
+    >
+      <styled.div
+        animation={false}
+        disabled={false}
+        theme={
+          Object {
+            "borderRadius": "",
+            "boxShadow": Object {},
+            "color": Object {
+              "error": Object {},
+              "neutral": Object {},
+              "opacity": Object {},
+              "primary": Object {},
+              "success": Object {},
+            },
+            "input": Object {
+              "iconPaddingTop": Object {},
+            },
+          }
+        }
+      />
+      <styled.div>
+        <styled.div
+          animation={false}
+          disabled={false}
+        >
+          <styled.div
+            disabled={false}
+            onMouseDown={[Function]}
+            onTouchStart={[Function]}
+            theme={
+              Object {
+                "borderRadius": "",
+                "boxShadow": Object {},
+                "color": Object {
+                  "error": Object {},
+                  "neutral": Object {},
+                  "opacity": Object {},
+                  "primary": Object {},
+                  "success": Object {},
+                },
+                "input": Object {
+                  "iconPaddingTop": Object {},
+                },
+              }
+            }
+          />
+        </styled.div>
+        <styled.div
+          disabled={false}
+          onMouseDown={[Function]}
+          theme={
+            Object {
+              "borderRadius": "",
+              "boxShadow": Object {},
+              "color": Object {
+                "error": Object {},
+                "neutral": Object {},
+                "opacity": Object {},
+                "primary": Object {},
+                "success": Object {},
+              },
+              "input": Object {
+                "iconPaddingTop": Object {},
+              },
+            }
+          }
+        >
+          <styled.div>
+            10
+          </styled.div>
+        </styled.div>
+        <styled.div
+          disabled={false}
+          isRight={true}
+          onMouseDown={[Function]}
+          theme={
+            Object {
+              "borderRadius": "",
+              "boxShadow": Object {},
+              "color": Object {
+                "error": Object {},
+                "neutral": Object {},
+                "opacity": Object {},
+                "primary": Object {},
+                "success": Object {},
+              },
+              "input": Object {
+                "iconPaddingTop": Object {},
+              },
+            }
+          }
+        >
+          <styled.div>
+            100
+          </styled.div>
+        </styled.div>
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Range should render component with ranges prop 1`] = `
+<styled.div
+  width="inherit"
+>
+  <styled.div
+    disabled={false}
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}
+  >
+    <styled.div
+      disabled={false}
+      theme={
+        Object {
+          "borderRadius": "",
+          "boxShadow": Object {},
+          "color": Object {
+            "error": Object {},
+            "neutral": Object {},
+            "opacity": Object {},
+            "primary": Object {},
+            "success": Object {},
+          },
+          "input": Object {
+            "iconPaddingTop": Object {},
+          },
+        }
+      }
+    >
+      <styled.div
+        animation={false}
+        disabled={false}
+        theme={
+          Object {
+            "borderRadius": "",
+            "boxShadow": Object {},
+            "color": Object {
+              "error": Object {},
+              "neutral": Object {},
+              "opacity": Object {},
+              "primary": Object {},
+              "success": Object {},
+            },
+            "input": Object {
+              "iconPaddingTop": Object {},
+            },
+          }
+        }
+      />
+      <styled.div>
+        <Component
+          animation={false}
+          disabled={false}
+          maxValue={100}
+          minValue={10}
+          onItemClick={[Function]}
+          ranges={
+            Array [
+              Object {
+                "value": 20,
+              },
+              Object {
+                "value": 40,
+              },
+            ]
+          }
+          value=""
+        />
+        <styled.div
+          animation={false}
+          disabled={false}
+        >
+          <styled.div
+            disabled={false}
+            onMouseDown={[Function]}
+            onTouchStart={[Function]}
+            theme={
+              Object {
+                "borderRadius": "",
+                "boxShadow": Object {},
+                "color": Object {
+                  "error": Object {},
+                  "neutral": Object {},
+                  "opacity": Object {},
+                  "primary": Object {},
+                  "success": Object {},
+                },
+                "input": Object {
+                  "iconPaddingTop": Object {},
+                },
+              }
+            }
+          />
+        </styled.div>
+        <styled.div
+          disabled={false}
+          onMouseDown={[Function]}
+          theme={
+            Object {
+              "borderRadius": "",
+              "boxShadow": Object {},
+              "color": Object {
+                "error": Object {},
+                "neutral": Object {},
+                "opacity": Object {},
+                "primary": Object {},
+                "success": Object {},
+              },
+              "input": Object {
+                "iconPaddingTop": Object {},
+              },
+            }
+          }
+        >
+          <styled.div>
+            10
+          </styled.div>
+        </styled.div>
+        <styled.div
+          disabled={false}
+          isRight={true}
+          onMouseDown={[Function]}
+          theme={
+            Object {
+              "borderRadius": "",
+              "boxShadow": Object {},
+              "color": Object {
+                "error": Object {},
+                "neutral": Object {},
+                "opacity": Object {},
+                "primary": Object {},
+                "success": Object {},
+              },
+              "input": Object {
+                "iconPaddingTop": Object {},
+              },
+            }
+          }
+        >
+          <styled.div>
+            100
+          </styled.div>
+        </styled.div>
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Range should render component with value and onChange 1`] = `
+<styled.div
+  width="inherit"
+>
+  <styled.div
+    onMouseDown={[Function]}
+    onTouchStart={[Function]}
+  >
+    <styled.div
+      theme={
+        Object {
+          "borderRadius": "",
+          "boxShadow": Object {},
+          "color": Object {
+            "error": Object {},
+            "neutral": Object {},
+            "opacity": Object {},
+            "primary": Object {},
+            "success": Object {},
+          },
+          "input": Object {
+            "iconPaddingTop": Object {},
+          },
+        }
+      }
+    >
+      <styled.div
+        animation={false}
+        theme={
+          Object {
+            "borderRadius": "",
+            "boxShadow": Object {},
+            "color": Object {
+              "error": Object {},
+              "neutral": Object {},
+              "opacity": Object {},
+              "primary": Object {},
+              "success": Object {},
+            },
+            "input": Object {
+              "iconPaddingTop": Object {},
+            },
+          }
+        }
+      />
+      <styled.div>
+        <styled.div
+          animation={false}
+        >
+          <styled.div
+            onMouseDown={[Function]}
+            onTouchStart={[Function]}
+            theme={
+              Object {
+                "borderRadius": "",
+                "boxShadow": Object {},
+                "color": Object {
+                  "error": Object {},
+                  "neutral": Object {},
+                  "opacity": Object {},
+                  "primary": Object {},
+                  "success": Object {},
+                },
+                "input": Object {
+                  "iconPaddingTop": Object {},
+                },
+              }
+            }
+          />
+        </styled.div>
+        <styled.div
+          onMouseDown={[Function]}
+          theme={
+            Object {
+              "borderRadius": "",
+              "boxShadow": Object {},
+              "color": Object {
+                "error": Object {},
+                "neutral": Object {},
+                "opacity": Object {},
+                "primary": Object {},
+                "success": Object {},
+              },
+              "input": Object {
+                "iconPaddingTop": Object {},
+              },
+            }
+          }
+        >
+          <styled.div>
+            0
+          </styled.div>
+        </styled.div>
+        <styled.div
+          isRight={true}
+          onMouseDown={[Function]}
+          theme={
+            Object {
+              "borderRadius": "",
+              "boxShadow": Object {},
+              "color": Object {
+                "error": Object {},
+                "neutral": Object {},
+                "opacity": Object {},
+                "primary": Object {},
+                "success": Object {},
+              },
+              "input": Object {
+                "iconPaddingTop": Object {},
+              },
+            }
+          }
+        >
+          <styled.div>
+            20
+          </styled.div>
+        </styled.div>
+      </styled.div>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

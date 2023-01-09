@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tags should render component with items 1`] = `
+<styled.div>
+  <styled.button
+    key="1"
+    kind="red"
+    onClick={[Function]}
+    tabIndex={1}
+    theme={Object {}}
+    tooltip="Культура"
+  >
+    <styled.div>
+      Культура
+    </styled.div>
+  </styled.button>
+  <styled.div />
+  <styled.button
+    key="2"
+    kind="red"
+    onClick={[Function]}
+    tabIndex={1}
+    theme={Object {}}
+    tooltip="Кино"
+  >
+    <styled.div>
+      Кино
+    </styled.div>
+  </styled.button>
+  <styled.div />
+  <styled.button
+    key="3"
+    kind="red"
+    onClick={[Function]}
+    tabIndex={1}
+    theme={Object {}}
+    tooltip="Новости"
+  >
+    <styled.div>
+      Новости
+    </styled.div>
+  </styled.button>
+  <styled.div />
+  <styled.button
+    key="4"
+    kind="red"
+    onClick={[Function]}
+    tabIndex={1}
+    theme={Object {}}
+    tooltip="Музыка"
+  >
+    <styled.div>
+      Музыка
+    </styled.div>
+  </styled.button>
+</styled.div>
+`;

@@ -1,0 +1,763 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationSimple should render input if pages quantity is 22 or more 1`] = `
+<styled.div>
+  <styled.button
+    disabled={true}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    theme={
+      Object {
+        "color": Object {
+          "neutral": Object {
+            "90": "",
+            "white": "",
+          },
+          "opacity": Object {
+            "blackFocus": "",
+          },
+          "primary": Object {
+            "60": "",
+          },
+        },
+      }
+    }
+  >
+    <div
+      height={24}
+      width={24}
+    />
+  </styled.button>
+  <styled.div>
+    <styled.button
+      disabled={false}
+      key="1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={true}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        1
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="2"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        2
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="3"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        3
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="4"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        4
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="5"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        5
+      </styled.div>
+    </styled.button>
+    <styled.button
+      tabIndex={-1}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+      withEllipsis={true}
+    >
+      <styled.div>
+        ...
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="22"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        22
+      </styled.div>
+    </styled.button>
+  </styled.div>
+  <styled.button
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    theme={
+      Object {
+        "color": Object {
+          "neutral": Object {
+            "90": "",
+            "white": "",
+          },
+          "opacity": Object {
+            "blackFocus": "",
+          },
+          "primary": Object {
+            "60": "",
+          },
+        },
+      }
+    }
+  >
+    <div
+      height={24}
+      width={24}
+    />
+  </styled.button>
+  <styled.input
+    onBlur={[Function]}
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    placeholder="На страницу"
+    theme={
+      Object {
+        "color": Object {
+          "neutral": Object {
+            "90": "",
+            "white": "",
+          },
+          "opacity": Object {
+            "blackFocus": "",
+          },
+          "primary": Object {
+            "60": "",
+          },
+        },
+      }
+    }
+    type="number"
+    value=""
+  />
+</styled.div>
+`;
+
+exports[`PaginationSimple should render pages with ellipsis if pages quantity is 8 or more 1`] = `
+<styled.div>
+  <styled.button
+    disabled={true}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    theme={
+      Object {
+        "color": Object {
+          "neutral": Object {
+            "90": "",
+            "white": "",
+          },
+          "opacity": Object {
+            "blackFocus": "",
+          },
+          "primary": Object {
+            "60": "",
+          },
+        },
+      }
+    }
+  >
+    <div
+      height={24}
+      width={24}
+    />
+  </styled.button>
+  <styled.div>
+    <styled.button
+      disabled={false}
+      key="1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={true}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        1
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="2"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        2
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="3"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        3
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="4"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        4
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="5"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        5
+      </styled.div>
+    </styled.button>
+    <styled.button
+      tabIndex={-1}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+      withEllipsis={true}
+    >
+      <styled.div>
+        ...
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="8"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        8
+      </styled.div>
+    </styled.button>
+  </styled.div>
+  <styled.button
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    theme={
+      Object {
+        "color": Object {
+          "neutral": Object {
+            "90": "",
+            "white": "",
+          },
+          "opacity": Object {
+            "blackFocus": "",
+          },
+          "primary": Object {
+            "60": "",
+          },
+        },
+      }
+    }
+  >
+    <div
+      height={24}
+      width={24}
+    />
+  </styled.button>
+</styled.div>
+`;
+
+exports[`PaginationSimple should render pages without ellipsis if pages quantity is 7 or less 1`] = `
+<styled.div>
+  <styled.button
+    disabled={true}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    theme={
+      Object {
+        "color": Object {
+          "neutral": Object {
+            "90": "",
+            "white": "",
+          },
+          "opacity": Object {
+            "blackFocus": "",
+          },
+          "primary": Object {
+            "60": "",
+          },
+        },
+      }
+    }
+  >
+    <div
+      height={24}
+      width={24}
+    />
+  </styled.button>
+  <styled.div>
+    <styled.button
+      disabled={false}
+      key="1"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={true}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        1
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="2"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        2
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="3"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        3
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="4"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        4
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="5"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        5
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="6"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        6
+      </styled.div>
+    </styled.button>
+    <styled.button
+      disabled={false}
+      key="7"
+      onClick={[Function]}
+      onMouseDown={[Function]}
+      selected={false}
+      theme={
+        Object {
+          "color": Object {
+            "neutral": Object {
+              "90": "",
+              "white": "",
+            },
+            "opacity": Object {
+              "blackFocus": "",
+            },
+            "primary": Object {
+              "60": "",
+            },
+          },
+        }
+      }
+    >
+      <styled.div>
+        7
+      </styled.div>
+    </styled.button>
+  </styled.div>
+  <styled.button
+    disabled={false}
+    onClick={[Function]}
+    onMouseDown={[Function]}
+    theme={
+      Object {
+        "color": Object {
+          "neutral": Object {
+            "90": "",
+            "white": "",
+          },
+          "opacity": Object {
+            "blackFocus": "",
+          },
+          "primary": Object {
+            "60": "",
+          },
+        },
+      }
+    }
+  >
+    <div
+      height={24}
+      width={24}
+    />
+  </styled.button>
+</styled.div>
+`;

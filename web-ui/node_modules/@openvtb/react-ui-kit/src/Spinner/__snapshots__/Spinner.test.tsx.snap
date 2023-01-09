@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner should render component with big size by default 1`] = `
+<styled.div
+  size="big"
+>
+  <div />
+</styled.div>
+`;
+
+exports[`Spinner should render component with inverse color 1`] = `
+<styled.div
+  size="big"
+>
+  <div />
+</styled.div>
+`;
+
+exports[`Spinner should render component with medium size 1`] = `
+<styled.div
+  size="medium"
+>
+  <div />
+</styled.div>
+`;
+
+exports[`Spinner should render component with small size 1`] = `
+<styled.div
+  size="small"
+>
+  <div />
+</styled.div>
+`;

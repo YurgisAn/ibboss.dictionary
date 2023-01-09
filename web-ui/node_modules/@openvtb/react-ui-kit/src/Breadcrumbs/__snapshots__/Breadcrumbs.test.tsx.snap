@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs should render component 1`] = `
+<styled.div
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDown={[Function]}
+  tabIndex={1}
+>
+  <Component
+    focused={false}
+    id={0}
+    label="Breadcrumb 1"
+    last={false}
+    onClick={[Function]}
+    url="#1"
+  />
+  <Component />
+  <Component
+    focused={false}
+    id={1}
+    label="Breadcrumb 2"
+    last={false}
+    onClick={[Function]}
+    url="#2"
+  />
+  <Component />
+  <Component
+    focused={false}
+    id={2}
+    label="Breadcrumb 3"
+    last={false}
+    onClick={[Function]}
+    url="#3"
+  />
+  <Component />
+  <Component
+    focused={false}
+    id={3}
+    label="Breadcrumb 4"
+    last={true}
+    onClick={[Function]}
+  />
+</styled.div>
+`;
+
+exports[`Breadcrumbs should render component with small size 1`] = `
+<styled.div
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDown={[Function]}
+  small={true}
+  tabIndex={1}
+>
+  <Component
+    focused={false}
+    id={0}
+    label="Breadcrumb 1"
+    last={false}
+    onClick={[Function]}
+    small={true}
+    url="#1"
+  />
+  <Component
+    small={true}
+  />
+  <Component
+    focused={false}
+    id={1}
+    label="Breadcrumb 2"
+    last={false}
+    onClick={[Function]}
+    small={true}
+    url="#2"
+  />
+  <Component
+    small={true}
+  />
+  <Component
+    focused={false}
+    id={2}
+    label="Breadcrumb 3"
+    last={false}
+    onClick={[Function]}
+    small={true}
+    url="#3"
+  />
+  <Component
+    small={true}
+  />
+  <Component
+    focused={false}
+    id={3}
+    label="Breadcrumb 4"
+    last={true}
+    onClick={[Function]}
+    small={true}
+  />
+</styled.div>
+`;

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimePicker should render component with props 1`] = `
+<styled.div
+  width="100%"
+>
+  <Component
+    additionalText=""
+    alwaysShowMask={true}
+    icon={
+      <ForwardRef(styled.div)
+        active={false}
+        onMouseDown={[Function]}
+        theme={Object {}}
+      >
+        <div
+          height={24}
+          onClick={[Function]}
+          width={24}
+        />
+      </ForwardRef(styled.div)>
+    }
+    label="Выберите время"
+    mask="99 : 99"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onComplete={[Function]}
+    onFocus={[Function]}
+    refInput={
+      Object {
+        "current": null,
+      }
+    }
+    size="big"
+    status="default"
+    value=""
+    width="100%"
+  />
+  <Component
+    activeTime=" : "
+    onTimeSelect={[Function]}
+    open={false}
+    rangeEnd={
+      Object {
+        "hours": "23",
+        "minutes": "30",
+      }
+    }
+    rangeStart={
+      Object {
+        "hours": "00",
+        "minutes": "00",
+      }
+    }
+    size="big"
+  />
+</styled.div>
+`;

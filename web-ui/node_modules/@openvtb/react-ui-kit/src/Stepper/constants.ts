@@ -1,0 +1,10 @@
+export const STEP_HORZ_WIDTH = 192;
+export const STEP_HORZ_HEIGHT = 48;
+export const STEP_VERT_HEIGHT = 56;
+export const STEP_WIDTH = 148;
+export const STEP_HEIGHT = 20;
+export const MIN_HORZ_STEPS_NUMBER = 4;
+export const MAX_SYMBOLS_NUMBER = 35;
+export const ICON_SIZE = 26;
+export const ICON_CONTENT_MARGIN = 3;
+export const ELLIPSIS = '…';

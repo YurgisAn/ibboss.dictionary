@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge should render component with kind ERROR 1`] = `
+<styled.div
+  kind="error"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with kind INFO 1`] = `
+<styled.div
+  kind="info"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with kind NEUTRAL_DARK 1`] = `
+<styled.div
+  kind="neutral-dark"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with kind NEUTRAL_GREY 1`] = `
+<styled.div
+  kind="neutral-grey"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with kind NEUTRAL_LIGHT_DISABLED 1`] = `
+<styled.div
+  kind="neutral-light-disabled"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with kind NEUTRAL_LIGHT_INACTIVE 1`] = `
+<styled.div
+  kind="neutral-light-inactive"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with kind NEUTRAL_WHITE 1`] = `
+<styled.div
+  kind="neutral-white"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with kind NEUTRAL_WHITE_DISABLED 1`] = `
+<styled.div
+  kind="neutral-white-disabled"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with kind NEUTRAL_WHITE_INACTIVE 1`] = `
+<styled.div
+  kind="neutral-white-inactive"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with kind SUCCESS 1`] = `
+<styled.div
+  kind="success"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with kind WARNING 1`] = `
+<styled.div
+  kind="warning"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with required properties, kind NEUTRAL_LIGHT and big size by default 1`] = `
+<styled.div
+  kind="neutral-light"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;
+
+exports[`Badge should render component with small size 1`] = `
+<styled.div
+  kind="neutral-light"
+  size="small"
+  theme={Object {}}
+>
+  <styled.div>
+    5
+  </styled.div>
+</styled.div>
+`;

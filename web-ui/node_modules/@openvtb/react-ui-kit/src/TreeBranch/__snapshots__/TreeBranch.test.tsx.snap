@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeBranch should render component as header 1`] = `
+<Fragment>
+  <styled.div
+    size="big"
+  >
+    <Checkbox
+      label={
+        <Unknown
+          header={true}
+          size="big"
+        >
+          Foo
+        </Unknown>
+      }
+      onChange={[Function]}
+      size="big"
+    />
+  </styled.div>
+</Fragment>
+`;
+
+exports[`TreeBranch should render component with different sizes 1`] = `
+<Fragment>
+  <styled.div
+    size="big"
+  >
+    <Checkbox
+      label="Foo"
+      onChange={[Function]}
+      size="big"
+    />
+  </styled.div>
+</Fragment>
+`;
+
+exports[`TreeBranch should render component with different sizes 2`] = `
+<Fragment>
+  <styled.div
+    size="small"
+  >
+    <Checkbox
+      label="Foo"
+      onChange={[Function]}
+      size="small"
+    />
+  </styled.div>
+</Fragment>
+`;
+
+exports[`TreeBranch should render component with icon 1`] = `
+<Fragment>
+  <styled.div
+    size="big"
+  >
+    <Checkbox
+      label={
+        <Unknown
+          icon={<Icon />}
+          size="big"
+        >
+          Foo
+        </Unknown>
+      }
+      onChange={[Function]}
+      size="big"
+    />
+  </styled.div>
+</Fragment>
+`;
+
+exports[`TreeBranch should render component with indeterminate checkbox 1`] = `
+<Fragment>
+  <styled.div
+    size="big"
+  >
+    <Checkbox
+      indeterminate={true}
+      label="Foo"
+      onChange={[Function]}
+      size="big"
+    />
+  </styled.div>
+</Fragment>
+`;
+
+exports[`TreeBranch should render component with required props 1`] = `
+<Fragment>
+  <styled.div
+    size="big"
+  >
+    <Checkbox
+      label="Foo"
+      onChange={[Function]}
+      size="big"
+    />
+  </styled.div>
+</Fragment>
+`;
+
+exports[`TreeBranch should render component with toggle if children are provided 1`] = `
+<Fragment>
+  <styled.div
+    size="big"
+  >
+    <Component
+      onChange={[Function]}
+      size="big"
+    />
+    <Checkbox
+      label="Foo"
+      onChange={[Function]}
+      size="big"
+    />
+  </styled.div>
+</Fragment>
+`;
+
+exports[`TreeBranch should render component without checkbox 1`] = `
+<Fragment>
+  <styled.div
+    size="big"
+  >
+    <Component
+      size="big"
+    >
+      Foo
+    </Component>
+  </styled.div>
+</Fragment>
+`;
+
+exports[`TreeBranch should show children if expanded prop is true 1`] = `
+<Fragment>
+  <styled.div
+    size="big"
+  >
+    <Component
+      expanded={true}
+      onChange={[Function]}
+      size="big"
+    />
+    <Checkbox
+      label="Foo"
+      onChange={[Function]}
+      size="big"
+    />
+  </styled.div>
+  <styled.div
+    size="big"
+  >
+    <Component
+      id={1}
+      label="Bar"
+    />
+  </styled.div>
+</Fragment>
+`;

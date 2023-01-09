@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link should render component by default as "PRIMARY" link 1`] = `
+<styled.a
+  disabled={false}
+  href="#0"
+  inverse={false}
+  kind="primary"
+  size="big"
+  theme={Object {}}
+>
+  <Styled(styled.div)>
+    Link Text
+  </Styled(styled.div)>
+</styled.a>
+`;
+
+exports[`Link should render component by default as "PRIMARY" link with inverse option 1`] = `
+<styled.a
+  disabled={false}
+  href="#0"
+  inverse={true}
+  kind="primary"
+  size="big"
+  theme={Object {}}
+>
+  <Styled(styled.div)>
+    Link Text
+  </Styled(styled.div)>
+</styled.a>
+`;
+
+exports[`Link should render component by default link with icon and icon position LEFT 1`] = `
+<styled.a
+  disabled={false}
+  href="#0"
+  iconPosition="left"
+  inverse={false}
+  kind="primary"
+  size="big"
+  theme={Object {}}
+>
+  <styled.div
+    size="big"
+  >
+    <div
+      height={24}
+      width={24}
+    />
+  </styled.div>
+  <Styled(styled.div)>
+    Link Text
+  </Styled(styled.div)>
+</styled.a>
+`;
+
+exports[`Link should render component by default link with icon and icon position RIGHT 1`] = `
+<styled.a
+  disabled={false}
+  href="#0"
+  iconPosition="right"
+  inverse={false}
+  kind="primary"
+  size="big"
+  theme={Object {}}
+>
+  <Styled(styled.div)>
+    Link Text
+  </Styled(styled.div)>
+  <styled.div
+    size="big"
+  >
+    <div
+      height={24}
+      width={24}
+    />
+  </styled.div>
+</styled.a>
+`;
+
+exports[`Link should render component by default link with icon without icon position, icon position RIGHT by default 1`] = `
+<styled.a
+  disabled={false}
+  href="#0"
+  iconPosition="right"
+  inverse={false}
+  kind="primary"
+  size="big"
+  theme={Object {}}
+>
+  <Styled(styled.div)>
+    Link Text
+  </Styled(styled.div)>
+  <styled.div
+    size="big"
+  >
+    <div
+      height={24}
+      width={24}
+    />
+  </styled.div>
+</styled.a>
+`;
+
+exports[`Link should render component with kind="PRIMARY" link disabled 1`] = `
+<styled.a
+  disabled={true}
+  href="#0"
+  inverse={false}
+  kind="primary"
+  size="big"
+  theme={Object {}}
+>
+  <Styled(styled.div)>
+    Link Text
+  </Styled(styled.div)>
+</styled.a>
+`;
+
+exports[`Link should render component with kind="SECONDARY" link 1`] = `
+<styled.a
+  disabled={false}
+  href="#0"
+  inverse={false}
+  kind="secondary"
+  size="big"
+  theme={Object {}}
+>
+  <Styled(styled.div)>
+    Link Text
+  </Styled(styled.div)>
+</styled.a>
+`;
+
+exports[`Link should render component with size="SMALL" link 1`] = `
+<styled.a
+  disabled={false}
+  href="#0"
+  inverse={false}
+  kind="primary"
+  size="small"
+  theme={Object {}}
+>
+  <Styled(styled.div)>
+    Link Text
+  </Styled(styled.div)>
+</styled.a>
+`;

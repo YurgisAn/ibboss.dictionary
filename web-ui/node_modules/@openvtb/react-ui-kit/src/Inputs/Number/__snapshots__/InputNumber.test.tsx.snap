@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input.Number should render component 1`] = `
+<Component
+  iconIsActive={false}
+  iconServices={
+    <ForwardRef(styled.div)
+      size="big"
+    >
+      <ForwardRef(styled.div)
+        disabled={false}
+        height={24}
+        onClick={[Function]}
+        theme={Object {}}
+        width={24}
+      />
+      <ForwardRef(styled.div)
+        disabled={false}
+        height={24}
+        onClick={[Function]}
+        theme={Object {}}
+        width={24}
+      />
+    </ForwardRef(styled.div)>
+  }
+  maxLength={16}
+  number={true}
+  onChange={[Function]}
+  setIconIsActive={[Function]}
+  size="big"
+  value=""
+/>
+`;
+
+exports[`Input.Number should render component with clearable field, icon and name 1`] = `
+<Component
+  clearable={true}
+  icon={<div />}
+  iconIsActive={false}
+  iconServices={
+    <ForwardRef(styled.div)
+      size="micro"
+    >
+      <ForwardRef(styled.div)
+        disabled={false}
+        height={20}
+        onClick={[Function]}
+        theme={Object {}}
+        width={20}
+      />
+      <ForwardRef(styled.div)
+        disabled={false}
+        height={20}
+        onClick={[Function]}
+        theme={Object {}}
+        width={20}
+      />
+    </ForwardRef(styled.div)>
+  }
+  inputName="test"
+  label="Введите ваше имя"
+  maxLength={16}
+  number={true}
+  onChange={[Function]}
+  setIconIsActive={[Function]}
+  size="micro"
+  value=""
+/>
+`;
+
+exports[`Input.Number should render component with error status 1`] = `
+<Component
+  additionalText="Ошибка"
+  iconIsActive={false}
+  iconServices={
+    <ForwardRef(styled.div)
+      size="big"
+    >
+      <ForwardRef(styled.div)
+        disabled={false}
+        height={24}
+        onClick={[Function]}
+        theme={Object {}}
+        width={24}
+      />
+      <ForwardRef(styled.div)
+        disabled={false}
+        height={24}
+        onClick={[Function]}
+        theme={Object {}}
+        width={24}
+      />
+    </ForwardRef(styled.div)>
+  }
+  label=""
+  maxLength={16}
+  number={true}
+  onChange={[Function]}
+  setIconIsActive={[Function]}
+  size="big"
+  status="error"
+  value=""
+/>
+`;
+
+exports[`Input.Number should render component with success status 1`] = `
+<Component
+  additionalText="Успех"
+  iconIsActive={false}
+  iconServices={
+    <ForwardRef(styled.div)
+      size="big"
+    >
+      <ForwardRef(styled.div)
+        disabled={false}
+        height={24}
+        onClick={[Function]}
+        theme={Object {}}
+        width={24}
+      />
+      <ForwardRef(styled.div)
+        disabled={false}
+        height={24}
+        onClick={[Function]}
+        theme={Object {}}
+        width={24}
+      />
+    </ForwardRef(styled.div)>
+  }
+  label="Введите ваше имя"
+  maxLength={16}
+  number={true}
+  onChange={[Function]}
+  setIconIsActive={[Function]}
+  size="big"
+  status="success"
+  value=""
+/>
+`;

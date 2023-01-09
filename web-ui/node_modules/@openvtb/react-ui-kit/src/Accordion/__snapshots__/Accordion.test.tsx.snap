@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion should render component with required properties 1`] = `
+<styled.ul>
+  <Component
+    content="Content"
+    id={0}
+    key="0"
+    onChange={[MockFunction]}
+    small={false}
+    title="Title"
+  />
+</styled.ul>
+`;
+
+exports[`Accordion should render small component with required properties 1`] = `
+<styled.ul>
+  <Component
+    content="Content"
+    id={0}
+    key="0"
+    onChange={[MockFunction]}
+    small={true}
+    title="Title"
+  />
+</styled.ul>
+`;

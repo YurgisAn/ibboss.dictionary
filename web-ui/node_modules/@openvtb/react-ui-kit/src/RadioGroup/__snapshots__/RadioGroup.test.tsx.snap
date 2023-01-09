@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioGroup should render component with disabled state 1`] = `
+<styled.div
+  size="big"
+>
+  <Component
+    checked={true}
+    disabled={true}
+    error={false}
+    key="0"
+    label="Москва"
+    onChange={[Function]}
+    size="big"
+    value="Moscow"
+  />
+  <Component
+    checked={false}
+    disabled={true}
+    key="1"
+    label="Самара"
+    onChange={[Function]}
+    size="big"
+    value="Samara"
+  />
+  <Component
+    checked={false}
+    disabled={true}
+    key="2"
+    label="Воронеж"
+    onChange={[Function]}
+    size="big"
+    value="Voronez"
+  />
+</styled.div>
+`;
+
+exports[`RadioGroup should render component with label 1`] = `
+<styled.div
+  size="big"
+>
+  <Styled(styled.div)
+    size="big"
+    theme={Object {}}
+  >
+    RadioGroup
+  </Styled(styled.div)>
+  <Component
+    checked={true}
+    error={false}
+    key="0"
+    label="Москва"
+    onChange={[Function]}
+    size="big"
+    value="Moscow"
+  />
+  <Component
+    checked={false}
+    key="1"
+    label="Самара"
+    onChange={[Function]}
+    size="big"
+    value="Samara"
+  />
+  <Component
+    checked={false}
+    key="2"
+    label="Воронеж"
+    onChange={[Function]}
+    size="big"
+    value="Voronez"
+  />
+</styled.div>
+`;
+
+exports[`RadioGroup should render component with required properties 1`] = `
+<styled.div
+  size="big"
+>
+  <Component
+    checked={true}
+    error={false}
+    key="0"
+    label="Москва"
+    onChange={[Function]}
+    size="big"
+    value="Moscow"
+  />
+  <Component
+    checked={false}
+    key="1"
+    label="Самара"
+    onChange={[Function]}
+    size="big"
+    value="Samara"
+  />
+  <Component
+    checked={false}
+    key="2"
+    label="Воронеж"
+    onChange={[Function]}
+    size="big"
+    value="Voronez"
+  />
+</styled.div>
+`;
+
+exports[`RadioGroup should render component with small size 1`] = `
+<styled.div
+  size="small"
+>
+  <Component
+    checked={true}
+    error={false}
+    key="0"
+    label="Москва"
+    onChange={[Function]}
+    size="small"
+    value="Moscow"
+  />
+  <Component
+    checked={false}
+    key="1"
+    label="Самара"
+    onChange={[Function]}
+    size="small"
+    value="Samara"
+  />
+  <Component
+    checked={false}
+    key="2"
+    label="Воронеж"
+    onChange={[Function]}
+    size="small"
+    value="Voronez"
+  />
+</styled.div>
+`;

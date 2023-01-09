@@ -1,0 +1,223 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StaticNotification should render component by default as "INFO" notification with header 1`] = `
+<Styled(styled.div)
+  kind="info"
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)
+    hasOffset={true}
+  >
+    StaticNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component by default as "INFO" notification with white background 1`] = `
+<Styled(styled.div)
+  kind="info"
+  showWhiteBackground={true}
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component by default as "INFO" notification without header 1`] = `
+<Styled(styled.div)
+  kind="info"
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component by default as "INFO" notification without header with custom width 1`] = `
+<Styled(styled.div)
+  kind="info"
+  theme={Object {}}
+  width={777}
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component with kind="ERROR" notification with header 1`] = `
+<Styled(styled.div)
+  kind="error"
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)
+    hasOffset={true}
+  >
+    StaticNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component with kind="ERROR" notification with white background 1`] = `
+<Styled(styled.div)
+  kind="error"
+  showWhiteBackground={true}
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component with kind="ERROR" notification without header 1`] = `
+<Styled(styled.div)
+  kind="error"
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component with kind="INFO" notification with header 1`] = `
+<Styled(styled.div)
+  kind="info"
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)
+    hasOffset={true}
+  >
+    StaticNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component with kind="INFO" notification without header 1`] = `
+<Styled(styled.div)
+  kind="info"
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component with kind="SUCCESS" notification with header 1`] = `
+<Styled(styled.div)
+  kind="success"
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)
+    hasOffset={true}
+  >
+    StaticNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component with kind="SUCCESS" notification without header 1`] = `
+<Styled(styled.div)
+  kind="success"
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component with kind="WARNING" notification with header 1`] = `
+<Styled(styled.div)
+  kind="warning"
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)
+    hasOffset={true}
+  >
+    StaticNotification Header
+  </Styled(styled.div)>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;
+
+exports[`StaticNotification should render component with kind="WARNING" notification without header 1`] = `
+<Styled(styled.div)
+  kind="warning"
+  theme={Object {}}
+  width="320px"
+>
+  <styled.div>
+    <div />
+  </styled.div>
+  <Styled(styled.div)>
+    StaticNotification Message
+  </Styled(styled.div)>
+</Styled(styled.div)>
+`;

@@ -1,0 +1,15 @@
+export const ITEM_PADDING_LEFT_SMALL = '28px';
+export const ITEM_PADDING_LEFT_BIG = '32px';
+export const ITEM_MARGIN_BOTTOM_SMALL = '12px';
+export const ITEM_MARGIN_BOTTOM_BIG = '16px';
+export const ITEM_BEFORE_WIDTH_SMALL = '18px';
+export const ITEM_BEFORE_WIDTH_BIG = '20px';
+export const ITEM_BEFORE_LEFT_SMALL = '10px';
+export const ITEM_BEFORE_LEFT_BIG = '12px';
+export const COMPOSITEGROUP_PADDING_TOP_SMALL = '12px';
+export const COMPOSITEGROUP_PADDING_TOP_BIG = '16px';
+export const COMPOSITEGROUP_BEFORE_HEIGHT_SMALL = '12px';
+export const COMPOSITEGROUP_BEFORE_HEIGHT_BIG = '14px';
+export const COMPOSITEGROUP_BEFORE_LEFT_SMALL = '10px';
+export const COMPOSITEGROUP_BEFORE_LEFT_BIG = '12px';
+export const COMPOSITEGROUP_BEFORE_TOP = '2px';
