@@ -10,4 +10,4 @@ const getStrictCompareFunc = (firstValue: any) => (secondValue: any) => firstVal
 const patternCompare = getStrictCompareFunc('true');
 
 
-export const endpoint = hostConfig.API_PATH;
+export const endpoint = hostConfig.api_path;
