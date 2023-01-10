@@ -132,6 +132,6 @@ export const Table: React.FC<PropType> = ({columns, book}) => {
                             </TableContainer>
                             )
                             : (
-                                <EmptyWrapper>Нет данных</EmptyWrapper>
+                                <EmptyWrapper>Нет данных по справочнику</EmptyWrapper>
                             );
 };

@@ -28,7 +28,7 @@ namespace Ogress.Sourcebook.Api
                 policy.AllowAnyMethod();
             });
             app.UseMiddleware<ExceptionMiddleware>();
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
             app.Run();
