@@ -4,11 +4,11 @@
 import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../common/configuration';
 // @ts-ignore
-import { DUMMY_BASE_URL, setSearchParams, toPathString, createRequestFunction } from '../common/common';
+import { DUMMY_BASE_URL, setSearchParams, toPathString, createRequestFunction, serializeDataIfNeeded } from '../common/common';
 // @ts-ignore
 import { BASE_PATH, RequestArgs, BaseAPI } from '../common/base';
 
-import { DirectoryDto, SourceBookDto, DataDto } from '../models'
+import { DirectoryDto, SourceBookDto, DataDto, QueryRequest } from '../models'
 
 //#region axios parameter creator
 /**
@@ -86,7 +86,7 @@ export const SourceBookApiAxiosParamCreator = function (configuration?: Configur
          * @deprecated
          * @throws {RequiredError}
          */
-        getBookRows: async (name:string, take: number, skip:number, sortColumn:string, asc:boolean, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getBookRows: async (name:string, take: number, skip:number, sortColumn:string, asc:boolean, filter?: QueryRequest, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/sourcebooks/data/{name}/{take}/{skip}/{sortColumn}/{asc}`
                                 .replace(`{${"name"}}`, encodeURIComponent(String(name)))
                                 .replace(`{${"take"}}`, encodeURIComponent(String(take)))
@@ -103,11 +103,10 @@ export const SourceBookApiAxiosParamCreator = function (configuration?: Configur
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            localVarHeaderParameter['Content-Type'] = 'application/json';           
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
+            localVarRequestOptions.data = serializeDataIfNeeded(filter, localVarRequestOptions, configuration)
             return {
                 url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -159,9 +158,9 @@ export const SourceBookApiFp = function(configuration?: Configuration) {
          * @deprecated
          * @throws {RequiredError}
          */
-         async getBookRows(name:string, take: number, skip:number, sortColumn:string, asc:boolean, options: AxiosRequestConfig = {}):
+         async getBookRows(name:string, take: number, skip:number, sortColumn:string, asc:boolean, filter?: QueryRequest,  options: AxiosRequestConfig = {}):
                          Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<DataDto>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getBookRows(name, take, skip, sortColumn, asc, options);
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBookRows(name, take, skip, sortColumn, asc, filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         } 
         
@@ -210,8 +209,8 @@ export const SourceBookApiFactory = function (configuration?: Configuration, bas
          * @deprecated
          * @throws {RequiredError}
          */
-        getBookRows(name:string, take: number, skip:number, sortColumn:string, asc:boolean, options: any): AxiosPromise<Array<DataDto>> {
-            return localVarFp.getBookRows(name, take, skip, sortColumn, asc, options).then((request) => request(axios, basePath));
+        getBookRows(name:string, take: number, skip:number, sortColumn:string, asc:boolean, filter?: QueryRequest, options?: any): AxiosPromise<Array<DataDto>> {
+            return localVarFp.getBookRows(name, take, skip, sortColumn, asc, filter, options).then((request) => request(axios, basePath));
         } 
     };
 };
@@ -269,6 +268,13 @@ export interface SourceBookApiGetBookRowsRequest {
      * @memberof SourceBookApiGetBookRowsRequest
     */
     readonly asc  : boolean
+
+    /**
+     * Фильтр
+     * @type {QueryRequest}
+     * @memberof SourceBookApiGetBookRowsRequest
+    */
+    readonly filter?: QueryRequest
 }
 //#endregion Request interface
 
@@ -317,6 +323,7 @@ export class SourceBookApi extends BaseAPI {
         public getBookRows(requestParameters: SourceBookApiGetBookRowsRequest, options?: AxiosRequestConfig) {
             return SourceBookApiFp(this.configuration).getBookRows(requestParameters.name, requestParameters.take, requestParameters.skip, requestParameters.sortColumn
                                                                 , requestParameters.asc
+                                                                , requestParameters.filter
                                                                 , options).then((request) => request(this.axios, this.basePath));
         }
 }

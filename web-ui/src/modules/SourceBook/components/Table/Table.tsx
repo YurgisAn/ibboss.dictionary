@@ -8,6 +8,8 @@ import type { DataDto, СolumnInfoDto } from '~/shared/models';
 import { TableContainer, EmptyWrapper,  PaginationStyled} from './styled';
 import { TableHeader } from './TableHeader'
 import { TableRows } from './TableRows'
+import * as S from './styled';
+import { formValuesToRequestParams } from '../Filters/hooks/useRequestParams';
 
 
 type PropType = {
@@ -30,8 +32,12 @@ export const Table: React.FC<PropType> = ({columns, book}) => {
     }, [observableUpdate]);
 
 
-    const requestRowsParams = { name: book, take: pageSize, skip: (page - 1) * pageSize + 1 , sortColumn:sort, asc: asc };
+    const requestRowsParams = { name: book, take: pageSize, skip: (page - 1) * pageSize + 1 , sortColumn:sort, asc: asc, 
+                                    filter: formValuesToRequestParams() };
 
+    /**
+     * Плагиация
+     */
     const handlerPaginationChange = useCallback(
         (values) => {
             setPage(values.pageSize === pageSize ? values.page : 1);
@@ -39,28 +45,37 @@ export const Table: React.FC<PropType> = ({columns, book}) => {
         },
         [pageSize]
     );
+
+    /**
+     * Сбрасываем плагиацию
+     */
+    useEffect(() => {
+        setPage(defaultPageNumber);
+        setPageSize(defaultPageSize);
+    }, [observableUpdate, location.search]);
+
     /**
      * Получаем столбцы
      */
     const getRows = useCallback(
-      (cancelToken: CancelToken) => {
-          sourceBookApi
-              .getBookRows(requestRowsParams, { cancelToken })
-              .then(({ data }) => {
-                  if (wasUnmount.current)
-                      return;     
-                  isDefined(data); 
-                  setRows(data);
+        (cancelToken: CancelToken) => {
+            sourceBookApi
+                .getBookRows(requestRowsParams, { cancelToken })
+                .then(({ data }) => {
+                    if (wasUnmount.current)
+                        return;     
+                    isDefined(data); 
+                    setRows(data);
 
-              })
-              .catch((err) => {
-                  if (!(err instanceof axios.Cancel)) {
-                      console.error('sourceBookApi.getBookRows error', err);
-                  }
-              });
-      },
-      [sourceBookApi, requestRowsParams]
-  );
+                })
+                .catch((err) => {
+                    if (!(err instanceof axios.Cancel)) {
+                        console.error('sourceBookApi.getBookRows error', err);
+                    }
+                });
+        },
+        [sourceBookApi, requestRowsParams]
+    );
 
      const refreshIntervalTime = 10000;
 //   /**
@@ -82,21 +97,23 @@ export const Table: React.FC<PropType> = ({columns, book}) => {
 //       };
 //   }, [refreshIntervalTime]);
 
-  useEffect(() => {
-      let cancel: Canceler;
-      const cancelToken = new axios.CancelToken(function executor(c) {
-          cancel = c;
-      });
+    useEffect(() => {
+        let cancel: Canceler;
+        const cancelToken = new axios.CancelToken(function executor(c) {
+            cancel = c;
+        });
 
-      wasUnmount.current = false;
-      getRows(cancelToken);
-      return () => {
-          cancel?.();
-          wasUnmount.current = true;
-      };
-  }, [page, pageSize, sort, asc, observableUpdate]);
+        wasUnmount.current = false;
+        getRows(cancelToken);
+        return () => {
+            cancel?.();
+            wasUnmount.current = true;
+        };
+    }, [page, pageSize, sort, asc, observableUpdate]);
 
-   
+   /**
+    * Сортировка в колонках
+    */
     const handlerSortChange = useCallback(
         (values) => {
             if (values.sort !== 'initial')

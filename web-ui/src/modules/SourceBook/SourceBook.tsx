@@ -1,12 +1,12 @@
 import { useAuthorization} from '@vtb-ermo/authorization';
 import axios, { Canceler, CancelToken } from 'axios';
 import React, { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { СolumnInfoDto } from '~/shared/models';
+import { СolumnInfoDto, FilterDto } from '~/shared/models';
 import { assertDefined, isDefined } from '~/helpers/guards';
 import { useApi } from '~/shared/ApiContext';
 import * as S from './styled';
 import { SourceBookContext } from './SourceBookContext';
-import { Table } from './components/Table';
+import { Table, Filters } from './components';
 
 type TypeProps = {
     book: string;
@@ -15,6 +15,7 @@ export const SourceBook: FC<TypeProps>  = ({book}) => {
 
     const [title, setTitle] = useState('');
     const [columns, setColumns] = useState<СolumnInfoDto[]>([]);  
+    const [filters, setFilters] = useState<FilterDto[]>([]);  
     const [observableUpdate, forceUpdate] = useState({});
     const sourceBookContext = useMemo(() => {
         return { observableUpdate, forceUpdate };
@@ -24,6 +25,12 @@ export const SourceBook: FC<TypeProps>  = ({book}) => {
     const wasUnmount = useRef(false);
     const requestSourceParams = { name: book };
     
+    const onFilterMenuClickOutside = ({ closeMenu }: any, event: Event) => {
+        if (event.target) {
+            return;
+        }
+        closeMenu();
+    };
     /**
      * Получаем столбцы
      */
@@ -38,6 +45,8 @@ export const SourceBook: FC<TypeProps>  = ({book}) => {
                     setTitle(data?.title);       
                     assertDefined(data?.columns, 'data?.columns');
                     setColumns(data?.columns);
+                    assertDefined(data?.filters, 'data?.filters');
+                    setFilters(data?.filters);
                 })
                 .catch((err) => {
                     if (!(err instanceof axios.Cancel)) {
@@ -61,13 +70,12 @@ export const SourceBook: FC<TypeProps>  = ({book}) => {
             wasUnmount.current = true;
         };
     }, [observableUpdate]);
-
-
-
+    
     return (        
         <SourceBookContext.Provider value={sourceBookContext}>
             <h2>{title}</h2>
             <S.ListWrapper data-at='list-board'>
+                <Filters filters={filters}/>
                 <Table columns ={columns}book={book}/>
             </S.ListWrapper>
         </SourceBookContext.Provider>
