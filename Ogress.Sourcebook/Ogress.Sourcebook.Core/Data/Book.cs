@@ -71,7 +71,7 @@ public sealed class Book
             var list = new List<ItemValue>();
             foreach (var col in info.Columns)
             {
-                var expanded = MacroProcessor.Expand(col.Value, rec);
+                var expanded = MacroProcessor.Expand(info, col, rec);
                 list.Add(new ItemValue(col.Title,expanded));
             }
             xs.Add(new Item(list));

@@ -15,6 +15,7 @@ public record class BookInfo(
     [property: JsonPropertyName("columns")] List<ColumnInfo> Columns,
     [property: JsonPropertyName("lists")] List<ListInfo> Lists,
     [property: JsonPropertyName("filters")] List<FilterInfo> Filters,
+    [property: JsonPropertyName("formatters")] List<FormatterInfo> Formatters,
     bool Distinct,
     int? Take,
     int? Skip,
@@ -35,6 +36,7 @@ public record class ColumnInfo(
     [property: JsonPropertyName("value")] string Value,
     [property: JsonPropertyName("sortBy")] string? SortBy,
     [property: JsonPropertyName("filter")] string? Filter,
+    [property: JsonPropertyName("formatter")] string? Formatter,
     [property: JsonPropertyName("hints")][property: JsonConverter(typeof(EnumConverter<Hints>))] Hints? Hints);
 
 public record class ElementInfo(
@@ -72,6 +74,18 @@ public record class ListEntry(
     [property: JsonPropertyName("caption")] string Caption,
     [property: JsonPropertyName("value")] string Value
     );
+
+public record class FormatterInfo(
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("type")] string Type,
+    [property: JsonPropertyName("options")] List<FormatterOption>? Options
+    );
+
+public record class FormatterOption(
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("value")] string Value
+    );
+
 /// <summary>
 /// Список данных
 /// </summary>

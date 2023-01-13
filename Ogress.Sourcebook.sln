@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook", "Ogress
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Core", "Ogress.Sourcebook\Ogress.Sourcebook.Core\Ogress.Sourcebook.Core.csproj", "{6E9FD17F-9777-44A3-8985-C9577FF773E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ogress.Sourcebook.Api", "Ogress.Sourcebook\Ogress.Sourcebook.Api\Ogress.Sourcebook.Api.csproj", "{07627D5A-B588-43B1-86D3-6248E460EDC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ogress.Sourcebook.Api", "Ogress.Sourcebook\Ogress.Sourcebook.Api\Ogress.Sourcebook.Api.csproj", "{07627D5A-B588-43B1-86D3-6248E460EDC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ogress.Sourcebook.Test", "Ogress.Sourcebook\Ogress.Sourcebook.Test\Ogress.Sourcebook.Test.csproj", "{D5704CD1-5CCC-4992-BE60-42682FE099C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{07627D5A-B588-43B1-86D3-6248E460EDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07627D5A-B588-43B1-86D3-6248E460EDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07627D5A-B588-43B1-86D3-6248E460EDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5704CD1-5CCC-4992-BE60-42682FE099C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5704CD1-5CCC-4992-BE60-42682FE099C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5704CD1-5CCC-4992-BE60-42682FE099C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5704CD1-5CCC-4992-BE60-42682FE099C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
