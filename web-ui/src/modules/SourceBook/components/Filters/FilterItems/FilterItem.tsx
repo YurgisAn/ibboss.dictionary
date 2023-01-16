@@ -6,7 +6,6 @@ import { FilterFormProps } from '../types';
 import { AnyObject } from '~/types/common';
 import { FilterDate, FilterInput } from './FilterInput';
 import { FieldEditor } from '../constants';
-import { List } from 'lodash';
 import { ListDto } from '~/shared/models';
 import { FilterSearchSelect } from './FilterInput/FilterSearchSelect';
 
