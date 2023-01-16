@@ -7,6 +7,7 @@ import { debounce } from 'lodash';
 import React, { FC, MouseEventHandler, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { useMousedownOutside } from '~/hooks';
+import { ListDto } from '~/shared/models';
 import { FilterDto } from '~/shared/models/filter-dto';
 import { AnyObject } from '~/types/common';
 
@@ -20,12 +21,14 @@ export interface IFastFiltersProps {
     onExtendedFiltersOpen?: () => void;
     formik: FilterFormProps;
     filters: Array<FilterDto>;
+    lists:Array<ListDto>;
 }
 
 export const BaseFilters: FC<IFastFiltersProps> = ({
     onExtendedFiltersOpen,
     formik,
-    filters
+    filters,
+    lists
 }) => {
     const { setFieldValue, values, submitForm } = formik;
     const [sortOrder, setSortOrder] = useState(SortOrder.DESC);
@@ -99,13 +102,16 @@ export const BaseFilters: FC<IFastFiltersProps> = ({
     useMousedownOutside(sortByRef, () => setIsSortByOpened(false));
 
     const renderItem = (item: FilterDto, index:number) => {
-        return (
+        return (   
             <S.InfoItem>
-                <FilterItems.FilterItem formik= {formik}
+                <FilterItems.FilterItem 
+                                        formik= {formik}
                                         field = {item.field}
                                         type={item.editor} 
-                                        label={item.title}                                       
-                                        submitFormTrigger={setSubmitDebouncedTrigger}/>
+                                        label={item.title}   
+                                        list={lists.find((i) => i.name === item.list)}                                    
+                                        submitFormTrigger={setSubmitDebouncedTrigger}
+                                        />
             </S.InfoItem>
         );
       };
@@ -114,53 +120,16 @@ export const BaseFilters: FC<IFastFiltersProps> = ({
         <S.FastFilters>
             <S.InfoWrapper>
                 {filters.map((item, index) => renderItem(item, index))}
-                <S.InfoItem>
-                    <S.InfoRightContainer>
-                        <S.ButtonsWrapper>
-                            <S.ButtonWrapper onClick={() => onExtendedFiltersOpen?.()}>
-                                <Tooltip renderContent={() => 'Фильтр'}>
-                                    <S.FilterOutlineIcon />
-                                </Tooltip>
-                            </S.ButtonWrapper>
-                            <S.ButtonWrapper ref={sortByRef} onClick={() => setIsSortByOpened((v) => !v)}>
-                                <Tooltip renderContent={() => 'Cортировка'}>
-                                    <S.SortByIcon />
-                                </Tooltip>
-                            </S.ButtonWrapper>
-                            <S.ButtonWrapper onClick={handleChangeSortOrder}>
-                                <Tooltip renderContent={() => 'Порядок сортировки'}>
-                                    <S.SortArrowIconWrapper rotated={sortOrder === SortOrder.ASC}>
-                                        <S.SortArrowIcon />
-                                    </S.SortArrowIconWrapper>
-                                </Tooltip>
-                            </S.ButtonWrapper>
-                        </S.ButtonsWrapper>
-                    </S.InfoRightContainer>
-                </S.InfoItem>
+                <S.InfoRightContainer>
+                    <S.ButtonsWrapper>
+                        <S.ButtonWrapper onClick={() => onExtendedFiltersOpen?.()}>
+                            <Tooltip renderContent={() => 'Фильтр'}>
+                                <S.FilterOutlineIcon />
+                            </Tooltip>
+                        </S.ButtonWrapper>                           
+                    </S.ButtonsWrapper>
+                </S.InfoRightContainer>
             </S.InfoWrapper>
-
-            {isSortByOpened && (
-                <S.DropDownMenuStyled targetRef={sortByRef}>
-                    {Object.keys(sortTypeValues).map((key) => {
-                        const item = sortTypeValues[key as SortType];
-                        const value = item.value;
-                        const valueMainSortType = value.split(',')[0];
-                        const isSelected = values.sortBy?.indexOf(valueMainSortType) !== -1;
-
-                        return (
-                            <S.DropDownItemStyled
-                                dimension='s'
-                                key={value}
-                                id={value}
-                                onMouseDown={handleChangeSortType}
-                                selected={isSelected}
-                            >
-                                {item.title}
-                            </S.DropDownItemStyled>
-                        );
-                    })}
-                </S.DropDownMenuStyled>
-            )}
         </S.FastFilters>
     );
 };

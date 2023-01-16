@@ -12,6 +12,27 @@ export interface QueryRequest {
     '$type'?: string;
 
     /**
+     * 
+     * @type {string}
+     * @memberof QueryRequest
+     */
+    'node'?: QueryRequest;
+
+    /**
+     * Нижний диапазон
+     * @type {string}
+     * @memberof QueryRequest
+     */    
+    'lower'?: QueryRequest;
+    
+    /**
+     * Верхний диапазон
+     * @type {string}
+     * @memberof QueryRequest
+     */
+    'upper'?: QueryRequest;
+
+    /**
      * Тип данных
      * @type {string}
      * @memberof QueryRequest

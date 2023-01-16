@@ -1,6 +1,4 @@
 import { createQueryString, parseQueryString } from '~/helpers/stringHelpers';
-import { QueryRequest } from '~/shared/models';
-
 import { clearEmptyProperties } from './utils/clearEmptyProperties';
 
 /**

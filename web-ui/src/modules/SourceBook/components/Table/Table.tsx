@@ -4,7 +4,7 @@ import axios, { Canceler, CancelToken } from 'axios';
 import { assertDefined, isDefined } from '~/helpers/guards';
 import { useApi } from '~/shared/ApiContext';
 import { defaultPageNumber, defaultPageSize, pageSizes } from './constants';
-import type { DataDto, СolumnInfoDto } from '~/shared/models';
+import type { DataDto, FilterDto, QueryRequest, СolumnInfoDto } from '~/shared/models';
 import { TableContainer, EmptyWrapper,  PaginationStyled} from './styled';
 import { TableHeader } from './TableHeader'
 import { TableRows } from './TableRows'
@@ -14,17 +14,18 @@ import { formValuesToRequestParams } from '../Filters/hooks/useRequestParams';
 
 type PropType = {
     columns: СolumnInfoDto[];
+    filters: FilterDto[];
     book:string;
 };
 
-export const Table: React.FC<PropType> = ({columns, book}) => {
+export const Table: React.FC<PropType> = ({columns, filters, book}) => {
     const { sourceBookApi } = useApi();
     const [sort, setSort] = useState('bic_code');
     const [asc, setAsc] = useState(true);
     const [pageSize, setPageSize] = useState(defaultPageSize);
     const [page, setPage] = useState(defaultPageNumber);
     const wasUnmount = useRef(false);
-    const [totalItems, setTotalItems] = useState(100);     
+    const [totalItems, setTotalItems] = useState(0);     
     const [rows, setRows] = useState<DataDto[]>([]);
     const [observableUpdate, forceUpdate] = useState({});
     const sourceBookContext = useMemo(() => {
@@ -33,7 +34,8 @@ export const Table: React.FC<PropType> = ({columns, book}) => {
 
 
     const requestRowsParams = { name: book, take: pageSize, skip: (page - 1) * pageSize + 1 , sortColumn:sort, asc: asc, 
-                                    filter: formValuesToRequestParams() };
+                                    filter: formValuesToRequestParams(filters) };
+    
 
     /**
      * Плагиация
@@ -77,6 +79,31 @@ export const Table: React.FC<PropType> = ({columns, book}) => {
         [sourceBookApi, requestRowsParams]
     );
 
+    /**
+     * Получаем количество строк
+     */
+    const getCountRows = useCallback(
+        (cancelToken: CancelToken) => {
+            sourceBookApi
+                .getBookCountRows({ name: requestRowsParams.name, 
+                                    filter: requestRowsParams.filter
+                                  }, { cancelToken })
+                .then(({ data }) => {
+                    if (wasUnmount.current)
+                        return;     
+                    isDefined(data); 
+                    setTotalItems(data);
+
+                })
+                .catch((err) => {
+                    if (!(err instanceof axios.Cancel)) {
+                        console.error('sourceBookApi.getBookCountRows error', err);
+                    }
+                });
+        },
+        [sourceBookApi, requestRowsParams]
+    );
+    
      const refreshIntervalTime = 10000;
 //   /**
 //    * Автообновление
@@ -109,8 +136,22 @@ export const Table: React.FC<PropType> = ({columns, book}) => {
             cancel?.();
             wasUnmount.current = true;
         };
-    }, [page, pageSize, sort, asc, observableUpdate]);
+    }, [page, pageSize, sort, asc, observableUpdate, getCountRows]);
 
+    useEffect(() => {
+        let cancel: Canceler;
+        const cancelToken = new axios.CancelToken(function executor(c) {
+            cancel = c;
+        });
+
+        wasUnmount.current = false;
+        getCountRows(cancelToken);
+        return () => {
+            cancel?.();
+            wasUnmount.current = true;
+        };
+    }, [location.search, observableUpdate]);
+    
    /**
     * Сортировка в колонках
     */

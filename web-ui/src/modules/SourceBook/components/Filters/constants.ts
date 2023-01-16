@@ -5,7 +5,7 @@ export const debounceTimeBaseFilters = 500;
  * Сортировка
  */
 export const enum SortType {
-    BICCODE = 'bic_code',
+    BICCODE = 'BicCode',
 }
 
 export const enum SortOrder {
@@ -19,5 +19,14 @@ type SortTypeValue = {
 };
 
 export const sortTypeValues: Record<SortType, SortTypeValue> = {
-    [SortType.BICCODE]: { title: 'БИК', value: 'bic_code' }
+    [SortType.BICCODE]: { title: 'БИК', value: 'bicCode' }
 };
+
+export const enum FieldEditor {
+    NONE = "None",
+    DATE_RANGE = "DateRange",
+    TEXT = "Text",
+    NUMBER = "Number",
+    BOOLEAN = "Boolean",
+    LIST = "List"
+}

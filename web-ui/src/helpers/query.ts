@@ -63,10 +63,24 @@ export function binaryNode(name:string, operator:string, value:any, type:string 
     }
 };
 
-export function equals(name: string, value: string, type: string) :QueryRequest{
+export function equals(name: string, value: any, type: string) :QueryRequest{
     return binaryNode(name, "Equals", value, type);
 }
 
-export function like(name: string, value: string, type: string):QueryRequest {
+export function like(name: string, value: any, type: string):QueryRequest {
     return binaryNode(name, "Like", value, type);
+}
+
+export function between(name: string, lowerBound: any, upperBound: any, type: string):QueryRequest {
+    return {
+        "$type": "BetweenNode",
+        "node": qName(name),
+        "lower": literal(lowerBound, "Date"),
+        "upper": literal(upperBound, "Date")
+    }
+}
+export function empty():QueryRequest {
+    return {
+        "$type": "EmptyNode"
+    }
 }

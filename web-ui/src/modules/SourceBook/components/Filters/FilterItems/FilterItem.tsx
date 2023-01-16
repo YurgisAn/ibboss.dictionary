@@ -1,11 +1,14 @@
 /**
  * Компонент распределения типов фильтров
  */
-import {InputField, DateField } from '@vtb/ui-kit3';
 import React, { FC, useCallback } from 'react';
 import { FilterFormProps } from '../types';
 import { AnyObject } from '~/types/common';
-import { FilterInput } from './FilterInput';
+import { FilterDate, FilterInput } from './FilterInput';
+import { FieldEditor } from '../constants';
+import { List } from 'lodash';
+import { ListDto } from '~/shared/models';
+import { FilterSearchSelect } from './FilterInput/FilterSearchSelect';
 
 
 type Props = {
@@ -13,19 +16,42 @@ type Props = {
     field:string;
     type: string;
     label: string;
+    list?:ListDto;
     submitFormTrigger?: (v: AnyObject) => void; 
 };
 
-export const FilterItem: FC<Props> = ({formik, field, type, label, submitFormTrigger }) => {    
+export const FilterItem: FC<Props> = ({formik, field, type, label, list, submitFormTrigger }) => {   
     const filter = () => {
         switch(type) {
-            case "Text":   return (<FilterInput formik ={formik}
-                                                field={field}
-                                                submitFormTrigger={submitFormTrigger}
-                                                inputFieldProps={{ placeholder: label, dimension: 's' }}/>);
-            case "DateRange":   return <DateField  type='date-range'/>;
-            default: return <InputField type='string'/>;
+            case FieldEditor.TEXT:   
+                    return (<FilterInput formik ={formik}
+                                        field={field}
+                                        type={'string'}
+                                        submitFormTrigger={submitFormTrigger}
+                                        inputFieldProps={{ label: label, dimension: 's' }}/>);
+            case FieldEditor.NUMBER:   
+                    return (<FilterInput formik ={formik}
+                                        field={field}
+                                        type={'number'}
+                                        submitFormTrigger={submitFormTrigger}
+                                        inputFieldProps={{ label: label, dimension: 's' }}/>);
+            case FieldEditor.LIST:  
+                    return (<FilterSearchSelect formik ={formik}
+                                        field={field}
+                                        list={list}
+                                        submitFormTrigger={submitFormTrigger}
+                                        fieldProps={{ label: label, dimension: 's' }}/>);
+
+            case FieldEditor.DATE_RANGE:    
+                    return (<FilterDate formik ={formik}
+                                    field={field}
+                                    submitFormTrigger={submitFormTrigger}
+                                    dateFieldProps={{ label: label, dimension: 's' }}/>);
+            case FieldEditor.NONE:
+            default:                    
+                 return '';
         };
     };
-    return <>{filter()}</>;
+    
+    return <div>{filter()}</div>;
 };

@@ -82,9 +82,9 @@ export const DropDownMenuStyled = styled(DropDownMenu)`
 export const DropDownItemStyled = styled(DropDownItem)``;
 
 export const InfoWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+display: grid;
+    grid-gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 `;
 
 export const InfoItem = styled.div``;
@@ -93,4 +93,5 @@ export const InfoRightContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: auto;
 `;

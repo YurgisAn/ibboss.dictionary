@@ -4,6 +4,8 @@
 import { useAuthorization } from '@vtb-ermo/authorization';
 import { Button, CheckboxField, DateField, Field, Option, SearchSelectField, Spinner } from '@vtb/ui-kit3';
 import React, { FC, ChangeEvent, Suspense, useCallback } from 'react';
+import { FilterDto, ListDto } from '~/shared/models';
+import * as FilterItems from '../FilterItems';
 
 import { ErrorText } from '../styled';
 import { FilterFormProps } from '../types';
@@ -11,18 +13,16 @@ import { FilterFormProps } from '../types';
 import * as S from './styled';
 
 type Props = {
+    filters:Array<FilterDto>;
+    lists:Array<ListDto>;
     onClose: () => void;
     formik: FilterFormProps;
     isOpen: boolean;
     onCancel: () => void;
 };
 
-export const ExtendedFilters: FC<Props> = ({ onCancel, onClose, formik, isOpen }) => {
+export const ExtendedFilters: FC<Props> = ({ filters, lists, onCancel, onClose, formik, isOpen }) => {
     const { values, setFieldValue, errors, handleSubmit, setValues } = formik;
-    const {
-        dateIn
-    } = values;
-
 
     const resetFilterValues = {
         options: {  },
@@ -36,25 +36,26 @@ export const ExtendedFilters: FC<Props> = ({ onCancel, onClose, formik, isOpen }
         setValues(resetFilterValues);
     }, [resetFilterValues, setValues]);
 
-    const handleDateInChange = useCallback(
-        (e) => setFieldValue('dateIn', e.currentTarget.value),
-        [setFieldValue]
-    );
+    const renderItem = (item: FilterDto, index:number) => {
+        return (   
+            <FilterItems.FilterItem 
+                                    formik= {formik}
+                                    field = {item.field}
+                                    type={item.editor} 
+                                    label={item.title}   
+                                    list={lists.find((i) => i.name === item.list)}                                    
+                                    submitFormTrigger={undefined}
+                                    />
+        );
+      };
 
     return isOpen ? (
         <S.ExtendedFiltersContainer>
             <S.ExtendedFiltersContent>
                 <S.Title>Фильтры</S.Title>
                 <S.CloseOutlineIcon onClick={onClose} />
-                <S.FiltersForm>
-                    <DateField
-                        label='Дата включения в список'
-                        type='date-range'
-                        value={dateIn}
-                        onChange={handleDateInChange}
-                        extraText={errors.dateIn ? <ErrorText>{errors.dateIn}</ErrorText> : ''}
-                    />         
-
+                <S.FiltersForm>  
+                    {filters.map((item, index) => renderItem(item, index))}  
                     <S.ButtonsWrapper>
                         <Button dimension='s' appearance='secondary' onClick={handleOnReset}>
                             Сбросить фильтр

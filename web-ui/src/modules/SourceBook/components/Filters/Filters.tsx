@@ -8,6 +8,7 @@ import React, { useCallback, useEffect, useState, FC } from 'react';
 
 import { assertDefined } from '~/helpers/guards';
 import { useApi } from '~/shared/ApiContext';
+import { ListDto } from '~/shared/models';
 import { FilterDto } from '~/shared/models/filter-dto';
 
 import { useSourcebookContext } from '../../SourceBookContext';
@@ -18,9 +19,10 @@ import { validationSchema } from './validation';
 
 type Props = {
     filters: Array<FilterDto>;
+    lists: Array<ListDto>;
 };
 
-export const Filters: FC<Props> = ({ filters }) => {
+export const Filters: FC<Props> = ({ filters, lists }) => {
     const history = useHistory();
     const location = useLocation();
     const initialFilterValues = {  };
@@ -62,8 +64,11 @@ export const Filters: FC<Props> = ({ filters }) => {
                 formik={formik}
                 onExtendedFiltersOpen={() => setExtendedFiltersOpened(true)}
                 filters={filters}
+                lists={lists}
             />       
             <ExtendedFilters
+                filters={filters}
+                lists={lists}
                 onCancel={handleOnCancel}
                 isOpen={isExtendedFiltersOpened}
                 formik={formik}

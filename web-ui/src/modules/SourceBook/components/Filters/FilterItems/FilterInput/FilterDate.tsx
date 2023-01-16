@@ -1,5 +1,5 @@
-import { InputField } from '@vtb/ui-kit3';
-import { InputFieldProps } from '@vtb/ui-kit3/dist/components/form/InputField';
+import { DateField } from '@vtb/ui-kit3';
+import { DateFieldProps } from '@vtb/ui-kit3/dist/components/form/DateField';
 import React, { FC, useCallback } from 'react';
 
 import { AnyObject } from '~/types/common';
@@ -9,12 +9,11 @@ import { FilterFormProps } from '../../types';
 type Props = {
     formik: FilterFormProps;
     field: string;
-    type: string;
-    inputFieldProps: InputFieldProps;
+    dateFieldProps: DateFieldProps;
     submitFormTrigger?: (v: AnyObject) => void;
 };
 
-export const FilterInput: FC<Props> = ({formik, type, field, inputFieldProps, submitFormTrigger }) => {
+export const FilterDate: FC<Props> = ({formik, field, dateFieldProps, submitFormTrigger }) => {
     const { setFieldValue } = formik;
     const handleChange = useCallback(
         (e) => {
@@ -24,5 +23,5 @@ export const FilterInput: FC<Props> = ({formik, type, field, inputFieldProps, su
         [setFieldValue, submitFormTrigger]
     );
 
-    return <InputField name={field} type={type} {...inputFieldProps} onChange={handleChange} />;
+    return <DateField  type='date-range' {...dateFieldProps} onChange={handleChange} />;
 };
