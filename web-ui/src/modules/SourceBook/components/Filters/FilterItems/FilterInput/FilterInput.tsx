@@ -11,11 +11,11 @@ type Props = {
     value:any;
     field: string;
     type: string;
-    inputFieldProps: InputFieldProps;
+    fieldProps: InputFieldProps;
     submitFormTrigger?: (v: AnyObject) => void;
 };
 
-export const FilterInput: FC<Props> = ({formik, value, type, field, inputFieldProps, submitFormTrigger }) => {
+export const FilterInput: FC<Props> = ({formik, value, type, field, fieldProps, submitFormTrigger }) => {
     const { setFieldValue } = formik;
     const handleChange = useCallback(
         (e) => {
@@ -25,5 +25,5 @@ export const FilterInput: FC<Props> = ({formik, value, type, field, inputFieldPr
         [setFieldValue, submitFormTrigger]
     );
 
-    return <InputField name={field} value={value} type={type} {...inputFieldProps} onChange={handleChange} />;
+    return <InputField name={field} value={value} type={type} {...fieldProps} onChange={handleChange} />;
 };

@@ -9,6 +9,7 @@ import { DUMMY_BASE_URL, setSearchParams, toPathString, createRequestFunction, s
 import { BASE_PATH, RequestArgs, BaseAPI } from '../common/base';
 
 import { DirectoryDto, SourceBookDto, DataDto, QueryRequest } from '../models'
+import { ListValueDto } from '../models/listValue-dto';
 
 //#region axios parameter creator
 /**
@@ -143,6 +144,37 @@ export const SourceBookApiAxiosParamCreator = function (configuration?: Configur
                 url: toPathString(localVarUrlObj),
                 options: localVarRequestOptions,
             };
+        },
+        /**
+         * Возвращает данные для списка
+         * @summary Данные из списка
+         * @param {string} name наименование
+         * @param {string} listName наименование списка             
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        getBookListItems: async (name:string, listName: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/sourcebooks/list/{name}/{listName}`
+                                .replace(`{${"name"}}`, encodeURIComponent(String(name)))
+                                .replace(`{${"listName"}}`, encodeURIComponent(String(listName)));
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';           
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
         }
     }
 }
@@ -210,6 +242,20 @@ export const SourceBookApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getBookCountRows(name, filter, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
+
+        /**
+         * Возвращает данные для списка
+         * @summary Данные из списка
+         * @param {string} name наименование
+         * @param {string} listName наименование списка             
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        async getBookListItems(name:string, listName: string,  options: AxiosRequestConfig = {}):
+                Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ListValueDto>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getBookListItems(name, listName, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        }
     }
 };
 //#endregion functional programming interface
@@ -269,6 +315,18 @@ export const SourceBookApiFactory = function (configuration?: Configuration, bas
          */
          getBookCountRows(name:string, filter?: QueryRequest, options?: any): AxiosPromise<number> {
             return localVarFp.getBookCountRows(name, filter, options).then((request) => request(axios, basePath));
+        } ,
+
+        /**
+         * Возвращает данные для списка
+         * @summary Данные из списка
+         * @param {string} name наименование
+         * @param {string} listName наименование списка             
+         * @deprecated
+         * @throws {RequiredError}
+         */
+        getBookListItems(name:string, listName: string, options?: any): AxiosPromise<Array<ListValueDto>> {
+            return localVarFp.getBookListItems(name, listName, options).then((request) => request(axios, basePath));
         } 
             
     };
@@ -355,6 +413,29 @@ export interface SourceBookApiGetBookCountRowsRequest {
     */
     readonly filter?: QueryRequest
 }
+
+
+/**
+ * @export
+ * @interface SourceBookApiGetBookRowsCountRequest
+ */
+export interface SourceBookApiGetBookListItemRequest {
+    /**
+     * наименование справочника
+     * @type {string}
+     * @memberof SourceBookApiGetBookListItemRequest
+    */
+    readonly name: string  
+
+    /**
+     * Наименование списка
+     * @type {string}
+     * @memberof SourceBookApiGetBookListItemRequest
+    */
+    readonly listName: string
+}
+
+
 //#endregion Request interface
 
 //#region object-oriented interface
@@ -419,5 +500,20 @@ export class SourceBookApi extends BaseAPI {
                                                             , requestParameters.filter
                                                             , options).then((request) => request(this.axios, this.basePath));
     }
+
+    /**
+     * Возвращает данные для списка
+     * @summary Данные
+     * @param {SourceBookApiGetBookRowsRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @deprecated
+     * @throws {RequiredError}
+     * @memberof SourceBookApi
+     */
+    public getBookListItems(requestParameters: SourceBookApiGetBookListItemRequest, options?: AxiosRequestConfig) {
+        return SourceBookApiFp(this.configuration).getBookListItems(requestParameters.name,
+                                                                    requestParameters.listName,
+                                                                    options).then((request) => request(this.axios, this.basePath));
+    }            
 }
 //#endregion object-oriented interface

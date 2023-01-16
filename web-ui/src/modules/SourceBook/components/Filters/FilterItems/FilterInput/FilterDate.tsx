@@ -10,11 +10,11 @@ type Props = {
     value:any;
     formik: FilterFormProps;
     field: string;
-    dateFieldProps: DateFieldProps;
+    fieldProps: DateFieldProps;
     submitFormTrigger?: (v: AnyObject) => void;
 };
 
-export const FilterDate: FC<Props> = ({formik, value, field, dateFieldProps, submitFormTrigger }) => {
+export const FilterDate: FC<Props> = ({formik, value, field, fieldProps, submitFormTrigger }) => {
     const { setFieldValue } = formik;
     const handleChange = useCallback(
         (e) => {
@@ -24,5 +24,5 @@ export const FilterDate: FC<Props> = ({formik, value, field, dateFieldProps, sub
         [setFieldValue, submitFormTrigger]
     );
 
-    return <DateField value={value}  type='date-range' {...dateFieldProps} onChange={handleChange} />;
+    return <DateField value={value}  type='date-range' {...fieldProps} onChange={handleChange} />;
 };

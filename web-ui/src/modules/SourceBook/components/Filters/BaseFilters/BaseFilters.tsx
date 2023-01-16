@@ -18,13 +18,17 @@ import { FilterFormProps } from '../types';
 import * as S from './styled';
 
 export interface IFastFiltersProps {
+    book:string;
     onExtendedFiltersOpen?: () => void;
     formik: FilterFormProps;
     filters: Array<FilterDto>;
     lists:Array<ListDto>;
+    totalCount:number;
 }
 
 export const BaseFilters: FC<IFastFiltersProps> = ({
+    book,
+    totalCount,
     onExtendedFiltersOpen,
     formik,
     filters,
@@ -104,7 +108,7 @@ export const BaseFilters: FC<IFastFiltersProps> = ({
     const renderItem = (item: FilterDto, index:number) => {
         return (   
             <S.InfoItem>
-                <FilterItems.FilterItem value={values[item.field]}
+                <FilterItems.FilterItem book={book} value={values[item.field]}
                                         formik= {formik}
                                         field = {item.field}
                                         type={item.editor} 
@@ -120,15 +124,18 @@ export const BaseFilters: FC<IFastFiltersProps> = ({
         <S.FastFilters>
             <S.InfoWrapper>
                 {filters.map((item, index) => renderItem(item, index))}
-                <S.InfoRightContainer>
-                    <S.ButtonsWrapper>
-                        <S.ButtonWrapper onClick={() => onExtendedFiltersOpen?.()}>
-                            <Tooltip renderContent={() => 'Фильтр'}>
-                                <S.FilterOutlineIcon />
-                            </Tooltip>
-                        </S.ButtonWrapper>                           
-                    </S.ButtonsWrapper>
-                </S.InfoRightContainer>
+                <S.InfoItem>
+                    <S.InfoRightContainer>
+                        <S.TotalCount>Найдено: {totalCount}</S.TotalCount>
+                        <S.ButtonsWrapper>
+                            <S.ButtonWrapper onClick={() => onExtendedFiltersOpen?.()}>
+                                <Tooltip renderContent={() => 'Фильтр'}>
+                                    <S.FilterOutlineIcon />
+                                </Tooltip>
+                            </S.ButtonWrapper>                           
+                        </S.ButtonsWrapper>
+                    </S.InfoRightContainer>
+                </S.InfoItem>
             </S.InfoWrapper>
         </S.FastFilters>
     );

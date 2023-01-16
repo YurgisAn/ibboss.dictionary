@@ -18,11 +18,13 @@ import { filterFormValuesToUrl, urlToFilterFormValues } from './helpers';
 import { validationSchema } from './validation';
 
 type Props = {
+    book:string;
     filters: Array<FilterDto>;
     lists: Array<ListDto>;
+    totalCount:number;
 };
 
-export const Filters: FC<Props> = ({ filters, lists }) => {
+export const Filters: FC<Props> = ({book, filters, lists, totalCount }) => {
     const history = useHistory();
     const location = useLocation();
     const initialFilterValues = {  };
@@ -57,16 +59,19 @@ export const Filters: FC<Props> = ({ filters, lists }) => {
         setValues(urlToFilterFormValues(location.search));
         setExtendedFiltersOpened(false);
     }, [location.search, setValues]);
-
+  
     return (
         <>
              <BaseFilters
+                book={book}
                 formik={formik}
                 onExtendedFiltersOpen={() => setExtendedFiltersOpened(true)}
                 filters={filters}
                 lists={lists}
+                totalCount ={totalCount}
             />       
             <ExtendedFilters
+                book={book}
                 filters={filters}
                 lists={lists}
                 onCancel={handleOnCancel}

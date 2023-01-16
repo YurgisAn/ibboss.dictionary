@@ -17,7 +17,7 @@ export const FastFilters = styled.div`
 `;
 
 export const TotalCount = styled.div`
-    margin: 0 0 0 32px;
+    display: flex;
     text-align: center;
     font-size: 14px;
     color: ${({ theme }) => theme.color.text.secondary};
@@ -94,4 +94,5 @@ export const InfoRightContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-left: auto;
+    height: 100%;
 `;

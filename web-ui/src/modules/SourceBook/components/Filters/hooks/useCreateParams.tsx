@@ -3,7 +3,7 @@ import add from 'date-fns/add';
 import { LiteralType } from '~/constants/literalType';
 import { isShortDatesRangeValid } from '~/helpers/datesHelpers';
 import { and, between, empty, equals, like } from '~/helpers/query';
-import { FilterDto, QueryRequest } from '~/shared/models';
+import { FilterDto, ListDto, ListItemDto, QueryRequest } from '~/shared/models';
 import { AnyObject } from '~/types/common';
 import { ShortDateUtils, SpecialISODateUtils } from '~/types/timeNominalTypes';
 import { isDefined } from '~/helpers/guards';
@@ -13,18 +13,29 @@ import { FieldEditor } from '../constants';
  * Формируем строку запроса для компилятора
  */
 
-export const useCreateParams = (filters:AnyObject, list:Array<FilterDto>): QueryRequest => {    
+export const useCreateParams = (filters:AnyObject, listFilters:Array<FilterDto>, listItems:Array<ListDto>): QueryRequest => {    
     const selectQueryRequest= (name:string, value:any): QueryRequest => {
-        let filter = list.find( el => el.field === name);
-        console.log(filter);
+        let filter = listFilters.find( el => el.field === name);
         if (isDefined(filter))
         {
+            let item = listItems.find( el => el.name === filter?.list);
             switch (filter.editor) 
             {
                 case FieldEditor.NUMBER:
-                case FieldEditor.LIST:
                 {
                     return equals(name, value, LiteralType.NUMBER);
+                }
+                case FieldEditor.LIST:
+                {
+                    if (!isDefined(item))
+                    {
+                        return equals(name, value, LiteralType.NUMBER);
+                    }
+                    else
+                    {
+                        //Временно решение далее нужно сделать, чтобы был не Integer -> Number
+                        return equals(name, value, (item.valueType == LiteralType.STRING ? LiteralType.STRING :LiteralType.NUMBER));
+                    }
                 }
                 case FieldEditor.TEXT:
                 {

@@ -4,21 +4,23 @@ import axios, { Canceler, CancelToken } from 'axios';
 import { assertDefined, isDefined } from '~/helpers/guards';
 import { useApi } from '~/shared/ApiContext';
 import { defaultPageNumber, defaultPageSize, pageSizes } from './constants';
-import type { DataDto, FilterDto, QueryRequest, СolumnInfoDto } from '~/shared/models';
+import type { DataDto, FilterDto, ListDto, QueryRequest, СolumnInfoDto } from '~/shared/models';
 import { TableContainer, EmptyWrapper,  PaginationStyled} from './styled';
 import { TableHeader } from './TableHeader'
 import { TableRows } from './TableRows'
 import * as S from './styled';
 import { formValuesToRequestParams } from '../Filters/hooks/useRequestParams';
+import { Filters } from '../Filters';
 
 
 type PropType = {
     columns: СolumnInfoDto[];
     filters: FilterDto[];
     book:string;
+    lists:Array<ListDto>
 };
 
-export const Table: React.FC<PropType> = ({columns, filters, book}) => {
+export const Table: React.FC<PropType> = ({columns, filters, lists, book}) => {
     const { sourceBookApi } = useApi();
     const [sort, setSort] = useState('bic_code');
     const [asc, setAsc] = useState(true);
@@ -34,7 +36,7 @@ export const Table: React.FC<PropType> = ({columns, filters, book}) => {
 
 
     const requestRowsParams = { name: book, take: pageSize, skip: (page - 1) * pageSize + 1 , sortColumn:sort, asc: asc, 
-                                    filter: formValuesToRequestParams(filters) };
+                                    filter: formValuesToRequestParams(filters, lists) };
     
 
     /**
@@ -136,7 +138,7 @@ export const Table: React.FC<PropType> = ({columns, filters, book}) => {
             cancel?.();
             wasUnmount.current = true;
         };
-    }, [page, pageSize, sort, asc, observableUpdate, getCountRows]);
+    }, [page, pageSize, sort, asc, observableUpdate, location.search]);
 
     useEffect(() => {
         let cancel: Canceler;
@@ -167,29 +169,34 @@ export const Table: React.FC<PropType> = ({columns, filters, book}) => {
         [sort]
     );
 
-    return columns.length ? (<TableContainer data-dimension='s'>
-                                <TableHeader columns={columns} onSortChange={handlerSortChange}/>
-                                <TableRows columns={columns.map((col, index) => (
-                                                {
-                                                    name: col.value,
-                                                    title: col.title,
-                                                    width: (100/columns.length)+'%',
-                                                    cellAlign: 'left',
-                                                    sortable: isDefined(col.sortBy),
-                                                } as Column))} 
-                                                rows = {rows} />
-                                {!!rows?.length && totalItems > defaultPageSize && (
-                                    <PaginationStyled
-                                        onChange={handlerPaginationChange}
-                                        page={page}
-                                        pageSize={pageSize}
-                                        pageSizes={pageSizes}
-                                        totalItems={totalItems}
-                                    />
-                                )}
-                            </TableContainer>
-                            )
-                            : (
-                                <EmptyWrapper>Нет данных по справочнику</EmptyWrapper>
-                            );
+    return <>
+                <Filters book={requestRowsParams.name} filters={filters} lists={lists} totalCount={totalItems}/>
+                {columns.length ? (
+                    <TableContainer data-dimension='s'>
+                        <TableHeader columns={columns} onSortChange={handlerSortChange}/>
+                        <TableRows columns={columns.map((col, index) => (
+                                        {
+                                            name: col.value,
+                                            title: col.title,
+                                            width: (100/columns.length)+'%',
+                                            cellAlign: 'left',
+                                            sortable: isDefined(col.sortBy),
+                                        } as Column))} 
+                                        rows = {rows} />
+                        {!!rows?.length && totalItems > defaultPageSize && (
+                            <PaginationStyled
+                                onChange={handlerPaginationChange}
+                                page={page}
+                                pageSize={pageSize}
+                                pageSizes={pageSizes}
+                                totalItems={totalItems}
+                            />
+                        )}
+                    </TableContainer>
+                    )
+                    : (
+                        <EmptyWrapper>Нет данных по справочнику</EmptyWrapper>
+                    )
+                }
+            </>;
 };

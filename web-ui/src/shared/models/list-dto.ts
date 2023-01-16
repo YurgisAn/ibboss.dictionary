@@ -1,4 +1,5 @@
 import { ListItemDto } from "./listItem-dto";
+import { ListValueDto } from "./listValue-dto";
 
 /**
  * Информация о фильтрах

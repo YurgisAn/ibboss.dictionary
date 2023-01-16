@@ -13,6 +13,7 @@ import { FilterFormProps } from '../types';
 import * as S from './styled';
 
 type Props = {
+    book:string;
     filters:Array<FilterDto>;
     lists:Array<ListDto>;
     onClose: () => void;
@@ -21,8 +22,8 @@ type Props = {
     onCancel: () => void;
 };
 
-export const ExtendedFilters: FC<Props> = ({ filters, lists, onCancel, onClose, formik, isOpen }) => {
-    const { values, setFieldValue, errors, handleSubmit, setValues } = formik;
+export const ExtendedFilters: FC<Props> = ({ book, filters, lists, onCancel, onClose, formik, isOpen }) => {
+    const { values, handleSubmit, setValues } = formik;
     const resetFilterValues = {
         options: {  },
     };
@@ -37,7 +38,8 @@ export const ExtendedFilters: FC<Props> = ({ filters, lists, onCancel, onClose, 
 
     const renderItem = (item: FilterDto, index:number) => {
         return (   
-            <FilterItems.FilterItem value={values[item.field]}
+            <FilterItems.FilterItem book={book}
+                                    value={values[item.field]}
                                     formik= {formik}
                                     field = {item.field}
                                     type={item.editor} 

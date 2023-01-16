@@ -78,8 +78,7 @@ export const SourceBook: FC<TypeProps>  = ({book}) => {
         <SourceBookContext.Provider value={sourceBookContext}>
             <h2>{title}</h2>
             <S.ListWrapper data-at='list-board'>
-                <Filters filters={filters} lists={lists}/>
-                <Table columns ={columns} filters={filters} book={book}/>
+                <Table columns ={columns} filters={filters} lists={lists} book={book}/>
             </S.ListWrapper>
         </SourceBookContext.Provider>
     );
