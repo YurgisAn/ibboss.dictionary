@@ -55,9 +55,9 @@ public class SourcebooksController : ControllerBase
     }
 
     [HttpPut("data/{name}/{take}/{skip}/{sortColumn}/{asc}")]
-    public List<Item> GetData(string name, int take, int skip, string? sortColumn, bool asc)
+    public List<Item> GetData(string name, int take, int skip, string? sortColumn, bool asc, QueryNode? query)
     {
-        return GetData(name).GetRows(take, skip, sortColumn, asc, null);
+        return GetData(name).GetRows(take, skip, sortColumn, asc, query);
     }
 
     [HttpPut("list/{name}/{listName}")]
