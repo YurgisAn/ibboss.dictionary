@@ -1,6 +1,6 @@
-﻿using System.Data.Common;
-using System.Text.RegularExpressions;
+﻿using Ogress.Sourcebook.Configuration;
 using Ogress.Sourcebook.Format;
+using System.Text.RegularExpressions;
 
 namespace Ogress.Sourcebook;
 
@@ -9,32 +9,32 @@ internal class MacroProcessor
     private const string Pattern = @"{.*?}";
     private const string FormatterKey = "default";
 
-    public static string Expand(string template, Dictionary<string, object> fields) =>
-        Regex.Replace(template, Pattern, match =>
+    public static string Expand(BookInfo info, ColumnInfo col, Dictionary<string, object> fields) =>
+        Regex.Replace(col.Value, Pattern, match =>
         {
             var raw = match.Value.Trim(new char[] { '{', '}' });
             var arr = raw.Split(':');
 
             if (arr.Length == 0)
-                throw new SourcebookException($"Invalid markup inside of template: \"{template}\"");
+                throw new SourcebookException($"Invalid markup inside of template: \"{col.Value}\"");
 
             var field = arr[0];
             var data = fields[field];
+            var formatterKey = col.Formatter ?? FormatterKey;
+            var fmt = ValueFormatter.GetFormatter(info, formatterKey);
 
             if (arr.Length > 1)
             {
-                var key = FormatterKey;
-
+                
                 if (arr.Length == 3)
-                    key = arr[2];
-
-                if (!ValueFormatter.Formatters.TryGetValue(key, out var fmt))
-                    throw new SourcebookException($"Unknown formatter \"{fmt}\".");
+                    formatterKey = arr[2];
 
                 return fmt.Format(data, string.IsNullOrWhiteSpace(arr[1]) ? (string?)null : arr[1]);
             }
             else
-                return data?.ToString() ?? "";
+            {
+                return fmt.Format(data, null);
+            }
 
         }, RegexOptions.Compiled);
 }

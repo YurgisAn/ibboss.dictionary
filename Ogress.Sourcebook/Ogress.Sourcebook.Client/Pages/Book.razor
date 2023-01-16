@@ -380,17 +380,10 @@ else
         foreach (var xs in bookInfo!.Lists)
         {
             List<ListEntry> data;
-
-            if (xs.Values is not null)
-                data = xs.Values.Select(v => new ListEntry(v.Text, v.Value)).ToList();
-            else
-            {
-                var url = $"sourcebooks/list/{Name}/{xs.Name}";
-                var result = await Http.PutAsync(url, null);
-                var src = await result.Content.ReadAsStringAsync();
-                data = JsonSerializer.Deserialize<List<ListEntry>>(src)!;
-            }
-
+            var url = $"sourcebooks/list/{Name}/{xs.Name}";
+            var result = await Http.PutAsync(url, null);
+            var src = await result.Content.ReadAsStringAsync();
+            data = JsonSerializer.Deserialize<List<ListEntry>>(src)!;
             dict.Add(xs.Name, data!);
         }
 

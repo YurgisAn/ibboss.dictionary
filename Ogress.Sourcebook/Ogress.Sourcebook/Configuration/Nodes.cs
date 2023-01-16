@@ -15,6 +15,8 @@ public record class BookInfo(
     [property: JsonPropertyName("columns")] List<ColumnInfo> Columns,
     [property: JsonPropertyName("lists")] List<ListInfo> Lists,
     [property: JsonPropertyName("filters")] List<FilterInfo> Filters,
+    [property: JsonPropertyName("formatters")] List<FormatterInfo> Formatters,
+    [property: JsonPropertyName("listProviders")] List<ListProviderInfo> ListProviders,
     bool Distinct,
     int? Take,
     int? Skip,
@@ -35,11 +37,8 @@ public record class ColumnInfo(
     [property: JsonPropertyName("value")] string Value,
     [property: JsonPropertyName("sortBy")] string? SortBy,
     [property: JsonPropertyName("filter")] string? Filter,
+    [property: JsonPropertyName("formatter")] string? Formatter,
     [property: JsonPropertyName("hints")][property: JsonConverter(typeof(EnumConverter<Hints>))] Hints? Hints);
-
-public record class ElementInfo(
-    [property: JsonPropertyName("text")] string Text,
-    [property: JsonPropertyName("value")] string Value);
 
 public record class ExternalSourceInfo(
     [property: JsonPropertyName("fields")] List<FieldInfo> Fields,
@@ -65,13 +64,31 @@ public record class FilterInfo(
 public record class ListInfo(
     [property: JsonPropertyName("name")] string Name,
     [property: JsonPropertyName("valueType")][property: JsonConverter(typeof(EnumConverter<ListValueType>))] ListValueType ValueType,
-    [property: JsonPropertyName("values")] List<ElementInfo>? Values,
-    [property: JsonPropertyName("source")] ExternalSourceInfo? Source);
+    [property: JsonPropertyName("source")] ExternalSourceInfo? Source,
+    [property: JsonPropertyName("provider")] string? Provider);
 
 public record class ListEntry(
     [property: JsonPropertyName("caption")] string Caption,
     [property: JsonPropertyName("value")] string Value
     );
+
+public record class FormatterInfo(
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("type")] string Type,
+    [property: JsonPropertyName("options")] List<OptionEntry>? Options
+    );
+
+public record class ListProviderInfo(
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("type")] string Type,
+    [property: JsonPropertyName("options")] List<OptionEntry>? Options
+    );
+
+public record class OptionEntry(
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("value")] string Value
+    );
+
 /// <summary>
 /// Список данных
 /// </summary>
