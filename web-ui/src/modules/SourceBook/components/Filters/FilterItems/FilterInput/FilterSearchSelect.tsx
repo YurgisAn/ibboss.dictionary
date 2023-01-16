@@ -13,12 +13,13 @@ import { FilterFormProps } from '../../types';
 type Props = {
     formik: FilterFormProps;
     field: string;
+    value:any;
     fieldProps: SearchSelectFieldProps;
     list?: ListDto;
     submitFormTrigger?: (v: AnyObject) => void;
 };
 
-export const FilterSearchSelect: FC<Props> = ({formik, field, fieldProps, list, submitFormTrigger }) => {
+export const FilterSearchSelect: FC<Props> = ({formik, value, field, fieldProps, list, submitFormTrigger }) => {
     const { setFieldValue } = formik;
 
     const handleChange = useCallback(
@@ -29,7 +30,7 @@ export const FilterSearchSelect: FC<Props> = ({formik, field, fieldProps, list, 
         [setFieldValue, submitFormTrigger]
     );
 
-    return <SearchSelectField name={field} {...fieldProps} onChange={handleChange}>                
+    return <SearchSelectField name={field} value={value} {...fieldProps} onChange={handleChange}>                
                  {list?.values?.map((item) =>
                         <Option                                
                                 value={item.value}>{item.text}

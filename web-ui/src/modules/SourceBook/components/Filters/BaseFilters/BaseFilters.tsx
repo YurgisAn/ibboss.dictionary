@@ -104,7 +104,7 @@ export const BaseFilters: FC<IFastFiltersProps> = ({
     const renderItem = (item: FilterDto, index:number) => {
         return (   
             <S.InfoItem>
-                <FilterItems.FilterItem 
+                <FilterItems.FilterItem value={values[item.field]}
                                         formik= {formik}
                                         field = {item.field}
                                         type={item.editor} 

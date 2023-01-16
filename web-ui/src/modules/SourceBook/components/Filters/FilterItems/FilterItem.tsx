@@ -12,6 +12,7 @@ import { FilterSearchSelect } from './FilterInput/FilterSearchSelect';
 
 type Props = {
     formik: FilterFormProps;
+    value:any;
     field:string;
     type: string;
     label: string;
@@ -19,18 +20,20 @@ type Props = {
     submitFormTrigger?: (v: AnyObject) => void; 
 };
 
-export const FilterItem: FC<Props> = ({formik, field, type, label, list, submitFormTrigger }) => {   
+export const FilterItem: FC<Props> = ({formik, value, field, type, label, list, submitFormTrigger }) => {   
     const filter = () => {
         switch(type) {
             case FieldEditor.TEXT:   
                     return (<FilterInput formik ={formik}
                                         field={field}
                                         type={'string'}
+                                        value={value}
                                         submitFormTrigger={submitFormTrigger}
                                         inputFieldProps={{ label: label, dimension: 's' }}/>);
             case FieldEditor.NUMBER:   
                     return (<FilterInput formik ={formik}
                                         field={field}
+                                        value={value}
                                         type={'number'}
                                         submitFormTrigger={submitFormTrigger}
                                         inputFieldProps={{ label: label, dimension: 's' }}/>);
@@ -38,12 +41,14 @@ export const FilterItem: FC<Props> = ({formik, field, type, label, list, submitF
                     return (<FilterSearchSelect formik ={formik}
                                         field={field}
                                         list={list}
+                                        value={value}
                                         submitFormTrigger={submitFormTrigger}
                                         fieldProps={{ label: label, dimension: 's' }}/>);
 
             case FieldEditor.DATE_RANGE:    
                     return (<FilterDate formik ={formik}
                                     field={field}
+                                    value={value}
                                     submitFormTrigger={submitFormTrigger}
                                     dateFieldProps={{ label: label, dimension: 's' }}/>);
             case FieldEditor.NONE:

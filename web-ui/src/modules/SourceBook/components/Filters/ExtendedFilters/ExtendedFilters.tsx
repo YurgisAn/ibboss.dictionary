@@ -23,7 +23,6 @@ type Props = {
 
 export const ExtendedFilters: FC<Props> = ({ filters, lists, onCancel, onClose, formik, isOpen }) => {
     const { values, setFieldValue, errors, handleSubmit, setValues } = formik;
-
     const resetFilterValues = {
         options: {  },
     };
@@ -38,7 +37,7 @@ export const ExtendedFilters: FC<Props> = ({ filters, lists, onCancel, onClose, 
 
     const renderItem = (item: FilterDto, index:number) => {
         return (   
-            <FilterItems.FilterItem 
+            <FilterItems.FilterItem value={values[item.field]}
                                     formik= {formik}
                                     field = {item.field}
                                     type={item.editor} 

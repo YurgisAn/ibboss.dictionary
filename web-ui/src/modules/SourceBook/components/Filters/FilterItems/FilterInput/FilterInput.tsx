@@ -8,13 +8,14 @@ import { FilterFormProps } from '../../types';
 
 type Props = {
     formik: FilterFormProps;
+    value:any;
     field: string;
     type: string;
     inputFieldProps: InputFieldProps;
     submitFormTrigger?: (v: AnyObject) => void;
 };
 
-export const FilterInput: FC<Props> = ({formik, type, field, inputFieldProps, submitFormTrigger }) => {
+export const FilterInput: FC<Props> = ({formik, value, type, field, inputFieldProps, submitFormTrigger }) => {
     const { setFieldValue } = formik;
     const handleChange = useCallback(
         (e) => {
@@ -24,5 +25,5 @@ export const FilterInput: FC<Props> = ({formik, type, field, inputFieldProps, su
         [setFieldValue, submitFormTrigger]
     );
 
-    return <InputField name={field} type={type} {...inputFieldProps} onChange={handleChange} />;
+    return <InputField name={field} value={value} type={type} {...inputFieldProps} onChange={handleChange} />;
 };
