@@ -9,7 +9,7 @@ public sealed class EnumValueFormatter : IValueFormatter
     private readonly Dictionary<int, string> enumValues = new();
     private string defaultFormat = null!;
 
-    public void Initialize(List<FormatterOption>? options)
+    public void Initialize(List<OptionEntry>? options)
     {
         if (options == null)
             throw new SourcebookException($"Missing required options for {nameof(EnumValueFormatter)}");

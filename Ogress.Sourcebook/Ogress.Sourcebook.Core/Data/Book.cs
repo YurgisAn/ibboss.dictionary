@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Ogress.Sourcebook.Configuration;
+using Ogress.Sourcebook.Lists;
 using Ogress.Sourcebook.QueryModel;
 
 namespace Ogress.Sourcebook.Data;
@@ -105,10 +106,12 @@ public sealed class Book
             var rows = dbReader.GetRecords(compiler, null);
             return rows.Select(r => new ListEntry(r["text"]?.ToString() ?? "", r["value"]?.ToString() ?? "")).ToList();
         }
+        else if (xs.Provider is not null)
+        {
+            var prov = ListProvider.GetListProvider(info, xs.Provider);
+            return prov.GetEntries().ToList();
+        }
 
-        if (xs.Values is null)
-            throw new SourcebookException($"List \"{name}\" is missing both external source and values definition.");
-
-        return xs.Values.Select(v => new ListEntry(v.Text, v.Value)).ToList();
+        throw new SourcebookException($"List \"{name}\" is missing external source and provider.");
     }
 }

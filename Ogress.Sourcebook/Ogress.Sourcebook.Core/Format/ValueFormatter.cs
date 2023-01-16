@@ -49,7 +49,7 @@ public sealed class ValueFormatter : IValueFormatter
         return fmt;
     }
 
-    void IValueFormatter.Initialize(List<FormatterOption>? options) { }
+    void IValueFormatter.Initialize(List<OptionEntry>? options) { }
 
     string IValueFormatter.Format(object value, string? format)
     {
