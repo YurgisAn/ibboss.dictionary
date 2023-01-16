@@ -20,6 +20,14 @@ export const PaginationStyled = styled(PaginationOne)`
     margin-top: 24px;
 `;
 
+export const Wrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    color: ${({ theme }) => theme.color.basic.tertiary};
+    border-radius: 8px;
+`;
 
 export const EmptyWrapper = styled.div`
     display: flex;

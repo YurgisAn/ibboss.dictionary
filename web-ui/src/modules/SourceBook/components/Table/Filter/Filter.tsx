@@ -84,6 +84,7 @@ export const Filter = React.forwardRef<HTMLButtonElement, FilterCompProps>(
         closeMenu();
       }
     };
+    
     return (
       <>
         <Button

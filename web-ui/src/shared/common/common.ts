@@ -1,6 +1,7 @@
 import { Configuration } from "./configuration";
 import { RequiredError, RequestArgs } from "./base";
 import { AxiosInstance, AxiosResponse } from 'axios';
+import { isDefined } from "~/helpers/guards";
 
 /**
  *
@@ -99,7 +100,7 @@ export const serializeDataIfNeeded = function (value: any, requestOptions: any, 
         ? configuration.isJsonMime(requestOptions.headers['Content-Type'])
         : nonString;
     return needsSerialization
-        ? JSON.stringify(value !== undefined ? value : {})
+        ? JSON.stringify(isDefined(value) ? value : {})
         : (value || "");
 }
 

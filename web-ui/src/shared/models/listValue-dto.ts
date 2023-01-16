@@ -1,20 +1,20 @@
 /**
  * Информация
  * @export
- * @interface ItemValueDto
+ * @interface ListValueDto
  */
-export interface ItemValueDto {
+export interface ListValueDto {
     /**
      * Наименование
      * @type {string}
-     * @memberof ItemValueDto
+     * @memberof ListValueDto
      */
-    'title': string;
+    'caption': string;
 
     /**
      * Значение
      * @type {string}
-     * @memberof ItemValueDto
+     * @memberof ListValueDto
      */
     'value': string;
 }
