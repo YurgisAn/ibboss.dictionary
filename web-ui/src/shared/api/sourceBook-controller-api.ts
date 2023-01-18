@@ -1,5 +1,5 @@
 /**
- * Api для работы со справочником БИКов
+ * Api для работы со справочниками
  */
 import globalAxios, { AxiosPromise, AxiosInstance, AxiosRequestConfig } from 'axios';
 import { Configuration } from '../common/configuration';
@@ -8,8 +8,7 @@ import { DUMMY_BASE_URL, setSearchParams, toPathString, createRequestFunction, s
 // @ts-ignore
 import { BASE_PATH, RequestArgs, BaseAPI } from '../common/base';
 
-import { DirectoryDto, SourceBookDto, DataDto, QueryRequest } from '../models'
-import { ListValueDto } from '../models/listValue-dto';
+import { DirectoryDto, SourceBookDto, DataDto, QueryRequest, ListValueDto } from '../models'
 
 //#region axios parameter creator
 /**
