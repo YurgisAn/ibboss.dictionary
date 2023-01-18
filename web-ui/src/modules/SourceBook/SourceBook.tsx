@@ -39,10 +39,12 @@ export const SourceBook: FC<TypeProps>  = ({book}) => {
     const [modalAlertMessage, setModalAlertMessage] = useState<string>('');
     
     //Открытие модульной формы
-    const openModal = useCallback((bicCode: string | undefined, mode: TypeFormMode) => {
+    const openModal = useCallback((id: string | undefined, mode: TypeFormMode) => {
+        //передача ИД
         setMode(mode);
         setModalForm(true);
     }, []);
+
     //Закрытие модульной формы
     const closeModal = useCallback(() => setModalForm(false), []);
 
@@ -159,7 +161,7 @@ export const SourceBook: FC<TypeProps>  = ({book}) => {
                 />
             )}            
             {
-                modalAlertForm && (<ModalConfirm open={modalAlertForm} onConfirm={handleConfirm} onCancel={handleCancelApply}text={modalAlertMessage} />)
+                modalAlertForm && (<ModalConfirm open={modalAlertForm} onConfirm={handleConfirm} onCancel={handleCancelApply} text={modalAlertMessage} />)
             }
         </ModulesPageWrapper>
     );

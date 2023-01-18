@@ -13,7 +13,7 @@ import { ISODurationPositiveSchema } from '~/helpers/validation';
  * Схема проверки запроса на создание Бика
  */
 export const bicRequestSchema: SchemaOf<BicRequest> = yup.object({
-    bicCode: yup.string().required().trim(),
-    dateIn: ISODurationPositiveSchema.required(),
-    participantName:yup.string().required().trim()    
+    bicCode: yup.string().required('Поле должно быть заполнено.').trim(),
+    dateIn: ISODurationPositiveSchema.required('Поле должно быть заполнено.'),
+    participantName:yup.string().required('Поле должно быть заполнено.').trim()    
 });

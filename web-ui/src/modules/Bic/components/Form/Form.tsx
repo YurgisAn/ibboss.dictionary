@@ -33,12 +33,12 @@ const getInitialValues = ():BicRequest => ({
 
 type Props = {
     bic?: BicRequest,
-    onCreateBic?: () => void;
+    onSave?: () => void;
     onClose?: () => void;
     modalMode: TypeFormMode;
 };
 
-export const Form: React.FC<Props> = memo(({ bic, modalMode, onCreateBic, onClose }) => {
+export const Form: React.FC<Props> = memo(({ bic, modalMode, onSave, onClose }) => {
     const { bicApi } = useApi();
 
     const getTitle = () => {
@@ -72,7 +72,7 @@ export const Form: React.FC<Props> = memo(({ bic, modalMode, onCreateBic, onClos
         //обращение к сервису охранения данных
         await bicApi
             .story(strippedRequest)
-            .then(() => void onCreateBic?.())
+            .then(() => void onSave?.())
             .catch(console.error);
     };
 
@@ -93,6 +93,7 @@ export const Form: React.FC<Props> = memo(({ bic, modalMode, onCreateBic, onClos
                     values,
                     isSubmitting,
                 }: FormikProps<BicRequest>) => {
+                    console.log(errors);
                     return (
                         <ModalStyled width='617px' closeOnEscapeKeyDown onClose={onClose}>
                             <ModalTitle id='modal-title'>{getTitle()}</ModalTitle>
@@ -109,8 +110,10 @@ export const Form: React.FC<Props> = memo(({ bic, modalMode, onCreateBic, onClos
                                                  width: '548px' }}
                                             dimension='s'
                                             status={
-                                                // @ts-expect-error complex type of error, but ?. should do the trick @SQReder
-                                                errors.bic?.bicCode ? 'error' : undefined
+                                                errors.bicCode ? 'error' : undefined
+                                            }
+                                            extraText={
+                                                errors.bicCode ?? undefined
                                             }
                                             value={values.bicCode}
                                             readOnly={
@@ -129,9 +132,11 @@ export const Form: React.FC<Props> = memo(({ bic, modalMode, onCreateBic, onClos
                                             style={{ 
                                                  width: '548px'}}
                                             dimension='s'
+                                            extraText={
+                                                errors.participantName ?? undefined
+                                            }
                                             status={
-                                                // @ts-expect-error complex type of error, but ?. should do the trick @SQReder
-                                                errors.bic?.participantName ? 'error' : undefined
+                                                errors.participantName ? 'error' : undefined
                                             }
                                             value={values.participantName}
                                             readOnly={
@@ -151,8 +156,7 @@ export const Form: React.FC<Props> = memo(({ bic, modalMode, onCreateBic, onClos
                                                  }}
                                             dimension='s'
                                             status={
-                                                // @ts-expect-error complex type of error, but ?. should do the trick @SQReder
-                                                errors.bic?.dateIn ? 'error' : undefined
+                                                errors.dateIn ? 'error' : undefined
                                             }
                                             value={values.dateIn}
                                             readOnly={
@@ -175,7 +179,7 @@ export const Form: React.FC<Props> = memo(({ bic, modalMode, onCreateBic, onClos
                                         Сохранить
                                     </Button>
                                 ) : null}
-                                <Button dimension='s' appearance='secondary'>
+                                <Button dimension='s' appearance='secondary' onClick={onClose}>
                                     Отменить
                                 </Button>
                             </ModalButtonPanel>

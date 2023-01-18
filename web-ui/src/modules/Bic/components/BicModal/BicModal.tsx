@@ -5,8 +5,6 @@ import { Spinner } from '@vtb/ui-kit3';
 import type { FC } from 'react';
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-
-import { Backdrop } from '~/components/Backdrop';
 import { Form } from '~/modules/Bic/components/Form';
 import { useApi } from '~/shared/ApiContext';
 import { BicRequest } from '~/shared/models';
@@ -42,7 +40,7 @@ export const BicModal: FC<Props> = ({ bicCode, mode, onClose, onSave }) => {
         <>
             {(
                 <Form
-                    onCreateBic={onSave}
+                    onSave={onSave}
                     onClose={onClose}
                     bic={bic}
                     modalMode={mode}
