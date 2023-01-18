@@ -49,6 +49,8 @@ export const TableContainer = styled.div`
   display: flex;
   flex-direction: column;
   background: ${({ theme }) => theme.color.background.primary};
+  border-radius: 8px;
+  padding: 16px 24px;
 `;
 
 export const StickyWrapper = styled.div`
