@@ -17,7 +17,7 @@
         { "title": "Дата удаления", "value": "{date_out:dd.MM.yyyy}", "sortBy": "date_out" }
     ],
     "fields": [
-        { "name": "dictionary.bic.bic_code" },
+        { "name": "dictionary.bic.bic_code", "primary": true },
         { "name": "a.participant_name" },
         { "name": "a.participant_type" },
         { "name": "a.locality_name" },

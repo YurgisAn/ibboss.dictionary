@@ -66,16 +66,19 @@ public sealed class Book
     {
         var records = dbReader.GetRecords(GetCompiler(info, take, skip, sortColumn, asc), filter);
         var xs = new List<Item>();
+        var primeFields = info.Fields.Where(f => f.Primary).Select(f => f.Alias).ToList();
 
         foreach (var rec in records)
         {
             var list = new List<ItemValue>();
+
             foreach (var col in info.Columns)
             {
                 var expanded = MacroProcessor.Expand(info, col, rec);
                 list.Add(new ItemValue(col.Title,expanded));
             }
-            xs.Add(new Item(list));
+
+            xs.Add(new Item(list, primeFields));
         }
 
         return xs;
