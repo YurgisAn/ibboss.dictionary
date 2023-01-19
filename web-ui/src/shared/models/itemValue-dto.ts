@@ -12,7 +12,7 @@ export interface ItemValueDto {
     'title': string;
 
     /**
-     * Заголовок
+     * Значение
      * @type {string}
      * @memberof ItemValueDto
      */

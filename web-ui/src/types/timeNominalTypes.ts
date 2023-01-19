@@ -1,6 +1,7 @@
 import { format as dateFnsFormat, isMatch, parse } from 'date-fns';
 
-import { Nominal } from '~/types/opaqueTypes';
+declare const t: unique symbol;
+export type Nominal<Type, Identifier> = Type & { readonly [t]?: Identifier };
 
 export type Milliseconds = Nominal<number, 'Milliseconds'>;
 export type Seconds = Nominal<number, 'Seconds'>;
@@ -11,6 +12,7 @@ export type ShortTime = Nominal<string, 'time-HH:mm'>;
 export type ShortDate = Nominal<string, 'time-dd.MM.yyyy'>;
 export type ReportDate = Nominal<string, 'time-yyyy-MM-dd'>;
 export type FullLongDate = Nominal<string, 'time-dd.MM.yyyy hh:mm'>;
+
 
 type TimeTypeUtils<NominalType extends Nominal<string, unknown>> = {
     isValid: (value: string | undefined) => value is NominalType;
@@ -42,6 +44,5 @@ function makeDateTimeUtils<NominalType extends Nominal<string, unknown>>(format:
 
 export const ShortTimeUtils = makeDateTimeUtils<ShortTime>('HH:mm');
 export const ShortDateUtils = makeDateTimeUtils<ShortTime>('dd.MM.yyyy');
-export const ReportDateUtils = makeDateTimeUtils<ReportDate>('yyyy-MM-dd');
-export const SpecialISODateUtils = makeDateTimeUtils<ReportDate>("yyyy-MM-dd'T'HH:mm:ss");
 export const LongDateUtils = makeDateTimeUtils<FullLongDate>('dd.MM.yyyy HH:mm');
+export const SpecialISODateUtils = makeDateTimeUtils<ReportDate>("MM/dd/yyyy HH:mm:ss");

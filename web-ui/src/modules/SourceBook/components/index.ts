@@ -1,2 +1,3 @@
-export { List } from './List';
+export { Table } from './Table';
+export { Filters } from './Filters';
 

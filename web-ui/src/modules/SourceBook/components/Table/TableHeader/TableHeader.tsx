@@ -57,7 +57,7 @@ export const TableHeader: React.FC<PropType> = ({columns,
     const iconSize = dimension === 's' || dimension === 'm' ? 16 : 20;
     const [sort, setSort] = React.useState({} as any);
     const disableColumnResize= false;
-    
+
     /**Прорисовываем заголовок */
     const renderHeaderCell = (
         {
@@ -147,6 +147,7 @@ return (
                             width: (100/columns.length)+'%',
                             cellAlign: 'left',
                             sortable: isDefined(col.sortBy),
+                            renderFilter:renderFilter
                         } as ColumnWithResizerWidth, index))}
                 </Header>
             </HeaderWrapper>

@@ -17,7 +17,6 @@ type PropType = {
     rows: DataDto[],
     columns: Column[],
     showLastRowUnderline?:boolean,
-
     renderCell?: (row: TableRow, columnName: string) => React.ReactNode;
 };
 
@@ -42,7 +41,7 @@ export const TableRows: React.FC<PropType> = ({columns, rows,  showLastRowUnderl
   const renderBodyCell = (row: ItemValueDto, index: number, number:number) => {
       return (
         <Cell key={`${number}_${columns[index].name}`} style={{ width: columns[index].width || DEFAULT_COLUMN_WIDTH }} className="td">
-            <CellTextContent cellAlign={columns[index].cellAlign}><span dangerouslySetInnerHTML={{__html: row.value}}></span></CellTextContent>
+            <CellTextContent cellAlign={columns[index].cellAlign} dangerouslySetInnerHTML={{__html: row.value}}></CellTextContent>
         </Cell>
       );
     };

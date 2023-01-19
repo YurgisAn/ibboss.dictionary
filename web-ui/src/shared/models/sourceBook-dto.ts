@@ -1,4 +1,6 @@
 import { СolumnInfoDto } from './columnInfo-dto';
+import { FilterDto } from './filter-dto';
+import { ListDto } from './list-dto';
 
 /**
  *  Модели
@@ -26,9 +28,23 @@ export interface SourceBookDto {
 
     /**
      * Столбцы
-     * @type {string}
-     * @memberof BicDto
+     * @type { Array<СolumnInfoDto>}
+     * @memberof SourceBookDto
      */
     'columns':  Array<СolumnInfoDto>;
+
+    /**
+     * Столбцы
+     * @type {Array<FilterDto>}
+     * @memberof SourceBookDto
+     */
+    'filters':  Array<FilterDto>;
+
+     /**
+     * Столбцы
+     * @type {Array<ListDto>}
+     * @memberof SourceBookDto
+     */
+     'lists':  Array<ListDto>;   
 }
 

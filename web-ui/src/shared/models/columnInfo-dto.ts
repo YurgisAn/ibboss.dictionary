@@ -37,6 +37,6 @@ export interface СolumnInfoDto {
      * @type {string}
      * @memberof СolumnInfoDto
     */
-    'hints': string;
+    'hints'?: string;
 }
 
