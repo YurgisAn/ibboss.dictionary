@@ -11,10 +11,13 @@ import {
             Title,
             SortIcon,
             ResizerWrapper,
-            Resizer
+            Resizer,
+            StickyWrapper,
+            CheckboxCell,
+            ExpandCell
         } from '../styled';
 import { isDefined } from '~/helpers/guards';
-import { Column } from '@vtb/ui-kit3';     
+import { Column, Checkbox } from '@vtb/ui-kit3';     
 import { Filter } from '../Filter/Filter';  
 import type { СolumnInfoDto } from '~/shared/models';
 import { DEFAULT_COLUMN_WIDTH } from '../constants';
@@ -29,12 +32,16 @@ type PropType = {
     columns: СolumnInfoDto[];
     headerLineClamp?:number;
     dimension?: string;
+    headerCheckboxChecked?: boolean;
+    headerCheckboxIndeterminate?: boolean;
+    displayRowSelectionColumn?: boolean;
     onSortChange?: (sortObj: { name: string; sort: 'asc' | 'desc' | 'initial' }) => void;
     renderFilter?: (obj: FilterProps) => React.ReactNode;
     renderFilterIcon?: () => React.ReactNode;
     onFilterMenuClickOutside?: (obj: FilterProps, event: Event) => void;
     onFilterMenuOpen?: () => void;
     onFilterMenuClose?: () => void;
+    handleHeaderCheckboxChange?: () => void;
 };
 
 
@@ -43,20 +50,26 @@ export const TableHeader: React.FC<PropType> = ({columns,
                                             dimension = 'm',
                                             onSortChange,
                                             renderFilter,
+                                            headerCheckboxChecked = false,
+                                            headerCheckboxIndeterminate = false,
+                                            displayRowSelectionColumn = false,
                                             renderFilterIcon,
                                             onFilterMenuClickOutside,
                                             onFilterMenuClose,
-                                            onFilterMenuOpen}) => 
+                                            onFilterMenuOpen,
+                                            handleHeaderCheckboxChange}) => 
 {
     // Счетчик смены сортировки для столбца. При третьем нажатии на столбец сортировка должна отменяться
     const sortedCol = React.useRef<{ name: string; count: number }>({ name: '', count: 0 });
     const defaultSpacer = dimension === 'l' || dimension === 'xl' ? '16px' : '12px';
+    const checkboxDimension = dimension === 's' || dimension === 'm' ? 's' : 'm';
     const spacer = defaultSpacer;
     const [cols, setColumns] = React.useState([...columns]);
     const headerRef = React.useRef<HTMLDivElement>(null);
+    const expandCellRef = React.useRef<HTMLDivElement>(null);
+    const checkboxCellRef = React.useRef<HTMLDivElement>(null);
     const iconSize = dimension === 's' || dimension === 'm' ? 16 : 20;
     const [sort, setSort] = React.useState({} as any);
-    const disableColumnResize= false;
 
     /**Прорисовываем заголовок */
     const renderHeaderCell = (
@@ -104,9 +117,6 @@ export const TableHeader: React.FC<PropType> = ({columns,
                   />
                 )}
             </HeaderCellContent>
-            <ResizerWrapper>
-              <Resizer />
-            </ResizerWrapper>
           </HeaderCell>                    
         );
     };
@@ -139,7 +149,21 @@ export const TableHeader: React.FC<PropType> = ({columns,
 
 return (
             <HeaderWrapper>
-                <Header ref={headerRef} className="tr" data-underline={true}>
+                <Header data-dimension={dimension} ref={headerRef} className="tr" data-underline={true}>
+                    {(displayRowSelectionColumn) && (
+                        <StickyWrapper>
+                          {displayRowSelectionColumn && (
+                            <CheckboxCell ref={checkboxCellRef} data-dimension={dimension} className="th_checkbox">
+                              <Checkbox
+                                dimension={checkboxDimension}
+                                checked={headerCheckboxChecked}
+                                indeterminate={headerCheckboxIndeterminate}
+                                onChange={handleHeaderCheckboxChange}
+                              />
+                            </CheckboxCell>
+                          )}
+                      </StickyWrapper>
+                    )}
                     {columns.map((col, index) => renderHeaderCell(
                         {
                             name: col.sortBy ?? col.value,

@@ -173,7 +173,7 @@ export const Table: React.FC<PropType> = ({columns, filters, lists, book}) => {
                 <Filters book={requestRowsParams.name} filters={filters} lists={lists} totalCount={totalItems}/>
                 {columns.length ? (
                     <TableContainer data-dimension='s'>
-                        <TableHeader columns={columns} onSortChange={handlerSortChange}/>
+                        <TableHeader columns={columns} onSortChange={handlerSortChange} displayRowSelectionColumn={true}/>
                         <TableRows columns={columns.map((col, index) => (
                                         {
                                             name: col.value,

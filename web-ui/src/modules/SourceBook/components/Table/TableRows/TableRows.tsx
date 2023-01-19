@@ -17,11 +17,12 @@ type PropType = {
     rows: DataDto[],
     columns: Column[],
     showLastRowUnderline?:boolean,
+    displayRowSelectionColumn?:boolean,
     renderCell?: (row: TableRow, columnName: string) => React.ReactNode;
 };
 
 
-export const TableRows: React.FC<PropType> = ({columns, rows,  showLastRowUnderline = true,}) => 
+export const TableRows: React.FC<PropType> = ({columns, rows,  showLastRowUnderline = true, displayRowSelectionColumn = false}) => 
 {  
   const scrollBodyRef = React.useRef<HTMLDivElement>(null);
   const renderRow = (row: DataDto, index: number) => {
@@ -31,8 +32,8 @@ export const TableRows: React.FC<PropType> = ({columns, rows,  showLastRowUnderl
           underline={(index === rows.length - 1 && showLastRowUnderline) || index < rows.length - 1}
           className={`tr`}
         >
-          <SimpleRow className="tr-simple">
-            {row.items.map((row, inx) => renderBodyCell(row, inx, index))}
+          <SimpleRow className="tr-simple">            
+              {row.items.map((row, inx) => renderBodyCell(row, inx, index))}
           </SimpleRow>          
         </Row>
       );
