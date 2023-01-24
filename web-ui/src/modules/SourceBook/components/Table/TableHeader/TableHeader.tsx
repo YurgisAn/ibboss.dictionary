@@ -14,12 +14,11 @@ import {
             Resizer,
             StickyWrapper,
             CheckboxCell,
-            ExpandCell
+            ExpandCell,
+            Filler
         } from '../styled';
-import { isDefined } from '~/helpers/guards';
 import { Column, Checkbox } from '@vtb/ui-kit3';     
 import { Filter } from '../Filter/Filter';  
-import type { СolumnInfoDto } from '~/shared/models';
 import { DEFAULT_COLUMN_WIDTH } from '../constants';
 type ColumnWithResizerWidth = Column & { resizerWidth: number };
 
@@ -29,7 +28,7 @@ type FilterProps = {
 };
 
 type PropType = {
-    columns: СolumnInfoDto[];
+    columns: Column[];
     headerLineClamp?:number;
     dimension?: string;
     headerCheckboxChecked?: boolean;
@@ -66,7 +65,6 @@ export const TableHeader: React.FC<PropType> = ({columns,
     const spacer = defaultSpacer;
     const [cols, setColumns] = React.useState([...columns]);
     const headerRef = React.useRef<HTMLDivElement>(null);
-    const expandCellRef = React.useRef<HTMLDivElement>(null);
     const checkboxCellRef = React.useRef<HTMLDivElement>(null);
     const iconSize = dimension === 's' || dimension === 'm' ? 16 : 20;
     const [sort, setSort] = React.useState({} as any);
@@ -140,7 +138,7 @@ export const TableHeader: React.FC<PropType> = ({columns,
           sortedCol.current = { name, count: 1 };
         }
         const toRemove = cols.reduce((sortObj, col) => {
-          sortObj[col.value] = 'initial';
+          sortObj[col.name] = 'initial';
           return sortObj;
         }, {} as Record<any, any>);
         setSort({ ...toRemove, [name]: newSort });    
@@ -148,32 +146,21 @@ export const TableHeader: React.FC<PropType> = ({columns,
     };
 
 return (
-            <HeaderWrapper>
-                <Header data-dimension={dimension} ref={headerRef} className="tr" data-underline={true}>
-                    {(displayRowSelectionColumn) && (
-                        <StickyWrapper>
-                          {displayRowSelectionColumn && (
-                            <CheckboxCell ref={checkboxCellRef} data-dimension={dimension} className="th_checkbox">
-                              <Checkbox
-                                dimension={checkboxDimension}
-                                checked={headerCheckboxChecked}
-                                indeterminate={headerCheckboxIndeterminate}
-                                onChange={handleHeaderCheckboxChange}
-                              />
-                            </CheckboxCell>
-                          )}
-                      </StickyWrapper>
+             <> {(displayRowSelectionColumn) && (
+                  <StickyWrapper>
+                    {displayRowSelectionColumn && (
+                      <CheckboxCell ref={checkboxCellRef} data-dimension={dimension} className="th_checkbox">
+                        <Checkbox
+                          dimension={checkboxDimension}
+                          checked={headerCheckboxChecked}
+                          indeterminate={headerCheckboxIndeterminate}
+                          onChange={handleHeaderCheckboxChange}
+                        />
+                      </CheckboxCell>
                     )}
-                    {columns.map((col, index) => renderHeaderCell(
-                        {
-                            name: col.sortBy ?? col.value,
-                            title: col.title,
-                            width: (100/columns.length)+'%',
-                            cellAlign: 'left',
-                            sortable: isDefined(col.sortBy),
-                            renderFilter:renderFilter
-                        } as ColumnWithResizerWidth, index))}
-                </Header>
-            </HeaderWrapper>
+                </StickyWrapper>
+              )}
+              {columns.map((col, index) => renderHeaderCell(col as ColumnWithResizerWidth, index))}                   
+            </>        
         );
 };

@@ -87,7 +87,7 @@ export const Filler = styled.div`
   width: unset;
 `;
 
-export const HeaderWrapper = styled.div<{}>`
+export const HeaderWrapper = styled.div<{ scrollbar: number; greyHeader?: boolean }>`
   box-sizing: border-box;
   position: relative;
   display: flex;
@@ -102,7 +102,9 @@ export const HeaderWrapper = styled.div<{}>`
       top: 0;
       right: 0;
       height: 100%;
-      background: ${({ theme }) => theme.color.background.primary};    
+      background: ${({ theme, greyHeader }) =>
+        greyHeader ? theme.color.background.tertiary : theme.color.background.primary};
+      width: ${({ scrollbar }) => scrollbar}px;
       border-bottom: 1px solid ${({ theme }) => theme.color.basic.disable};
     }
   }
@@ -354,13 +356,15 @@ export const ExtraText = styled.div<{ lineClamp: number }>`
   ${({ lineClamp }) => (lineClamp === 1 ? singleLineTitle : multiLineTitle)}
 `;
 
-export const Row = styled.div<{ underline: boolean }>`
+export const Row = styled.div<{ disabled: boolean;  underline: boolean  }>`
   display: flex;
   flex-direction: column;
   min-width: fit-content;
   background: ${({ theme }) => theme.color.background.primary};
   ${rowStyle}
+  ${({ disabled }) => disabled && disabledRow}
   ${({ underline }) => underline && underlineRow}
+  border-bottom: 1px solid ${({ theme }) => theme.color.basic.disable};
 `;
 
 export const SimpleRow = styled.div`
