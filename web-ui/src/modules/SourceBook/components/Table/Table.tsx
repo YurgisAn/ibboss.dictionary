@@ -14,13 +14,14 @@ import { Filters } from '../Filters';
 
 
 type PropType = {
-    columns: СolumnInfoDto[];
+    columns: Column[];
     filters: FilterDto[];
     book:string;
-    lists:Array<ListDto>
+    lists:Array<ListDto>;
+    displayRowSelectionColumn?:boolean;
 };
 
-export const Table: React.FC<PropType> = ({columns, filters, lists, book}) => {
+export const Table: React.FC<PropType> = ({columns, filters, lists, book, displayRowSelectionColumn = false}) => {
     const { sourceBookApi } = useApi();
     const [sort, setSort] = useState('bic_code');
     const [asc, setAsc] = useState(true);
@@ -30,6 +31,10 @@ export const Table: React.FC<PropType> = ({columns, filters, lists, book}) => {
     const [totalItems, setTotalItems] = useState(0);     
     const [rows, setRows] = useState<DataDto[]>([]);
     const [observableUpdate, forceUpdate] = useState({});
+    const scrollBodyRef = React.useRef<HTMLDivElement>(null);
+    const tableRef = React.useRef<HTMLDivElement>(null);
+    const headerRef = React.useRef<HTMLDivElement>(null);
+
     const sourceBookContext = useMemo(() => {
         return { observableUpdate, forceUpdate };
     }, [observableUpdate]);
@@ -81,6 +86,43 @@ export const Table: React.FC<PropType> = ({columns, filters, lists, book}) => {
         [sourceBookApi, requestRowsParams]
     );
 
+    
+  const setShadow = (scrollLeft: number) => {
+    if (tableRef.current) {
+      const initial = tableRef.current.getAttribute('data-shadow');
+      if (scrollLeft === 0) {
+        if (initial !== 'false') tableRef.current.setAttribute('data-shadow', 'false');
+      } else {
+        if (initial !== 'true') tableRef.current.setAttribute('data-shadow', 'true');
+      }
+    }
+  };
+
+    const scrollHeader = (scrollLeft: number) => {
+        if (headerRef.current) headerRef.current.scrollLeft = scrollLeft;
+      };
+    
+    const handleScroll = (e: any) => {
+        if (e.target === scrollBodyRef.current) {
+          requestAnimationFrame(function () {
+            scrollHeader(e.target.scrollLeft);
+          });
+        }
+        if (displayRowSelectionColumn) {
+          requestAnimationFrame(function () {
+            setShadow(e.target.scrollLeft);
+          });
+        }
+      };
+
+    React.useLayoutEffect(() => {
+        const scrollBody = scrollBodyRef.current;
+        if (scrollBody) {
+          scrollBody.addEventListener('scroll', handleScroll);
+          return () => scrollBody.removeEventListener('scroll', handleScroll);
+        }
+      }, [scrollBodyRef.current]);
+      
     /**
      * Получаем количество строк
      */
@@ -169,30 +211,58 @@ export const Table: React.FC<PropType> = ({columns, filters, lists, book}) => {
         [sort]
     );
 
+    /**Взято из компонента */
+    const getScrollbarSize = () => {
+        let scrollBarWidth = 0;
+        const scrollbox = document.createElement('div');
+        scrollbox.innerHTML = `Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diem 
+          nonummy nibh euismod tincidunt ut lacreet dolore magna aliguam erat volutpat. 
+          Ut wisis enim ad minim veniam, quis nostrud exerci tution ullamcorper suscipit 
+          lobortis nisl ut aliquip ex ea commodo consequat.`;
+        scrollbox.style.overflow = 'scroll';
+        scrollbox.style.fontSize = '14px';
+        scrollbox.style.height = '50px';
+        scrollbox.style.maxHeight = '50px';
+        scrollbox.style.width = '100px';
+        scrollbox.style.position = 'absolute';
+        scrollbox.style.top = '-100000px';
+        scrollbox.style.left = '-100000px';
+        document.body.appendChild(scrollbox);
+        scrollBarWidth = scrollbox.offsetWidth - scrollbox.clientWidth;
+        document.body.removeChild(scrollbox);
+        return scrollBarWidth || 16;
+      };
+
     return <>
                 <Filters book={requestRowsParams.name} filters={filters} lists={lists} totalCount={totalItems}/>
                 {columns.length ? (
+                    <>
                     <TableContainer data-dimension='s'>
-                        <TableHeader columns={columns} onSortChange={handlerSortChange}/>
-                        <TableRows columns={columns.map((col, index) => (
-                                        {
-                                            name: col.value,
-                                            title: col.title,
-                                            width: (100/columns.length)+'%',
-                                            cellAlign: 'left',
-                                            sortable: isDefined(col.sortBy),
-                                        } as Column))} 
-                                        rows = {rows} />
-                        {!!rows?.length && totalItems > defaultPageSize && (
-                            <PaginationStyled
-                                onChange={handlerPaginationChange}
-                                page={page}
-                                pageSize={pageSize}
-                                pageSizes={pageSizes}
-                                totalItems={totalItems}
-                            />
-                        )}
+                        <S.HeaderWrapper scrollbar={getScrollbarSize()}>
+                            <S.Header data-dimension={'s'} ref={headerRef} className="tr" data-underline={true}>
+                                <TableHeader columns={columns} onSortChange={handlerSortChange} displayRowSelectionColumn={displayRowSelectionColumn}
+                                                dimension={'s'}/>
+                            </S.Header>
+                        </S.HeaderWrapper>
+                        {rows.length ? 
+                            (<S.ScrollTableBody ref={scrollBodyRef} className="tbody">
+                                <TableRows  displayRowSelectionColumn={displayRowSelectionColumn}  columns={columns}
+                                            rows = {rows} />
+                            </S.ScrollTableBody>) 
+                            : (<EmptyWrapper>Нет данных</EmptyWrapper>)
+                        }
+                        
                     </TableContainer>
+                    {!!rows?.length && totalItems > defaultPageSize && (
+                        <PaginationStyled
+                            onChange={handlerPaginationChange}
+                            page={page}
+                            pageSize={pageSize}
+                            pageSizes={pageSizes}
+                            totalItems={totalItems}
+                        />
+                    )}
+                    </>
                     )
                     : (
                         <EmptyWrapper>Нет данных по справочнику</EmptyWrapper>

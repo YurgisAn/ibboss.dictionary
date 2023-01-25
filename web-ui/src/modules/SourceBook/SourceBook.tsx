@@ -6,7 +6,7 @@ import { useApi } from '~/shared/ApiContext';
 import { ModulesPageWrapper, FormBookStyled, ListWrapper, ButtonsWrapper }  from './styled';
 import { SourceBookContext } from './SourceBookContext';
 import { Table, Filters } from './components';
-import { Button } from '@vtb/ui-kit3';
+import { Button, Column } from '@vtb/ui-kit3';
 import { ModuleHeader } from '~/components/ModuleHeader';
 import { TypeFormMode } from '~/constants/types';
 import { BicModal } from '../Bic/components/BicModal';
@@ -19,7 +19,7 @@ type TypeProps = {
 export const SourceBook: FC<TypeProps>  = ({book}) => {
     const history = useHistory();
     const [title, setTitle] = useState('');
-    const [columns, setColumns] = useState<СolumnInfoDto[]>([]);  
+    const [columns, setColumns] = useState<Column[]>([]);  
     const [filters, setFilters] = useState<FilterDto[]>([]); 
     const [lists, setLists] = useState<ListDto[]>([]);   
     const [observableUpdate, forceUpdate] = useState({});
@@ -103,7 +103,15 @@ export const SourceBook: FC<TypeProps>  = ({book}) => {
                     assertDefined(data?.title, 'data?.title');  
                     setTitle(data?.title);       
                     assertDefined(data?.columns, 'data?.columns');
-                    setColumns(data?.columns);
+                    //переводим колонки к колонкам таблицы
+                    setColumns(data?.columns.map((col, index) => (
+                                {
+                                    name: col.sortBy ?? col.value ,
+                                    title: col.title,
+                                    width: (95 / data?.columns.length)+'%',
+                                    cellAlign: 'left',
+                                    sortable: isDefined(col.sortBy),
+                                } as Column)));
                     assertDefined(data?.filters, 'data?.filters');
                     setFilters(data?.filters);
                     assertDefined(data?.lists, 'data?.lists');                    
@@ -148,7 +156,7 @@ export const SourceBook: FC<TypeProps>  = ({book}) => {
             <FormBookStyled>                  
                 <SourceBookContext.Provider value={sourceBookContext}>
                     <ListWrapper data-at='list-board'>
-                        <Table columns ={columns} filters={filters} lists={lists} book={book}/>
+                        <Table columns ={columns} filters={filters} lists={lists} book={book} displayRowSelectionColumn={true}/>
                     </ListWrapper>
                 </SourceBookContext.Provider>
             </FormBookStyled> 

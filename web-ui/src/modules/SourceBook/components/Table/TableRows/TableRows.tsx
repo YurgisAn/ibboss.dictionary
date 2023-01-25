@@ -9,30 +9,46 @@ import {
 } from '../styled';
 
 import { DEFAULT_COLUMN_WIDTH } from '../constants';
-import { TableRow, Column } from '@vtb/ui-kit3';   
+import { TableRow, Column, Checkbox } from '@vtb/ui-kit3';   
 import { ItemValueDto } from '~/shared/models/itemValue-dto';
-import { EmptyWrapper } from '../styled';
+import { StickyWrapper, CheckboxCell } from '../styled';
 
 type PropType = {
     rows: DataDto[],
     columns: Column[],
     showLastRowUnderline?:boolean,
+    displayRowSelectionColumn?:boolean,
+    dimension?: string;
     renderCell?: (row: TableRow, columnName: string) => React.ReactNode;
 };
 
 
-export const TableRows: React.FC<PropType> = ({columns, rows,  showLastRowUnderline = true,}) => 
+export const TableRows: React.FC<PropType> = ({columns, rows, dimension = 's',  showLastRowUnderline = true, displayRowSelectionColumn = false}) => 
 {  
-  const scrollBodyRef = React.useRef<HTMLDivElement>(null);
+  const checkboxCellRef = React.useRef<HTMLDivElement>(null);
+  const checkboxDimension = dimension === 's' || dimension === 'm' ? 's' : 'm'; 
+
   const renderRow = (row: DataDto, index: number) => {
       return (
         <Row
+          disabled={false}
           key={`row_${index}`}
           underline={(index === rows.length - 1 && showLastRowUnderline) || index < rows.length - 1}
           className={`tr`}
         >
-          <SimpleRow className="tr-simple">
-            {row.items.map((row, inx) => renderBodyCell(row, inx, index))}
+          <SimpleRow className="tr-simple">   
+             {(displayRowSelectionColumn) && (
+                <StickyWrapper>
+                    {displayRowSelectionColumn && (
+                      <CheckboxCell ref={checkboxCellRef} data-dimension={dimension} className="th_checkbox">
+                        <Checkbox
+                            dimension={checkboxDimension}                        
+                        />
+                      </CheckboxCell>
+                    )}
+                </StickyWrapper>
+              )}           
+              {row.items.map((row, inx) => renderBodyCell(row, inx, index))}
           </SimpleRow>          
         </Row>
       );
@@ -47,10 +63,6 @@ export const TableRows: React.FC<PropType> = ({columns, rows,  showLastRowUnderl
     };
 
   return (
-            rows.length ? 
-            (<ScrollTableBody ref={scrollBodyRef} className="tbody">
-              {rows.map((row, index) => renderRow(row, index))}
-            </ScrollTableBody>) 
-            : (<EmptyWrapper>Нет данных</EmptyWrapper>)
+            <>{rows.map((row, index) => renderRow(row, index))}</>              
           );
 };
