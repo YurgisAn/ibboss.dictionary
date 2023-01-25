@@ -52,7 +52,8 @@ public record class ExternalSourceInfo(
 
 public record class FieldInfo(
     [property: JsonPropertyName("name")] string Name,
-    [property: JsonPropertyName("alias")] string Alias);
+    [property: JsonPropertyName("alias")] string Alias,
+    [property: JsonPropertyName("primary")] bool Primary);
 
 public record class FilterInfo(
     [property: JsonPropertyName("field")] string Field,
@@ -86,16 +87,15 @@ public record class ListProviderInfo(
 
 public record class OptionEntry(
     [property: JsonPropertyName("name")] string Name,
-    [property: JsonPropertyName("value")] string Value
-    );
+    [property: JsonPropertyName("value")] string Value);
 
 /// <summary>
 /// Список данных
 /// </summary>
 /// <param name="Items">Значения строки</param>
 public record class Item(
-    [property: JsonPropertyName("items")] List<ItemValue> Items
-    );
+    [property: JsonPropertyName("items")] List<ItemValue> Items,
+    [property: JsonPropertyName("primaryKey")] List<string> PrimaryKey);
 
 /// <summary>
 /// Значения данных
@@ -104,5 +104,4 @@ public record class Item(
 /// <param name="Value">Значение параметра</param>
 public record class ItemValue(
     [property: JsonPropertyName("title")] string Title,
-    [property: JsonPropertyName("value")] string Value
-    );
+    [property: JsonPropertyName("value")] string Value);
