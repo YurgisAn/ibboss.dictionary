@@ -1,0 +1,142 @@
+{
+  "name": "holiday_currency",
+  "title": "Производственный календарь валют",
+  "filters": [
+    {
+      "field": "day",
+      "editor": "DateRange",
+      "title": "Введите дату"
+    },
+    {
+      "field": "type",
+      "editor": "List",
+      "list": "working_day",
+      "title": "Выберите тип"
+    },
+    {
+      "field": "currency_id",
+      "editor": "List",
+      "list": "locality",
+      "title": "Валюта"
+    }
+  ],
+  "columns": [
+    {
+      "title": "Дата",
+      "value": "<a href='Redirect/holiday_country/?day={day}'>{day:dd.MM.yyyy}</a>",
+      "sortBy": "day"
+    },
+    {
+      "title": "Тип",
+      "value": "{type}",
+      "sortBy": "type",
+      "formatter": "DaysFormatter"
+    },
+    {
+      "title": "Валюта",
+      "value": "{name}",
+      "sortBy": "name"
+    },
+    {
+      "title": "Комментарий",
+      "value": "{comment}",
+      "sortBy": "comment"
+    }
+  ],
+  "fields": [
+    {
+      "name": "a.day"
+    },
+    {
+      "name": "a.type"
+    },
+    {
+      "name": "a.currency_id"
+    },
+    {
+      "name": "b.name"
+    },
+    {
+      "name": "a.comment"
+    }
+  ],
+  "tables": [
+    {
+      "name": "dictionary.holiday_currency",
+      "key": "currency_id",
+      "alias": "a"
+    },
+    {
+      "name": "dictionary.currency",
+      "alias": "b",
+      "key": "currency_id",
+      "relation": "dictionary.holiday_currency"
+    }
+  ],
+  "lists": [
+    {
+      "name": "working_day",
+      "valueType": "Integer",
+      "provider": "Working_dayList"
+    },
+    {
+      "name": "locality",
+      "valueType": "Integer",
+      "source": {
+        "fields": [
+          {
+            "name": "a.name",
+            "alias": "text"
+          },
+          {
+            "name": "a.currency_id",
+            "alias": "value"
+          }
+        ],
+        "tables": [
+          {
+            "name": "dictionary.currency",
+            "alias": "a"
+          }
+        ],
+        "distinct": true,
+        "sortBy": "text",
+        "condition": "value != null"
+      }
+    }
+  ],
+  "formatters": [
+    {
+      "name": "DaysFormatter",
+      "type": "enum",
+      "options": [
+        {
+          "name": "enumType",
+          "value": "Ogress.Sourcebook.Test.HolidayType,Ogress.Sourcebook.Test"
+        },
+        {
+          "name": "default",
+          "value": "Отсутствует ({0})"
+        }
+      ]
+    }
+  ],
+  "listProviders": [
+    {
+      "name": "Working_dayList",
+      "type": "json",
+      "options": [
+        {
+          "value": "0",
+          "name": "0   Выходной"
+        },
+        {
+          "value": "1",
+          "name": "1   Рабочий"
+        }
+      ]
+    }
+  ]
+}
+
+

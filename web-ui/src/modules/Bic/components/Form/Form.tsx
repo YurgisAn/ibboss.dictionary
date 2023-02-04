@@ -46,6 +46,8 @@ export const Form: React.FC<Props> = memo(({ bic, modalMode, onSave, onClose }) 
         return 'Добавление новой записи';
     };
 
+    console.log('bic = ', bic);
+
     //Сохранение доступно для добавления и редактирования
     const isSaveAvailable = [TypeFormMode.NEW, TypeFormMode.EDIT].includes(modalMode);
 
@@ -69,7 +71,7 @@ export const Form: React.FC<Props> = memo(({ bic, modalMode, onSave, onClose }) 
             assert: true,
             stripUnknown: true,
         }) as BicRequest;
-        //обращение к сервису охранения данных
+        //обращение к сервису сохранения данных
         await bicApi
             .story(strippedRequest)
             .then(() => void onSave?.())

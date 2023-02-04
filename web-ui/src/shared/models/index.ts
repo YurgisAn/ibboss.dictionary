@@ -8,3 +8,6 @@ export * from './list-dto';
 export * from './listItem-dto';
 export * from './listValue-dto';
 export * from './bic-request';
+// by Yury An
+export * from './holidayCountry-request';
+export * from './holidayCurrency-request';

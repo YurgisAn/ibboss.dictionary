@@ -12,6 +12,8 @@ import { TypeFormMode } from '~/constants/types';
 import { BicModal } from '../Bic/components/BicModal';
 import { useHistory } from 'react-router'
 import { ModalAlert, ModalConfirm } from '~/components/Modals';
+import { HolidayCountryModal } from '../HolidayCountry/components/HolidayCountryModal'; // by Yury An
+import { HolidayCurrencyModal } from '../HolidayCurrency/components/HolidayCurrencyModal'; // by Yury An
 
 type TypeProps = {
     book: string;
@@ -160,14 +162,31 @@ export const SourceBook: FC<TypeProps>  = ({book}) => {
                     </ListWrapper>
                 </SourceBookContext.Provider>
             </FormBookStyled> 
-            {modalForm && (
-                <BicModal
+            {modalForm &&
+              (title == 'БИК') ? 
+                (<BicModal
+                  mode={mode}
+                  bicCode={selectedId}
+                  onClose={closeModal}
+                  onSave={handleSave}
+                />) : (modalForm &&
+                  (title == 'Производственный календарь стран') ? 
+                  (<HolidayCountryModal
                     mode={mode}
-                    bicCode={selectedId}
+                    HolidayCountryDay={selectedId}
                     onClose={closeModal}
                     onSave={handleSave}
-                />
-            )}            
+                  />) : (modalForm &&
+                    (title == 'Производственный календарь валют') ? 
+                    (<HolidayCurrencyModal
+                      mode={mode}
+                      HolidayCurrencyDay={selectedId}
+                      onClose={closeModal}
+                      onSave={handleSave}
+                  />) : ('')  
+                  )  
+                )}
+
             {
                 modalAlertForm && (<ModalConfirm open={modalAlertForm} onConfirm={handleConfirm} onCancel={handleCancelApply} text={modalAlertMessage} />)
             }

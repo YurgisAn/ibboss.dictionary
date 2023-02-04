@@ -24,7 +24,9 @@ export const App = () => {
 
     return (
         <AppContainer>
-            <SourceBook book='bic'></SourceBook>
+            {/* <SourceBook book='bic'></SourceBook> */}
+            <SourceBook book='holiday_country'></SourceBook>
+            <SourceBook book='holiday_currency'></SourceBook>
         </AppContainer>
     );
 };
