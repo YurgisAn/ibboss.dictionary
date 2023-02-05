@@ -4,8 +4,8 @@ namespace Ogress.Sourcebook.Test;
 
 public enum Gender
 {
-    [Display(Name = "Мужчина")]
+    [Display(Name = "Мужчина111")]
     Male = 1,
-    [Display(Name = "Женщина")]
+    [Display(Name = "Женщина222")]
     Female = -1
 }
